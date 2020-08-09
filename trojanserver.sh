@@ -1,4 +1,3 @@
-
 #trojan安装脚本@Debian 10
 #定义网站地址
 echo    "本脚本可以自动安装trojan，自动申请并使用tls证书加密保护trojan的流量，反代朝鲜劳动新闻网址进行网站伪装。需要您事先将此VPS的IP地址解析到一个有效域名上。
@@ -9,8 +8,6 @@ echo    "请输入此VPS的IP对应的域名地址："
 read    site
 echo    "好的，现在要开始安装了。"
 sleep   5s
-
-
 
 
 
@@ -81,5 +78,6 @@ finish_time=$(date +%s)
 time_consume=$((   finish_time   -   begin_time ))
 echo   "脚本运行时间$time_consume秒。"
 #至此trojan可正常工作
+
 
 
