@@ -22,8 +22,6 @@ sleep   5s
 
 
 
-
-
 #计时
 begin_time=$(date +%s)
 #安装常用软件包：
@@ -67,20 +65,6 @@ echo '
   "outbounds":[{"protocol": "freedom"}]
 }
 '     >     /etc/v2ray/config.json
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -132,8 +116,6 @@ sed      -i       ''s/www.example.com/$site/g''               /etc/nginx/sites-e
 
 
 
-
-
 #启动V2Ray和Nginx：
 systemctl   enable    v2ray
 systemctl   enable    nginx
@@ -154,8 +136,5 @@ finish_time=$(date +%s)
 time_consume=$((   finish_time   -   begin_time ))
 echo   "脚本运行时间$time_consume秒。"
 #至此V2Ray可正常工作
-
-
-
 
 
