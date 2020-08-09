@@ -1,4 +1,3 @@
-
 #v2rayserver安装脚本@Debian 10
 #定义网站地址
 echo    "
@@ -136,5 +135,6 @@ finish_time=$(date +%s)
 time_consume=$((   finish_time   -   begin_time ))
 echo   "脚本运行时间$time_consume秒。"
 #至此V2Ray可正常工作
+
 
 
