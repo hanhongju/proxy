@@ -1,4 +1,3 @@
-
 #shadowsocks服务器安装脚本@Debian 10
 #安装shadowsocks
 apt      update
