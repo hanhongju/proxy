@@ -17,7 +17,7 @@ begin_time=$(date +%s)
 apt    update
 apt    full-upgrade    -y
 apt    autoremove      -y
-apt    purge           -y         apache2 nginx
+apt    purge           -y         apache2
 apt    install         -y         python3-pip net-tools trojan
 #安装Certbot
 pip3   install     cryptography --upgrade
@@ -29,7 +29,8 @@ net.ipv4.tcp_congestion_control=bbr
 '         >       /etc/sysctl.conf
 sysctl   -p
 #申请SSL证书
-certbot    certonly    --standalone    --agree-tos     -n     -d      $site     -m    86606682@qq.com 
+service   nginx   stop
+certbot   certonly    --standalone    --agree-tos     -n     -d      $site     -m    86606682@qq.com 
 rm       -rf     /home/keys/
 mkdir    -p      /home/keys/
 cp       /etc/letsencrypt/live/$site/fullchain.pem       /home/keys/fullchain.pem
