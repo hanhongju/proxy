@@ -44,9 +44,10 @@ echo       "
 2 0 1 * *     cp       /etc/letsencrypt/live/$site/privkey.pem        /home/keys/privkey.pem
 3 0 1 * *     chmod        -Rf        777       /home/
 4 0 1 * *     service       nginx     start
-"  |  crontab
-crontab    -l
-service   cron   restart
+"      >     /home/crontab
+crontab      /home/crontab
+crontab      -l
+service    cron   restart
 #修改trojan配置文件
 echo '
 {
