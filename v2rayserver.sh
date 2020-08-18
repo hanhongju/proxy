@@ -6,10 +6,10 @@ echo    "
 同时，此脚本还添加了shadowsocks服务，端口为10086，密码为fengkuang，加密方法为aes-256-gcm。
 安装完成后v2ray配置:
 端口为             443
-用户ID为           15448fce-7c71-11ea-bc55-0242ac130003
+用户ID为           8c38d360-bb8f-11ea-9ffd-c182155e578a
 额外ID为           0
 传输协议为         ws
-路径为            /f63lKAx
+路径为            /game
 底层传输安全为      tls
 理解并记录下这些信息后请按回车键继续，并在下一栏输入您解析的有效域名。如果域名输入有误请按Ctrl+C终止脚本运行，然后重新运行脚本。
 "
@@ -47,10 +47,10 @@ echo '
   "inbounds": [{
       "port": 8964,
       "protocol": "vmess",
-      "settings": {"clients": [{"id": "15448fce-7c71-11ea-bc55-0242ac130003"}]},
+      "settings": {"clients": [{"id": "8c38d360-bb8f-11ea-9ffd-c182155e578a"}]},
       "streamSettings": {
       "network": "ws",
-      "wsSettings": {"path": "/f63lKAx"}
+      "wsSettings": {"path": "/game"}
       }
    },{
       "port": 10086,
