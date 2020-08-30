@@ -32,7 +32,7 @@ apt    install         -y         python3-pip wget curl net-tools policycoreutil
 #安装Certbot和V2Ray
 pip3   install     cryptography --upgrade
 pip3   install     certbot
-bash     -c    "$(curl   -L   -s    https://raw.githubusercontent.com/v2fly/fhs-install-v2ray/master/install-release.sh)"
+bash     -c    "$(curl   -sL    https://raw.githubusercontent.com/v2fly/fhs-install-v2ray/master/install-release.sh)"
 #关闭SELinux
 setsebool   -P   httpd_can_network_connect   1   &&   setenforce   0
 #修改系统控制文件启用BBR
