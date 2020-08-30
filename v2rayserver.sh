@@ -32,7 +32,8 @@ apt    install         -y         python3-pip wget curl net-tools policycoreutil
 #安装Certbot和V2Ray
 pip3   install     cryptography --upgrade
 pip3   install     certbot
-bash    -c     "$(curl -L -s https://install.direct/go.sh)"
+curl  -O  https://raw.githubusercontent.com/v2fly/fhs-install-v2ray/master/install-release.sh
+bash   install-release.sh
 #关闭SELinux
 setsebool   -P   httpd_can_network_connect   1   &&   setenforce   0
 #修改系统控制文件启用BBR
@@ -63,7 +64,7 @@ echo '
    }],
   "outbounds":[{"protocol": "freedom"}]
 }
-'     >     /etc/v2ray/config.json
+'     >     /usr/local/etc/v2ray/config.json
 
 
 
@@ -101,7 +102,7 @@ proxy_set_header Host $proxy_name;
 proxy_pass https://$proxy_name;
 proxy_set_header Accept-Encoding "";
 }
-location /f63lKAx   {          #设置v2ray转发
+location /game     {          #设置v2ray转发
 proxy_pass http://127.0.0.1:8964;
 proxy_redirect off;
 proxy_http_version 1.1;
@@ -122,7 +123,7 @@ service     v2ray     restart
 service     nginx     restart
 #验证配置文件，显示监听端口
 netstat  -plunt | grep 'nginx'
-/usr/bin/v2ray/v2ray     -test       -config=/etc/v2ray/config.json
+/usr/local/bin/v2ray     -test       -config=/usr/local/etc/v2ray/config.json
 #如果nginx配置有错误，重置nginx配置文件
 OUTPUT=$(nginx -t 2>&1)
 echo   $OUTPUT
@@ -135,6 +136,5 @@ finish_time=$(date +%s)
 time_consume=$((   finish_time   -   begin_time ))
 echo   "脚本运行时间$time_consume秒。"
 #至此V2Ray可正常工作
-
 
 
