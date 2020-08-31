@@ -123,7 +123,7 @@ service     nginx     restart
 #验证配置文件，显示监听端口
 v2ray    -test       -config=/usr/local/etc/v2ray/config.json
 nginx    -t
-netstat  -plunt   |   grep 'nginx'
+netstat  -plunt
 #如果nginx配置有错误，重置nginx配置文件
 OUTPUT=$(nginx -t 2>&1)
 if     [[  "$OUTPUT"   =~   "successful"   ]]
