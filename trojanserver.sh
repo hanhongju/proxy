@@ -70,7 +70,7 @@ systemctl    restart     trojan
 #显示监听端口
 sleep 1s
 /usr/bin/trojan  -t  
-OUTPUT=$(netstat -plunt | grep 'trojan'    2>&1)
+OUTPUT=$(netstat -plnt | grep 'trojan'    2>&1)
 echo   $OUTPUT
 if     [[  "$OUTPUT"   =~   "trojan"   ]]
 then        echo   "至此，trojan可正常工作。服务器密码为fengkuang。"
