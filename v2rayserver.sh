@@ -123,9 +123,9 @@ service     nginx     restart
 #验证配置文件，显示监听端口
 netstat  -plunt | grep 'nginx'
 /usr/local/bin/v2ray     -test       -config=/usr/local/etc/v2ray/config.json
-#如果nginx配置有错误，重置nginx配置文件
 OUTPUT=$(nginx -t 2>&1)
 echo   $OUTPUT
+#如果nginx配置有错误，重置nginx配置文件
 if     [[  "$OUTPUT"   =~   "successful"   ]]
 then        echo   "至此，v2ray可正常工作。"
 else        echo   "您输入的域名地址可能没有正确解析或者短时间申请了太多的证书，不能正常申请证书，所以nginx不能正常工作。现在所有nginx配置都已被删除。在您确认了域名解析没有问题后再请重新运行本脚本。"
