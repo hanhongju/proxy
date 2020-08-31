@@ -25,7 +25,7 @@ echo   '
 service  trojan  restart
 sleep 1s
 /usr/bin/trojan  -t  
-netstat  -plunt  | grep 'trojan'
+netstat  -plnt  | grep 'trojan'
 #回显trojan监听地址
 
 
