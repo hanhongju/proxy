@@ -42,9 +42,10 @@ echo       "
 2 0 1 * *     cp           /etc/letsencrypt/live/$site/fullchain.pem        /home/keys/fullchain.pem
 2 0 1 * *     cp           /etc/letsencrypt/live/$site/privkey.pem          /home/keys/privkey.pem
 3 0 1 * *     chmod        -Rf        777       /home/
-"      |      crontab   
+"      >     /home/crontab
+crontab      /home/crontab
 crontab      -l
-service       cron          restart
+service       cron      restart
 #修改trojan配置文件
 echo '
 {
