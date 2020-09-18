@@ -15,7 +15,6 @@ echo '
 '     >           /etc/shadowsocks-libev/config.json
 #重启服务
 service   shadowsocks-libev   restart
-sleep 1s
 netstat  -plnt
 #回显ss-server监听端口
 
@@ -43,7 +42,6 @@ echo   '
 #启动服务
 systemctl   enable      shadowsocks-libev-local@root
 systemctl   restart     shadowsocks-libev-local@root
-sleep 1s
 netstat    -plnt
 #回显ss-local监听端口
 
