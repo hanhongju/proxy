@@ -38,6 +38,7 @@ cp       /etc/letsencrypt/live/$site/privkey.pem         /home/keys/privkey.pem
 chmod    -Rf     777       /home/
 #配置证书每月1日自动更新
 echo       "
+0 0 1 * *     service       nginx     stop
 1 0 1 * *     certbot       renew
 2 0 1 * *     cp           /etc/letsencrypt/live/$site/fullchain.pem        /home/keys/fullchain.pem
 2 0 1 * *     cp           /etc/letsencrypt/live/$site/privkey.pem          /home/keys/privkey.pem
