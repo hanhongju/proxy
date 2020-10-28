@@ -1,3 +1,4 @@
+#系统升级为testing，国内安装v2ray
 echo "
 #deb http://http.us.debian.org/debian/ testing non-free contrib main
 deb http://mirrors.ustc.edu.cn/debian/ testing non-free contrib main
