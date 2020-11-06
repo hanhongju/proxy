@@ -43,7 +43,7 @@ echo       "
 2 0 1 * *     cp           /etc/letsencrypt/live/$site/fullchain.pem        /home/keys/fullchain.pem
 2 0 1 * *     cp           /etc/letsencrypt/live/$site/privkey.pem          /home/keys/privkey.pem
 3 0 1 * *     chmod        -Rf        777       /home/
-4 0 1 * *     systemctl     restart     trojan
+4 0 1 * *     service       trojan    restart
 "      >     /home/crontab
 crontab      /home/crontab
 crontab      -l
