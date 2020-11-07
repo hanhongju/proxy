@@ -43,7 +43,6 @@ echo       "
 3 0 1 * *     chmod        -Rf        777       /home/
 4 0 1 * *     service       trojan    restart
 "      |      crontab
-crontab      -l
 service       cron      restart
 #修改trojan配置文件
 echo '
