@@ -27,7 +27,6 @@ echo     '
 net.core.default_qdisc=fq
 net.ipv4.tcp_congestion_control=bbr
 '         >       /etc/sysctl.conf
-sysctl   -p
 #申请SSL证书
 service   nginx   stop
 certbot   certonly    --standalone    --agree-tos     -n     -d      $site     -m    86606682@qq.com 
@@ -65,7 +64,9 @@ systemctl    enable      trojan
 systemctl    restart     trojan
 #显示监听端口
 sleep      1s
+sysctl    -p
 trojan    -t
+crontab   -l
 netstat   -plnt
 OUTPUT=$(netstat -plnt | grep 'trojan'    2>&1)
 if     [[  "$OUTPUT"   =~   "trojan"   ]]
