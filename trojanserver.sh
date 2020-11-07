@@ -42,7 +42,7 @@ echo       "
 2 0 1 * *     cp           /etc/letsencrypt/live/$site/*          /home/keys/
 3 0 1 * *     chmod        -Rf        777       /home/
 4 0 1 * *     service       trojan    restart
-"      |     /home/crontab
+"      |      crontab
 crontab      -l
 service       cron      restart
 #修改trojan配置文件
