@@ -30,15 +30,13 @@ net.ipv4.tcp_congestion_control=bbr
 #申请SSL证书
 service   nginx   stop
 certbot   certonly    --standalone    --agree-tos     -n     -d      $site     -m    86606682@qq.com 
-rm       -rf     /home/keys/
-mkdir    -p      /home/keys/
-cp       /etc/letsencrypt/live/$site/*          /home/keys/
+cp       /etc/letsencrypt/live/$site/*      /home/
 chmod    -Rf     777     /home/
 #配置证书每月1日自动更新
 echo       "
 0 0 1 * *     service       nginx     stop
 1 0 1 * *     certbot       renew
-2 0 1 * *     cp           /etc/letsencrypt/live/$site/*          /home/keys/
+2 0 1 * *     cp           /etc/letsencrypt/live/$site/*          /home/
 3 0 1 * *     chmod        -Rf        777       /home/
 4 0 1 * *     service       trojan    restart
 "      |      crontab
@@ -53,8 +51,8 @@ echo '
     "remote_port": 80,
     "password": ["fengkuang"],
     "ssl": {
-        "cert": "/home/keys/fullchain.pem",
-        "key": "/home/keys/privkey.pem",
+        "cert": "/home/fullchain.pem",
+        "key" : "/home/privkey.pem",
         "alpn": ["http/1.1"]
     }
 }
