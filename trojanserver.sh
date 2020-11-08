@@ -12,7 +12,7 @@ sleep   5s
 
 
 #计时
-begin_time=$(date +%s)
+begin=$(date +%s)
 #安装常用软件包：
 apt    update
 apt    full-upgrade    -y
@@ -71,9 +71,9 @@ if     [[  "$OUTPUT"   =~   "trojan"   ]]
 then        echo   "至此，trojan可正常工作。服务器密码为fengkuang。"
 else        echo   "您输入的域名地址可能没有正确解析或者短时间申请了太多的证书，不能正常申请证书，所以trojan不能正常工作。在您确认了域名解析没有问题后再请重新运行本脚本。"
 fi
-finish_time=$(date +%s)
-time_consume=$((   finish_time   -   begin_time ))
-echo   "脚本运行时间$time_consume秒。"
+finish=$(date +%s)
+timeconsume=$(( finish - begin ))
+echo   "脚本运行时间$timeconsume秒。"
 #至此trojan可正常工作
 
 
