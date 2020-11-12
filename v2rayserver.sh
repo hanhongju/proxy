@@ -99,7 +99,7 @@ proxy_set_header Host $proxy_name;
 proxy_pass https://$proxy_name;
 proxy_set_header Accept-Encoding "";
 }
-location /game     {          #设置v2ray转发
+location /world     {          #设置v2ray转发
 proxy_pass http://127.0.0.1:8964;
 proxy_redirect off;
 proxy_http_version 1.1;
