@@ -40,7 +40,6 @@ echo     '
 net.core.default_qdisc=fq
 net.ipv4.tcp_congestion_control=bbr
 '         >       /etc/sysctl.conf
-sysctl   -p
 #修改v2ray配置
 echo '
 {
@@ -76,7 +75,6 @@ echo       "
 1 0 1 * * certbot renew
 2 0 1 * * service nginx start
 "  |  crontab
-crontab    -l
 service   cron   restart
 #创建nginx配置文件
 echo '
@@ -121,9 +119,11 @@ systemctl   enable    nginx
 service     v2ray     restart
 service     nginx     restart
 #验证配置文件，显示监听端口
-v2ray    -test       -config=/usr/local/etc/v2ray/config.json
-nginx    -t
-netstat  -plnt
+v2ray      -test        -config=/usr/local/etc/v2ray/config.json
+nginx      -t
+sysctl     -p
+crontab    -l
+netstat    -plnt
 #如果nginx配置有错误，重置nginx配置文件
 OUTPUT=$(nginx -t 2>&1)
 if     [[  "$OUTPUT"   =~   "successful"   ]]
