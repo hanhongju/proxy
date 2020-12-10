@@ -51,14 +51,6 @@ echo '
       "network": "ws",
       "wsSettings": {"path": "/world"}
       }
-   },{
-      "port": 10086,
-      "protocol": "shadowsocks",
-      "settings": {
-      "method": "aes-256-gcm",
-      "password": "fengkuang",
-      "network": "tcp,udp"
-       }
    }],
   "outbounds":[{"protocol": "freedom"}]
 }
