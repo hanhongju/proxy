@@ -13,8 +13,6 @@ systemctl enable wg-quick@wg0
 #创建两对公私钥，分别给服务器和客户端
 wg  genkey  | tee  pri1  |   wg  pubkey   >pub1
 wg  genkey  | tee  pri2  |   wg  pubkey   >pub2
-chmod  600  pri1
-chmod  600  pri2
 
 #读取网卡名称和IP地址
 interface=$(ip -o  -4  route show to default | awk  '{print $5}')
