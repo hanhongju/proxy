@@ -43,7 +43,7 @@ Address = 10.10.10.2
 DNS = 8.8.8.8
 [Peer]
 PublicKey  =  $(cat pub1)
-Endpoint   =  $ip:500
+Endpoint   =  $ipv6:500
 AllowedIPs =  0.0.0.0/0
 "    >     client.conf
 cat client.conf|qr > client.png
