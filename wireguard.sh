@@ -1,4 +1,4 @@
-#  Wireguard安装脚本 @ Ubuntu 20.10
+#  Wireguard安装脚本 @ Ubuntu 20.04
 apt   update
 apt   install   -y   wireguard net-tools
 mkdir  -p   /home/wireguard/
