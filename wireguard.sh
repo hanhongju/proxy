@@ -18,7 +18,10 @@ chmod  600  pri2
 
 #读取网卡名称和IP地址
 interface=$(ip -o  -4  route show to default | awk  '{print $5}')
-ip=$(ip -4 addr show  "$interface" | grep -oP '(?<=inet\s)\d+(\.\d+){3}')
+ipv4=$(ip addr show  "$interface" | grep -oP '(?<=inet\s)\d+(\.\d+){3}')
+ipv6=$(ip addr show dev ens3 | sed -e's/^.*inet6 \([^ ]*\)\/.*$/\1/;t;d' | grep -v fe80)
+
+
 
 #生成服务器配置文件
 echo  "
