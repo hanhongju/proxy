@@ -1,8 +1,11 @@
 #  Wireguard安装脚本 @ Ubuntu 20.10
 apt   update
-apt   install   -y   wireguard   net-tools
+apt   install   -y   wireguard net-tools python3-pip
+pip install qrcode[pil]
 mkdir  -p   /home/wireguard/
 cd          /home/wireguard/
+
+
 
 #创建两对公私钥，分别给服务器和客户端
 wg  genkey  | tee  pri1  |   wg  pubkey   >pub1
@@ -41,15 +44,15 @@ EOL
 
 #复制配置文件
 cp  wg0.conf    /etc/wireguard/
+
 #启动服务
 wg-quick up wg0  ||  {
      echo   启动wireguard失败，请检查/etc/wireguard/wg0.conf是否存在错误
 }
+cat client.conf|qr > client.png
 netstat  -plunt
 echo    "--------以下是客户端配置文件，请保存并在客户端中使用---------"
 cat      client.conf
-
-
 
 
 
