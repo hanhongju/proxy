@@ -46,7 +46,8 @@ EOL
 cp  wg0.conf    /etc/wireguard/
 
 #启动服务
-wg-quick up wg0  ||  {
+wg-quick  down wg0
+wg-quick  up   wg0  ||  {
      echo   启动wireguard失败，请检查/etc/wireguard/wg0.conf是否存在错误
 }
 cat client.conf|qr > client.png
