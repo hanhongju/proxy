@@ -22,7 +22,7 @@ cat  >wg0.conf <<EOL
 [Interface]
 PrivateKey = $(cat pri1)
 Address = 10.10.10.1
-ListenPort = 54321
+ListenPort = 500
 PostUp   = iptables -A FORWARD -i wg0 -j ACCEPT; iptables -A FORWARD -o wg0 -j ACCEPT; iptables -t nat -A POSTROUTING -o $interface -j MASQUERADE
 PostDown = iptables -D FORWARD -i wg0 -j ACCEPT; iptables -D FORWARD -o wg0 -j ACCEPT; iptables -t nat -D POSTROUTING -o $interface -j MASQUERADE
 [Peer]
@@ -38,7 +38,7 @@ Address = 10.10.10.2
 DNS = 8.8.8.8
 [Peer]
 PublicKey  =  $(cat pub1)
-Endpoint   =  $ip:54321
+Endpoint   =  $ip:500
 AllowedIPs =  0.0.0.0/0
 EOL
 
