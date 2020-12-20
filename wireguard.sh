@@ -22,8 +22,6 @@ interface=$(ip -o  -4  route show to default | awk  '{print $5}')
 ipv4=$(ip addr show dev "$interface" | grep -oP '(?<=inet\s)\d+(\.\d+){3}')
 ipv6=$(ip addr show dev "$interface" | sed -e's/^.*inet6 \([^ ]*\)\/.*$/\1/;t;d' | head -1)
 
-
-
 #生成服务器配置文件
 echo  "
 [Interface]
