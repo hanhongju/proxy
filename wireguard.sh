@@ -7,7 +7,8 @@ cd          /home/wireguard/
 
 # 开启ipv4流量转发
 echo "net.ipv4.ip_forward = 1" >> /etc/sysctl.conf
-sysctl -p
+echo "net.ipv6.ip_forward = 1" >> /etc/sysctl.conf
+sysctl   -p
 systemctl enable wg-quick@wg0
 
 #创建两对公私钥，分别给服务器和客户端
@@ -18,8 +19,8 @@ chmod  600  pri2
 
 #读取网卡名称和IP地址
 interface=$(ip -o  -4  route show to default | awk  '{print $5}')
-ipv4=$(ip addr show  "$interface" | grep -oP '(?<=inet\s)\d+(\.\d+){3}')
-ipv6=$(ip addr show dev ens3 | sed -e's/^.*inet6 \([^ ]*\)\/.*$/\1/;t;d' | head -1)
+ipv4=$(ip addr show dev "$interface" | grep -oP '(?<=inet\s)\d+(\.\d+){3}')
+ipv6=$(ip addr show dev "$interface" | sed -e's/^.*inet6 \([^ ]*\)\/.*$/\1/;t;d' | head -1)
 
 
 
