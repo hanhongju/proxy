@@ -5,8 +5,6 @@ pip   install    qrcode[pil]
 mkdir  -p   /home/wireguard/
 cd          /home/wireguard/
 
-
-
 #创建两对公私钥，分别给服务器和客户端
 wg  genkey  | tee  pri1  |   wg  pubkey   >pub1
 wg  genkey  | tee  pri2  |   wg  pubkey   >pub2
@@ -18,7 +16,7 @@ interface=$(ip -o  -4  route show to default | awk  '{print $5}')
 ip=$(ip -4 addr show  "$interface" | grep -oP '(?<=inet\s)\d+(\.\d+){3}')
 
 #生成服务器配置文件
-cat  >wg0.conf <<EOL
+echo  "
 [Interface]
 PrivateKey = $(cat pri1)
 Address = 10.10.10.1
@@ -28,10 +26,10 @@ PostDown = iptables -D FORWARD -i wg0 -j ACCEPT; iptables -D FORWARD -o wg0 -j A
 [Peer]
 PublicKey  =  $(cat pub2)
 AllowedIPs =  10.10.10.2/32
-EOL
+"    >     /etc/wireguard/wg0.conf
 
 #生成客户端配置文件
-cat  >client.conf <<EOL
+echo  "
 [Interface]
 PrivateKey = $(cat pri2)
 Address = 10.10.10.2
@@ -40,17 +38,15 @@ DNS = 8.8.8.8
 PublicKey  =  $(cat pub1)
 Endpoint   =  $ip:500
 AllowedIPs =  0.0.0.0/0
-EOL
+"    >     client.conf
+cat client.conf|qr > client.png
 
-#复制配置文件
-cp  wg0.conf    /etc/wireguard/
 
 #启动服务
 wg-quick  down wg0
 wg-quick  up   wg0  ||  {
      echo   启动wireguard失败，请检查/etc/wireguard/wg0.conf是否存在错误
 }
-cat client.conf|qr > client.png
 netstat  -plunt
 echo    "--------以下是客户端配置文件，请保存并在客户端中使用---------"
 cat      client.conf
