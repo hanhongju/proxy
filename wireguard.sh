@@ -1,7 +1,6 @@
 #  Wireguard安装脚本 @ Ubuntu 20.10
 apt   update
-apt   install   -y   wireguard net-tools python3-pip
-pip   install    qrcode[pil]
+apt   install   -y   wireguard net-tools
 mkdir  -p   /home/wireguard/
 cd          /home/wireguard/
 
@@ -43,8 +42,6 @@ PublicKey  =  $(cat pub1)
 Endpoint   =  $ipv4:500
 AllowedIPs =  0.0.0.0/0
 "    >     client.conf
-cat client.conf|qr > client.png
-
 
 #启动服务
 wg-quick  down wg0
