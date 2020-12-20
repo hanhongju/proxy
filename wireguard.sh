@@ -5,6 +5,11 @@ pip   install    qrcode[pil]
 mkdir  -p   /home/wireguard/
 cd          /home/wireguard/
 
+# 开启ipv4流量转发
+echo "net.ipv4.ip_forward = 1" >> /etc/sysctl.conf
+sysctl -p
+systemctl enable wg-quick@wg0
+
 #创建两对公私钥，分别给服务器和客户端
 wg  genkey  | tee  pri1  |   wg  pubkey   >pub1
 wg  genkey  | tee  pri2  |   wg  pubkey   >pub2
