@@ -1,7 +1,7 @@
 #  Wireguard安装脚本 @ Ubuntu 20.10
 apt   update
 apt   install   -y   wireguard net-tools python3-pip
-pip install qrcode[pil]
+pip   install    qrcode[pil]
 mkdir  -p   /home/wireguard/
 cd          /home/wireguard/
 
