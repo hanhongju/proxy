@@ -1,4 +1,4 @@
-#trojan安装脚本@Debian 10
+# Trojan安装脚本 @ Debian 10
 #定义网站地址
 echo    "本脚本可以自动安装trojan，自动申请并使用tls证书加密保护trojan的流量，反代朝鲜劳动新闻网址进行网站伪装。需要您事先将此VPS的IP地址解析到一个有效域名上。
 如果此VPS使用KVM虚拟技术，此脚本自动开启BBR加速。
