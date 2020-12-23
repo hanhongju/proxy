@@ -4,7 +4,7 @@ apt   install   -y   wireguard net-tools
 mkdir  -p   /home/wireguard/
 cd          /home/wireguard/
 
-# 开启ipv4流量转发
+#开启ipv4流量转发
 echo "net.ipv4.ip_forward = 1" >> /etc/sysctl.conf
 sysctl   -p
 systemctl enable wg-quick@wg0
