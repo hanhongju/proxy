@@ -1,4 +1,4 @@
-# v2rayserver安装脚本 @ Debian 10 or Ubuntu 20.04
+# V2rayserver安装脚本 @ Debian 10 or Ubuntu 20.04
 #定义网站地址
 echo    "
 本脚本可以自动安装v2ray，自动申请并使用tls证书加密保护v2ray的流量，反代美国国家生物技术信息中心网址进行网站伪装。需要您事先将此VPS的IP地址解析到一个有效域名上。
