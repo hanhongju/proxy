@@ -1,4 +1,6 @@
 # Shadowsocks服务器安装脚本 @ Debian 10
+
+#安装shadowsocks
 apt      update
 apt      install     -y    shadowsocks-libev  net-tools
 #创建shadowsocks-server配置文件
@@ -22,7 +24,9 @@ netstat  -plnt
 
 
 
-#shadowsocks客户端使用脚本@Debian 10
+
+# Shadowsocks客户端使用脚本 @ Debian 10
+
 #安装shadowsocks
 apt      update
 apt      install     -y    shadowsocks-libev  net-tools
