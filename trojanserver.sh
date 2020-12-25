@@ -46,7 +46,7 @@ echo '
     "run_type": "server",
     "local_addr": "::",
     "local_port": 443,
-    "remote_addr": "ualcan.path.uab.edu",
+    "remote_addr": "www.rodong.rep.kp",
     "remote_port": 80,
     "password": ["fengkuang"],
     "ssl": {
