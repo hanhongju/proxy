@@ -1,7 +1,7 @@
-# VLESSserver安装脚本 @ Debian 10 or Ubuntu 20.04
+# XTLS安装脚本 @ Debian 10 or Ubuntu 20.04
 echo    "
-本脚本可以自动安装VLESS，自动申请并使用tls证书加密保护v2ray的流量，反代朝鲜劳动新闻网进行网站伪装。需要您事先将此VPS的IP地址解析到一个有效域名上。
-如果此VPS使用KVM虚拟技术，此脚本自动开启BBR加速。安装完成后v2ray配置:
+本脚本可以自动安装xray，自动申请并使用tls证书加密保护xray的流量，反代朝鲜劳动新闻网进行网站伪装。需要您事先将此VPS的IP地址解析到一个有效域名上。
+如果此VPS使用KVM虚拟技术，此脚本自动开启BBR加速。安装完成后xray配置:
 协议为             VLESS
 端口为             443
 用户ID为           8c38d360-bb8f-11ea-9ffd-c182155e578a
@@ -26,7 +26,7 @@ apt    full-upgrade    -y
 apt    autoremove      -y
 apt    purge           -y         apache2
 apt    install         -y         python3-pip wget curl net-tools policycoreutils
-#安装Certbot和V2Ray
+#安装Certbot和xray
 pip3   install     cryptography --upgrade
 pip3   install     certbot
 bash      -c      "$(curl   -sL    https://raw.githubusercontent.com/XTLS/Xray-install/main/install-release.sh)"
@@ -46,7 +46,7 @@ echo       "
 1 0 1 * *     certbot       renew
 2 0 1 * *     cp           /etc/letsencrypt/live/$site/*          /home/
 3 0 1 * *     chmod        -Rf        777       /home/
-4 0 1 * *     service       v2ray    restart
+4 0 1 * *     service       xray    restart
 "      |      crontab
 service       cron      restart
 #修改v2ray配置文件
@@ -79,24 +79,24 @@ echo '
 
 
 
-#启动V2Ray
-systemctl     enable     v2ray
-systemctl     restart    v2ray
+#启动xray
+systemctl     enable     xray
+systemctl     restart    xray
 #显示监听端口
 sleep       1s
 v2ray      -test        -config=/usr/local/etc/xray/config.json
 sysctl     -p
 crontab    -l
 netstat    -plnt
-OUTPUT=$(netstat -plnt | grep 'v2ray'    2>&1)
-if     [[  "$OUTPUT"   =~   "v2ray"   ]]
-then        echo   "至此，v2ray可正常工作。"
+OUTPUT=$(netstat -plnt | grep 'xray'    2>&1)
+if     [[  "$OUTPUT"   =~   "xray"   ]]
+then        echo   "至此，xray可正常工作。"
 else        echo   "您输入的域名地址可能没有正确解析或者短时间申请了太多的证书，不能正常申请证书，所以v2ray不能正常工作。在您确认了域名解析没有问题后再请重新运行本脚本。"
 fi
 finish=$(date +%s)
 timeconsume=$(( finish - begin ))
 echo   "脚本运行时间$timeconsume秒。"
-#至此V2Ray可正常工作
+#至此xray可正常工作
 
 
 
