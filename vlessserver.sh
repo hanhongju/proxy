@@ -56,7 +56,8 @@ echo '
             "port": 443,
             "protocol": "vless",
             "settings":{
-                       "clients": [{"id": "8c38d360-bb8f-11ea-9ffd-c182155e578a"}],
+                       "clients":   [{"id": "8c38d360-bb8f-11ea-9ffd-c182155e578a"}],
+                       "fallbacks": [{"dest": "yjsy.bjmu.edu.cn:80"}],
                        "decryption": "none"
                        },
             "streamSettings": {
