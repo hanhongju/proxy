@@ -54,10 +54,8 @@ echo       "
 "      |      crontab
 service       cron      restart
 #启动V2Ray和Nginx：
-systemctl   enable    v2ray
-systemctl   enable    nginx
-service     v2ray     restart
-service     nginx     restart
+systemctl   enable     v2ray
+systemctl   restart    v2ray
 #验证配置文件，显示监听端口
 v2ray      -test        -config=/usr/local/etc/v2ray/config.json
 sysctl     -p
