@@ -30,6 +30,11 @@ apt    install         -y         python3-pip wget curl net-tools policycoreutil
 pip3   install     cryptography --upgrade
 pip3   install     certbot
 bash      -c      "$(curl   -sL    https://raw.githubusercontent.com/v2fly/fhs-install-v2ray/master/install-release.sh)"
+#修改系统控制文件启用BBR
+echo     '
+net.core.default_qdisc=fq
+net.ipv4.tcp_congestion_control=bbr
+'         >       /etc/sysctl.conf
 #申请SSL证书
 service   nginx   stop
 certbot   certonly    --standalone    --agree-tos     -n     -d      $site     -m    86606682@qq.com 
@@ -44,11 +49,6 @@ echo       "
 4 0 1 * *     service       v2ray    restart
 "      |      crontab
 service       cron      restart
-#修改系统控制文件启用BBR
-echo     '
-net.core.default_qdisc=fq
-net.ipv4.tcp_congestion_control=bbr
-'         >       /etc/sysctl.conf
 #修改v2ray配置
 echo '
 {
