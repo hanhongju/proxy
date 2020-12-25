@@ -92,7 +92,6 @@ v2ray      -test        -config=/usr/local/etc/v2ray/config.json
 sysctl     -p
 crontab    -l
 netstat    -plnt
-#如果nginx配置有错误，重置nginx配置文件
 OUTPUT=$(netstat -plnt | grep 'v2ray'    2>&1)
 if     [[  "$OUTPUT"   =~   "v2ray"   ]]
 then        echo   "至此，v2ray可正常工作。"
