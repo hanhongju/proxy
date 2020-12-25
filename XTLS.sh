@@ -5,8 +5,8 @@ echo    "
 协议为             VLESS
 端口为             443
 用户ID为           8c38d360-bb8f-11ea-9ffd-c182155e578a
-传输协议为         tcp
-底层传输安全为      tls
+流控为             xtls-rprx-direct
+底层传输安全为      xtls
 理解并记录下这些信息后请按回车键继续，并在下一栏输入您解析的有效域名。如果域名输入有误请按Ctrl+C终止脚本运行，然后重新运行脚本。
 "
 read    nothing
