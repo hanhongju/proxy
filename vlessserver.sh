@@ -85,9 +85,6 @@ systemctl     restart    v2ray
 sleep       1s
 v2ray      -test        -config=/usr/local/etc/v2ray/config.json
 netstat    -plnt
-
-
-
 #启动V2Ray
 systemctl     enable     v2ray
 systemctl     restart    v2ray
