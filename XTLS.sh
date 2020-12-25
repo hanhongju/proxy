@@ -84,7 +84,7 @@ systemctl     enable     xray
 systemctl     restart    xray
 #显示监听端口
 sleep       1s
-v2ray      -test        -config=/usr/local/etc/xray/config.json
+xray       -test        -config=/usr/local/etc/xray/config.json
 sysctl     -p
 crontab    -l
 netstat    -plnt
