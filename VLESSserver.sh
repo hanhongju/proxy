@@ -1,6 +1,6 @@
-# V2rayserver安装脚本 @ Debian 10 or Ubuntu 20.04
+# VLESSserver安装脚本 @ Debian 10 or Ubuntu 20.04
 echo    "
-本脚本可以自动安装v2ray，自动申请并使用tls证书加密保护v2ray的流量，反代美国国家生物技术信息中心网址进行网站伪装。需要您事先将此VPS的IP地址解析到一个有效域名上。
+本脚本可以自动安装VLESS，自动申请并使用tls证书加密保护v2ray的流量，反代劳动新闻网进行网站伪装。需要您事先将此VPS的IP地址解析到一个有效域名上。
 如果此VPS使用KVM虚拟技术，此脚本自动开启BBR加速。安装完成后v2ray配置:
 协议为             VLESS
 端口为             443
