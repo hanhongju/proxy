@@ -83,7 +83,7 @@ echo       "
 1 0 1 * *     certbot       renew
 2 0 1 * *     cp           /etc/letsencrypt/live/$site/*          /home/
 3 0 1 * *     chmod        -Rf        777       /home/
-4 0 1 * *     service       trojan    restart
+4 0 1 * *     service       v2ray    restart
 "      |      crontab
 service       cron      restart
 #启动V2Ray和Nginx：
