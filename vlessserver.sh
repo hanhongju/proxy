@@ -57,18 +57,14 @@ echo '
             "port": 443,
             "protocol": "vless",
             "settings":{
-                       "clients": [{
-                                  "id": "8c38d360-bb8f-11ea-9ffd-c182155e578a",
-                                  "flow": "xtls-rprx-direct",
-                                  "level": 0
-                                  }],
+                       "clients": [{"id": "8c38d360-bb8f-11ea-9ffd-c182155e578a"}],
                        "decryption": "none",
                        "fallbacks": [{"dest":"www.baidu.com:443"}]
                         },
             "streamSettings": {
                               "network": "tcp",
-                              "security": "xtls",
-                              "xtlsSettings": {
+                              "security": "tls",
+                              "tlsSettings": {
                                                "alpn": ["http/1.1"],
                                                "certificates": [{
                                                                  "certificateFile": "/home/fullchain.pem",
