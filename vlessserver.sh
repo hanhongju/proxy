@@ -58,24 +58,33 @@ echo '
             "protocol": "vless",
             "settings":{
                        "clients": [{"id": "8c38d360-bb8f-11ea-9ffd-c182155e578a"}],
-                       "decryption": "none",
-                       "fallbacks": [{"dest":"www.baidu.com:443"}]
-                        },
+                       "decryption": "none"
+                       },
             "streamSettings": {
                               "network": "tcp",
                               "security": "tls",
                               "tlsSettings": {
-                                               "alpn": ["http/1.1"],
-                                               "certificates": [{
-                                                                 "certificateFile": "/home/fullchain.pem",
-                                                                 "keyFile":         "/home/privkey.pem"
-                                                                 }]
-                                              }
+                                             "alpn": ["http/1.1"],
+                                             "certificates": [{
+                                                             "certificateFile": "/home/fullchain.pem",
+                                                             "keyFile":         "/home/privkey.pem"
+                                                             }]
+                                             }
                                }
-              }],
+             }],
 "outbounds": [{"protocol": "freedom"}]
 }
 '     >     /usr/local/etc/v2ray/config.json
+
+
+
+#启动V2Ray
+systemctl     enable     v2ray
+systemctl     restart    v2ray
+#显示监听端口
+sleep       1s
+v2ray      -test        -config=/usr/local/etc/v2ray/config.json
+netstat    -plnt
 
 
 
