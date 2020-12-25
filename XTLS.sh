@@ -56,7 +56,7 @@ echo '
             "port": 443,
             "protocol": "vless",
             "settings":{
-                       "clients":   [{"id": "8c38d360-bb8f-11ea-9ffd-c182155e578a"}  ,  "flow": "xtls-rprx-direct"],
+                       "clients":   [{"id": "8c38d360-bb8f-11ea-9ffd-c182155e578a"  ,  "flow": "xtls-rprx-direct"}],
                        "fallbacks": [{"dest": "www.rodong.rep.kp:80"}],
                        "decryption": "none"
                        },
