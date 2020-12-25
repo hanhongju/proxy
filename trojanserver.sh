@@ -63,8 +63,8 @@ systemctl    enable      trojan
 systemctl    restart     trojan
 #显示监听端口
 sleep      1s
-sysctl    -p
 trojan    -t
+sysctl    -p
 crontab   -l
 netstat   -plnt
 OUTPUT=$(netstat -plnt | grep 'trojan'    2>&1)
