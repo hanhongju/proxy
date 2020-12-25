@@ -40,16 +40,16 @@ net.ipv4.tcp_congestion_control=bbr
 #修改v2ray配置
 echo '
 {
-  "inbounds": [{
-      "port": 8964,
-      "protocol": "vmess",
-      "settings": {"clients": [{"id": "8c38d360-bb8f-11ea-9ffd-c182155e578a"}]},
-      "streamSettings": {
-      "network": "ws",
-      "wsSettings": {"path": "/world"}
-      }
-   }],
-  "outbounds":[{"protocol": "freedom"}]
+"inbounds": [{
+            "port": 8964,
+            "protocol": "vmess",
+            "settings": {"clients": [{"id": "8c38d360-bb8f-11ea-9ffd-c182155e578a"}]},
+            "streamSettings": {
+                              "network": "ws",
+                              "wsSettings": {"path": "/world"}
+                              }
+            }],
+"outbounds":[{"protocol": "freedom"}]
 }
 '     >     /usr/local/etc/v2ray/config.json
 
