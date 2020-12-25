@@ -83,7 +83,7 @@ echo '
 
 
 
-#启动V2Ray：
+#启动V2Ray
 systemctl     enable     v2ray
 systemctl     restart    v2ray
 #显示监听端口
