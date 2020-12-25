@@ -1,8 +1,6 @@
 #  Wireguard安装脚本 @ Ubuntu 20.04
 apt   update
 apt   install   -y   wireguard net-tools
-mkdir  -p   /home/wireguard/
-cd          /home/wireguard/
 
 #开启ipv4流量转发
 echo "net.ipv4.ip_forward = 1" >> /etc/sysctl.conf
