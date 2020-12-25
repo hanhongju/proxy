@@ -49,7 +49,7 @@ echo       "
 4 0 1 * *     service       v2ray    restart
 "      |      crontab
 service       cron      restart
-#修改v2ray配置
+#修改v2ray配置文件
 echo '
 {
 "inbounds": [{
