@@ -31,6 +31,20 @@ apt    install         -y         python3-pip wget curl net-tools policycoreutil
 pip3   install     cryptography --upgrade
 pip3   install     certbot
 bash      -c      "$(curl   -sL    https://raw.githubusercontent.com/v2fly/fhs-install-v2ray/master/install-release.sh)"
+#申请SSL证书
+service   nginx   stop
+certbot   certonly    --standalone    --agree-tos     -n     -d      $site     -m    86606682@qq.com 
+cp       /etc/letsencrypt/live/$site/*      /home/
+chmod    -Rf     777     /home/
+#配置证书每月1日自动更新
+echo       "
+0 0 1 * *     service       nginx     stop
+1 0 1 * *     certbot       renew
+2 0 1 * *     cp           /etc/letsencrypt/live/$site/*          /home/
+3 0 1 * *     chmod        -Rf        777       /home/
+4 0 1 * *     service       v2ray    restart
+"      |      crontab
+service       cron      restart
 #修改系统控制文件启用BBR
 echo     '
 net.core.default_qdisc=fq
@@ -69,23 +83,6 @@ echo '
 
 
 
-
-
-
-#申请SSL证书
-service   nginx   stop
-certbot   certonly    --standalone    --agree-tos     -n     -d      $site     -m    86606682@qq.com 
-cp       /etc/letsencrypt/live/$site/*      /home/
-chmod    -Rf     777     /home/
-#配置证书每月1日自动更新
-echo       "
-0 0 1 * *     service       nginx     stop
-1 0 1 * *     certbot       renew
-2 0 1 * *     cp           /etc/letsencrypt/live/$site/*          /home/
-3 0 1 * *     chmod        -Rf        777       /home/
-4 0 1 * *     service       v2ray    restart
-"      |      crontab
-service       cron      restart
 #启动V2Ray和Nginx：
 systemctl     enable     v2ray
 systemctl     restart    v2ray
