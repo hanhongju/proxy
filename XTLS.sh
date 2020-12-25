@@ -74,7 +74,7 @@ echo '
              }],
 "outbounds": [{"protocol": "freedom"}]
 }
-'     >     /usr/local/etc/v2ray/config.json
+'     >     /usr/local/etc/xray/config.json
 
 
 
@@ -84,7 +84,7 @@ systemctl     enable     v2ray
 systemctl     restart    v2ray
 #显示监听端口
 sleep       1s
-v2ray      -test        -config=/usr/local/etc/v2ray/config.json
+v2ray      -test        -config=/usr/local/etc/xray/config.json
 sysctl     -p
 crontab    -l
 netstat    -plnt
