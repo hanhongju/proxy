@@ -23,24 +23,30 @@ ipv6=$(ip addr show dev "$interface" | sed  -e   's/^.*inet6 \([^ ]*\)\/.*$/\1/;
 echo  "
 [Interface]
 PrivateKey = $(cat pri1)
-Address = 192.168.0.2/24, fd23:23:23::2/64
+Address = 192.168.0.1/24, 2001:20:2333::1/28
 ListenPort = 500
+SaveConfig = true
+DNS = 8.8.8.8, 2001:4860:4860::8888
 PostUp   = iptables -A FORWARD -i wg0 -j ACCEPT; iptables -t nat -A POSTROUTING -o $interface -j MASQUERADE; ip6tables -A FORWARD -i wg0 -j ACCEPT; ip6tables -t nat -A POSTROUTING -o $interface -j MASQUERADE
 PostDown = iptables -D FORWARD -i wg0 -j ACCEPT; iptables -t nat -D POSTROUTING -o $interface -j MASQUERADE; ip6tables -D FORWARD -i wg0 -j ACCEPT; ip6tables -t nat -D POSTROUTING -o $interface -j MASQUERADE
+
 [Peer]
 PublicKey  =  $(cat pub2)
-AllowedIPs =  192.168.0.3/32, fd23:23:23::3/128
+AllowedIPs = 192.168.0.0/24, 2001:20:2333::1/28
 "    >     /etc/wireguard/wg0.conf
 
 #生成客户端配置文件
 echo  "
 [Interface]
 PrivateKey = $(cat pri2)
-Address = 192.168.0.3/24, fd23:23:23::3/64
+Address = 192.168.0.2/24, 2001:20:2333::666/28
+DNS = 8.8.8.8, 2001:4860:4860::8888
+
 [Peer]
 PublicKey  =  $(cat pub1)
 Endpoint   =  [$ipv6]:500
-AllowedIPs =  192.168.0.2/32, fd23:23:23::2/128
+AllowedIPs = 0.0.0.0/0, ::0/0
+PersistentKeepalive = 25
 "    >     client.conf
 
 
