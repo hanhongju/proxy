@@ -30,9 +30,10 @@ PrivateKey = $(cat pri1)
 Address = 10.10.0.1/24
 Address = fd86:ea04:1111::1/64 
 ListenPort = 500
-PostUp   = iptables -A FORWARD -i wg0 -j ACCEPT; iptables -t nat -A POSTROUTING -o $interface4 -j MASQUERADE; ip6tables -A FORWARD -i wg0 -j ACCEPT; ip6tables -t nat -A POSTROUTING -o $interface6 -j MASQUERADE
-PostDown = iptables -D FORWARD -i wg0 -j ACCEPT; iptables -t nat -D POSTROUTING -o $interface4 -j MASQUERADE; ip6tables -D FORWARD -i wg0 -j ACCEPT; ip6tables -t nat -D POSTROUTING -o $interface6 -j MASQUERADE
-
+PostUp   = iptables  -A FORWARD -i wg0 -j ACCEPT; iptables  -t nat -A POSTROUTING -o $interface4 -j MASQUERADE
+PostUp   = ip6tables -A FORWARD -i wg0 -j ACCEPT; ip6tables -t nat -A POSTROUTING -o $interface6 -j MASQUERADE
+PostDown = iptables  -D FORWARD -i wg0 -j ACCEPT; iptables  -t nat -D POSTROUTING -o $interface4 -j MASQUERADE
+PostDown = ip6tables -D FORWARD -i wg0 -j ACCEPT; ip6tables -t nat -D POSTROUTING -o $interface6 -j MASQUERADE
 [Peer]
 PublicKey  =  $(cat pub2)
 AllowedIPs =  10.10.0.2/32, fd86:ea04:1111::2/128
@@ -46,16 +47,14 @@ AllowedIPs =  10.10.0.2/32, fd86:ea04:1111::2/128
 #生成客户端配置文件
 echo  "
 [Interface]
-PrivateKey = $(cat pri2)
-Address    = 10.10.0.2/32, fd86:ea04:1111::2/128
-DNS        = 8.8.8.8, 2001:4860:4860::8888
-
-
+PrivateKey =  $(cat pri2)
+Address    =  10.10.0.2/32, fd86:ea04:1111::2/128
+DNS        =  8.8.8.8, 2001:4860:4860::8888
 [Peer]
 PublicKey  =  $(cat pub1)
 AllowedIPs =  0.0.0.0/0, ::/0
 Endpoint   =  [$ipv6]:500
-"    >     client.conf
+"    >        client.conf
 
 
 
