@@ -42,7 +42,24 @@ DNS = 8.8.8.8
 PublicKey  =  $(cat pub1)
 Endpoint   =  $ipv4:500
 AllowedIPs =  0.0.0.0/0
-"    >     client.conf
+"    >     clientipv4.conf
+
+
+#生成客户端配置文件
+echo  "
+[Interface]
+PrivateKey = $(cat pri2)
+Address = 10.10.10.2
+DNS =   2001:4860:4860::8888
+[Peer]
+PublicKey  =  $(cat pub1)
+Endpoint   =  [$ipv6]:500
+AllowedIPs =  0.0.0.0/0
+"    >     clientipv6.conf
+
+
+
+
 
 #启动服务
 wg-quick  down wg0
@@ -50,8 +67,9 @@ wg-quick  up   wg0  ||  {
      echo   启动wireguard失败，请检查/etc/wireguard/wg0.conf是否存在错误
 }
 wg
-echo    "--------以下是客户端配置文件，请保存并在客户端中使用---------"
-cat      client.conf
+echo    "--------以下是ipv4客户端配置文件，请保存并在客户端中使用---------"
+cat      clientipv4.conf
 
-
+echo    "--------以下是ipv6客户端配置文件，请保存并在客户端中使用---------"
+cat      clientipv6.conf
 
