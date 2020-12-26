@@ -15,9 +15,10 @@ wg  genkey  | tee  pri1  |   wg  pubkey   >pub1
 wg  genkey  | tee  pri2  |   wg  pubkey   >pub2
 
 #读取网卡名称和IP地址
-interface=$(ip -o  -4  route show to default | awk  '{print $5}')
-ipv4=$(ip addr show dev "$interface" | grep -oP  '(?<=inet\s)\d+(\.\d+){3}'   )
-ipv6=$(ip addr show dev "$interface" | sed  -e   's/^.*inet6 \([^ ]*\)\/.*$/\1/;t;d'   | head -1   )
+interface4=$(ip -o  -4  route show to default | awk  '{print $5}')
+interface6=$(ip -o  -6  route show to default | awk  '{print $5}')
+ipv4=$(ip addr show dev "$interface4" | grep -oP  '(?<=inet\s)\d+(\.\d+){3}'   )
+ipv6=$(ip addr show dev "$interface6" | sed  -e   's/^.*inet6 \([^ ]*\)\/.*$/\1/;t;d'   | head -1   )
 echo $ipv4
 echo $ipv6
 
@@ -29,8 +30,8 @@ PrivateKey = $(cat pri1)
 Address = 10.10.0.1/24
 Address = fd86:ea04:1111::1/64 
 ListenPort = 500
-PostUp   = iptables -A FORWARD -i wg0 -j ACCEPT; iptables -t nat -A POSTROUTING -o $interface -j MASQUERADE; ip6tables -A FORWARD -i wg0 -j ACCEPT; ip6tables -t nat -A POSTROUTING -o $interface -j MASQUERADE
-PostDown = iptables -D FORWARD -i wg0 -j ACCEPT; iptables -t nat -D POSTROUTING -o $interface -j MASQUERADE; ip6tables -D FORWARD -i wg0 -j ACCEPT; ip6tables -t nat -D POSTROUTING -o $interface -j MASQUERADE
+PostUp   = iptables -A FORWARD -i wg0 -j ACCEPT; iptables -t nat -A POSTROUTING -o $interface4 -j MASQUERADE; ip6tables -A FORWARD -i wg0 -j ACCEPT; ip6tables -t nat -A POSTROUTING -o $interface6 -j MASQUERADE
+PostDown = iptables -D FORWARD -i wg0 -j ACCEPT; iptables -t nat -D POSTROUTING -o $interface4 -j MASQUERADE; ip6tables -D FORWARD -i wg0 -j ACCEPT; ip6tables -t nat -D POSTROUTING -o $interface6 -j MASQUERADE
 
 [Peer]
 PublicKey  =  $(cat pub2)
