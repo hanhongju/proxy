@@ -47,14 +47,14 @@ AllowedIPs =  10.10.0.2/32, fd86:ea04:1111::2/128
 echo  "
 [Interface]
 PrivateKey = $(cat pri2)
-Address = 10.10.0.2/32
-Address = fd86:ea04:1111::2/128
-DNS = 8.8.8.8, 2001:4860:4860::8888
+Address    = 10.10.0.2/32, fd86:ea04:1111::2/128
+DNS        = 8.8.8.8, 2001:4860:4860::8888
+
 
 [Peer]
 PublicKey  =  $(cat pub1)
+AllowedIPs =  0.0.0.0/0, ::/0
 Endpoint   =  [$ipv6]:500
-AllowedIPs = 0.0.0.0/0, ::0/0
 "    >     client.conf
 
 
