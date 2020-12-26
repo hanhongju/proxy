@@ -23,41 +23,25 @@ ipv6=$(ip addr show dev "$interface" | sed  -e   's/^.*inet6 \([^ ]*\)\/.*$/\1/;
 echo  "
 [Interface]
 PrivateKey = $(cat pri1)
-Address = 10.10.10.1
+Address = 192.168.0.2/24, fd23:23:23::2/64
 ListenPort = 500
-PostUp   = iptables -A FORWARD -i wg0 -j ACCEPT; iptables -A FORWARD -o wg0 -j ACCEPT; iptables -t nat -A POSTROUTING -o $interface -j MASQUERADE
-PostDown = iptables -D FORWARD -i wg0 -j ACCEPT; iptables -D FORWARD -o wg0 -j ACCEPT; iptables -t nat -D POSTROUTING -o $interface -j MASQUERADE
+PostUp   = iptables -A FORWARD -i wg0 -j ACCEPT; iptables -t nat -A POSTROUTING -o $interface -j MASQUERADE; ip6tables -A FORWARD -i wg0 -j ACCEPT; ip6tables -t nat -A POSTROUTING -o $interface -j MASQUERADE
+PostDown = iptables -D FORWARD -i wg0 -j ACCEPT; iptables -t nat -D POSTROUTING -o $interface -j MASQUERADE; ip6tables -D FORWARD -i wg0 -j ACCEPT; ip6tables -t nat -D POSTROUTING -o $interface -j MASQUERADE
 [Peer]
 PublicKey  =  $(cat pub2)
-AllowedIPs =  10.10.10.2/32
+AllowedIPs =  192.168.0.3/32, fd23:23:23::3/128
 "    >     /etc/wireguard/wg0.conf
 
 #生成客户端配置文件
 echo  "
 [Interface]
 PrivateKey = $(cat pri2)
-Address = 10.10.10.2
-DNS = 8.8.8.8
-[Peer]
-PublicKey  =  $(cat pub1)
-Endpoint   =  $ipv4:500
-AllowedIPs =  0.0.0.0/0
-"    >     clientipv4.conf
-
-
-#生成客户端配置文件
-echo  "
-[Interface]
-PrivateKey = $(cat pri2)
-Address = 10.10.10.2
-DNS =   2001:4860:4860::8888
+Address = 192.168.0.3/24, fd23:23:23::3/64
 [Peer]
 PublicKey  =  $(cat pub1)
 Endpoint   =  [$ipv6]:500
-AllowedIPs =  0.0.0.0/0
-"    >     clientipv6.conf
-
-
+AllowedIPs =  192.168.0.2/32, fd23:23:23::2/128
+"    >     client.conf
 
 
 
@@ -67,15 +51,8 @@ wg-quick  up   wg0  ||  {
      echo   启动wireguard失败，请检查/etc/wireguard/wg0.conf是否存在错误
 }
 wg
-echo    "--------以下是ipv4客户端配置文件，请保存并在客户端中使用---------"
-cat      clientipv4.conf
-
-echo    "--------以下是ipv6客户端配置文件，请保存并在客户端中使用---------"
-cat      clientipv6.conf
-
-
-
-
+echo    "--------以下是客户端配置文件，请保存并在客户端中使用---------"
+cat      client.conf
 
 
 
