@@ -29,7 +29,7 @@ apt    install         -y         python3-pip wget curl net-tools policycoreutil
 #安装Certbot和xray
 pip3   install     cryptography --upgrade
 pip3   install     certbot
-bash      -c      "$(curl   -sL    https://raw.githubusercontent.com/XTLS/Xray-install/main/install-release.sh)"
+bash   <(curl     -sL     https://raw.githubusercontent.com/XTLS/Xray-install/main/install-release.sh)
 #修改系统控制文件启用BBR
 echo     '
 net.core.default_qdisc=fq
