@@ -2,7 +2,7 @@
 apt   update
 apt   install   -y   wireguard net-tools
 
-#开启ipv4流量转发
+#开启流量转发
 echo "
 net.ipv4.ip_forward = 1
 net.ipv6.conf.all.forwarding = 1
