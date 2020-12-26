@@ -73,3 +73,15 @@ cat      clientipv4.conf
 echo    "--------以下是ipv6客户端配置文件，请保存并在客户端中使用---------"
 cat      clientipv6.conf
 
+
+
+
+
+
+
+
+
+
+
+
+
