@@ -17,8 +17,8 @@ wg  genkey  | tee  pri2  |   wg  pubkey   >pub2
 #读取网卡名称和IP地址
 interface4=$(ip -o  -4  route show to default | awk  '{print $5}')
 interface6=$(ip -o  -6  route show to default | awk  '{print $5}')
-ipv4=$(ip addr show dev "$interface4" | grep -oP  '(?<=inet\s)\d+(\.\d+){3}'   )
-ipv6=$(ip addr show dev "$interface6" | sed  -e   's/^.*inet6 \([^ ]*\)\/.*$/\1/;t;d'   | head -1   )
+ipv4=$(ip addr show dev "$interface4" | grep -oP  '(?<=inet\s)\d+(\.\d+){3}'                  )
+ipv6=$(ip addr show dev "$interface6" | grep -oP  '(?<=inet6\s)[^f]\w*(:\w*){2,7}'  | head -1 )
 echo $ipv4
 echo $ipv6
 
