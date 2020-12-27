@@ -27,7 +27,7 @@ echo $ipv6
 echo  "
 [Interface]
 PrivateKey = $(cat pri1)
-Address = 0.0.0.0/0, ::/0
+Address = 192.0.2.1/24,2001:DB8::1/64
 ListenPort = 500
 PostUp   = iptables  -A FORWARD -i wg0 -j ACCEPT; iptables  -A FORWARD -o wg0 -j ACCEPT; iptables  -t nat -A POSTROUTING -o $interface4 -j MASQUERADE
 PostUp   = ip6tables -A FORWARD -i wg0 -j ACCEPT; ip6tables -A FORWARD -o wg0 -j ACCEPT; ip6tables -t nat -A POSTROUTING -o $interface6 -j MASQUERADE
@@ -44,7 +44,7 @@ AllowedIPs =  0.0.0.0/0, ::/0
 echo  "
 [Interface]
 PrivateKey =  $(cat pri2)
-Address    =  0.0.0.0/0, ::/0
+Address    =  192.0.2.1/24,2001:DB8::/64
 DNS        =  8.8.8.8, 2001:4860:4860::8888
 [Peer]
 PublicKey  =  $(cat pub1)
