@@ -27,51 +27,50 @@ echo $ipv6
 #生成服务器配置文件
 echo  "
 [Interface]
-PrivateKey = $(cat pri1)
-Address    = 10.0.0.1/24
-ListenPort = 500
-PostUp     = iptables  -A FORWARD -i wg0 -j ACCEPT; iptables  -A FORWARD -o wg0 -j ACCEPT; iptables  -t nat -A POSTROUTING -o $interface4 -j MASQUERADE
-PostDown   = iptables  -D FORWARD -i wg0 -j ACCEPT; iptables  -D FORWARD -o wg0 -j ACCEPT; iptables  -t nat -D POSTROUTING -o $interface4 -j MASQUERADE
+PrivateKey  =  $(cat pri1)
+Address     =  10.0.0.1/24
+ListenPort  =  500
+PostUp      =  iptables  -A FORWARD -i wg0 -j ACCEPT; iptables  -A FORWARD -o wg0 -j ACCEPT; iptables  -t nat -A POSTROUTING -o $interface4 -j MASQUERADE
+PostDown    =  iptables  -D FORWARD -i wg0 -j ACCEPT; iptables  -D FORWARD -o wg0 -j ACCEPT; iptables  -t nat -D POSTROUTING -o $interface4 -j MASQUERADE
 [Peer]
-PublicKey  =  $(cat pub2)
-AllowedIPs =  10.0.0.2/32
+PublicKey   =  $(cat pub2)
+AllowedIPs  =  10.0.0.2/32
 "    >     /etc/wireguard/wg4.conf
 echo  "
 [Interface]
-PrivateKey = $(cat pri1)
-Address    = 2001:DB8::1/64
-ListenPort = 500
-PostUp     = ip6tables -A FORWARD -i wg0 -j ACCEPT; ip6tables -A FORWARD -o wg0 -j ACCEPT; ip6tables -t nat -A POSTROUTING -o $interface6 -j MASQUERADE
-PostDown   = ip6tables -D FORWARD -i wg0 -j ACCEPT; ip6tables -D FORWARD -o wg0 -j ACCEPT; ip6tables -t nat -D POSTROUTING -o $interface6 -j MASQUERADE
+PrivateKey  =  $(cat pri1)
+Address     =  fd23:23:23::2/64
+ListenPort  =  500
+PostUp      =  ip6tables -A FORWARD -i wg0 -j ACCEPT; ip6tables -A FORWARD -o wg0 -j ACCEPT; ip6tables -t nat -A POSTROUTING -o $interface6 -j MASQUERADE
+PostDown    =  ip6tables -D FORWARD -i wg0 -j ACCEPT; ip6tables -D FORWARD -o wg0 -j ACCEPT; ip6tables -t nat -D POSTROUTING -o $interface6 -j MASQUERADE
 [Peer]
-PublicKey  =  $(cat pub2)
-AllowedIPs =  2001:DB8::2/128
-"    >     /etc/wireguard/wg6.conf
+PublicKey   =  $(cat pub2)
+AllowedIPs  =  fd23:23:23::3/128
+"      >      /etc/wireguard/wg6.conf
 
 
 
 #生成客户端配置文件
 echo  "
 [Interface]
-PrivateKey =  $(cat pri2)
-Address    =  10.0.0.2/24
-DNS        =  8.8.8.8
+PrivateKey   =  $(cat pri2)
+Address      =  10.0.0.2/24
+DNS          =  8.8.8.8
 [Peer]
-PublicKey  =  $(cat pub1)
-AllowedIPs =  0.0.0.0/0
-Endpoint   =  $ipv4:500
-"    >        client4.conf
+PublicKey    =  $(cat pub1)
+AllowedIPs   =  0.0.0.0/0
+Endpoint     =  $ipv4:500
+"      >        client4.conf
 echo  "
 [Interface]
-PrivateKey =  $(cat pri2)
-Address    =  2001:DB8::2/64
-DNS        =  2001:4860:4860::8888
+PrivateKey   =  $(cat pri2)
+Address      =  fd23:23:23::3/64
+DNS          =  2001:4860:4860::8888
 [Peer]
-PublicKey  =  $(cat pub1)
-AllowedIPs =  ::/0
-Endpoint   =  [$ipv6]:500
-"    >        client6.conf
-
+PublicKey    =  $(cat pub1)
+AllowedIPs   =  ::/0
+Endpoint     =  [$ipv6]:500
+"      >        client6.conf
 
 
 #启动服务
