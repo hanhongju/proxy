@@ -53,6 +53,9 @@ Endpoint   =  [$ipv6]:500
 "    >        client.conf
 
 
+echo    "--------以下是客户端配置文件，请保存并在客户端中使用---------"
+cat      client.conf
+
 
 #启动服务
 wg-quick  down wg0
@@ -60,8 +63,7 @@ wg-quick  up   wg0  ||  {
      echo   启动wireguard失败，请检查/etc/wireguard/wg0.conf是否存在错误
 }
 wg
-echo    "--------以下是客户端配置文件，请保存并在客户端中使用---------"
-cat      client.conf
+
 
 
 
