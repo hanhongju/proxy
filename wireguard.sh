@@ -75,8 +75,9 @@ Endpoint   =  [$ipv6]:500
 
 
 #启动服务
+wg-quick  down wg4
 wg-quick  down wg6
-wg-quick  up   wg6  ||  {
+wg-quick  up   wg4  ||  {
      echo   启动wireguard失败，请检查/etc/wireguard/wg0.conf是否存在错误
 }
 wg
