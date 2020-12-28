@@ -6,7 +6,7 @@ echo    "
 端口为             443
 用户ID为           8c38d360-bb8f-11ea-9ffd-c182155e578a
 传输协议为         tcp
-底层传输安全为      tls
+底层传输安全为     tls
 理解并记录下这些信息后请按回车键继续，并在下一栏输入您解析的有效域名。如果域名输入有误请按Ctrl+C终止脚本运行，然后重新运行脚本。
 "
 read    nothing
@@ -24,8 +24,8 @@ begin=$(date +%s)
 apt    update
 apt    full-upgrade    -y
 apt    autoremove      -y
-apt    purge           -y         apache2
-apt    install         -y         python3-pip wget curl net-tools policycoreutils
+apt    purge           -y         apache2 nginx
+apt    install         -y         python3-pip wget curl
 #安装Certbot和V2Ray
 pip3   install     cryptography --upgrade
 pip3   install     certbot
@@ -80,9 +80,8 @@ sleep       1s
 v2ray      -test        -config=/usr/local/etc/v2ray/config.json
 sysctl     -p
 crontab    -l
-netstat    -plnt
-OUTPUT=$(netstat -plnt | grep 'v2ray'    2>&1)
-if     [[  "$OUTPUT"   =~   "v2ray"   ]]
+ss         -plnt
+if          [[  $(ss   -plnt  |  grep  -oP  v2ray )   ]]
 then        echo   "至此，v2ray可正常工作。"
 else        echo   "您输入的域名地址可能没有正确解析或者短时间申请了太多的证书，不能正常申请证书，所以v2ray不能正常工作。在您确认了域名解析没有问题后再请重新运行本脚本。"
 fi
