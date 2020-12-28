@@ -24,7 +24,7 @@ begin=$(date +%s)
 apt    update
 apt    full-upgrade    -y
 apt    autoremove      -y
-apt    purge           -y         apache2
+apt    purge           -y         apache2 nginx
 apt    install         -y         python3-pip wget curl
 #安装Certbot和xray
 pip3   install     cryptography --upgrade
