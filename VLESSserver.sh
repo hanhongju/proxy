@@ -51,28 +51,22 @@ echo       "
 service       cron      restart
 #修改v2ray配置文件
 echo '
-{
-"inbounds": [{
-            "port": 443,
-            "protocol": "vless",
-            "settings":{
-                       "clients":   [{"id": "8c38d360-bb8f-11ea-9ffd-c182155e578a"}],
-                       "fallbacks": [{"dest": "www.rodong.rep.kp:80"}],
-                       "decryption": "none"
-                       },
-            "streamSettings": {
-                              "network": "tcp",
-                              "security": "tls",
-                              "tlsSettings": {
-                                             "alpn": ["http/1.1"],
-                                             "certificates": [{
-                                                             "certificateFile": "/home/fullchain.pem",
-                                                             "keyFile":         "/home/privkey.pem"
-                                                             }]
-                                             }
-                               }
-             }],
-"outbounds": [{"protocol": "freedom"}]
+{"inbounds": [{"port": 443
+             ,"protocol": "vless"
+             ,"settings":{"clients":   [{"id": "8c38d360-bb8f-11ea-9ffd-c182155e578a"}]
+                         ,"fallbacks": [{"dest": "www.rodong.rep.kp:80"}]
+                         ,"decryption": "none"
+                         }
+             ,"streamSettings": {"network": "tcp"
+                                ,"security": "tls"
+                                ,"tlsSettings": {"alpn": ["http/1.1"]
+                                                ,"certificates": [{"certificateFile": "/home/fullchain.pem"
+                                                                  ,"keyFile":         "/home/privkey.pem"
+                                                                 }]
+                                                }
+                                }
+            }]
+,"outbounds": [{"protocol": "freedom"}]
 }
 '     >     /usr/local/etc/v2ray/config.json
 
