@@ -18,8 +18,8 @@ begin=$(date +%s)
 apt    update
 apt    full-upgrade    -y
 apt    autoremove      -y
-apt    purge           -y         apache2
-apt    install         -y         python3-pip  trojan
+apt    purge           -y         apache2 nginx
+apt    install         -y         python3-pip trojan
 #安装Certbot
 pip3   install     cryptography --upgrade
 pip3   install     certbot
