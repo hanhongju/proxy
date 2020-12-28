@@ -19,7 +19,7 @@ apt    update
 apt    full-upgrade    -y
 apt    autoremove      -y
 apt    purge           -y         apache2
-apt    install         -y         python3-pip net-tools trojan
+apt    install         -y         python3-pip  trojan
 #安装Certbot
 pip3   install     cryptography --upgrade
 pip3   install     certbot
@@ -64,9 +64,8 @@ sleep      1s
 trojan    -t
 sysctl    -p
 crontab   -l
-netstat   -plnt
-OUTPUT=$(netstat -plnt | grep 'trojan'    2>&1)
-if     [[  "$OUTPUT"   =~   "trojan"   ]]
+ss        -plnt
+if          [[  $(ss   -plnt   |   grep    -oP    trojan )   ]]
 then        echo   "至此，trojan可正常工作。服务器密码为fengkuang。"
 else        echo   "您输入的域名地址可能没有正确解析或者短时间申请了太多的证书，不能正常申请证书，所以trojan不能正常工作。在您确认了域名解析没有问题后再请重新运行本脚本。"
 fi
