@@ -5,19 +5,17 @@ apt  install  -y   trojan net-tools
 systemctl  enable  trojan 
 #写入配置文件
 echo   '
-{
-    "run_type": "client",
-    "local_addr": "::",
-    "local_port": 5000  ,
-    "remote_addr": "<domain>",
-    "remote_port": 443,
-    "password": ["fengkuang"],
-    "log_level": 1,
-    "ssl": {
-        "verify": true,
-        "verify_hostname": true,
-        "alpn": ["http/1.1"]
-    }
+{"run_type": "client"
+,"local_addr": "::"
+,"local_port": 5000  
+,"remote_addr": "<domain>"
+,"remote_port": 443
+,"password": ["fengkuang"]
+,"log_level": 1
+,"ssl": {"verify": true
+        ,"verify_hostname": true
+        ,"alpn": ["http/1.1"]
+        }
 }
 '     >     /etc/trojan/config.json
 #启动客户端
