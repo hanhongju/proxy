@@ -5,13 +5,12 @@ apt      update
 apt      install     -y    shadowsocks-libev  net-tools
 #创建shadowsocks-server配置文件
 echo '
-{
-"server":["[::0]", "0.0.0.0"],
-"server_port": 200,
-"password":"fengkuang",
-"timeout":60,
-"mode":"tcp_and_udp",
-"method":"aes-256-gcm"
+{"server":["[::0]", "0.0.0.0"]
+,"server_port": 200
+,"password":"fengkuang"
+,"timeout":60
+,"mode":"tcp_and_udp"
+,"method":"aes-256-gcm"
 }
 '     >           /etc/shadowsocks-libev/config.json
 #重启服务
@@ -32,15 +31,14 @@ apt      update
 apt      install     -y    shadowsocks-libev  net-tools
 #写入服务器信息
 echo   '
-{
-"server": "<domain>",
-"server_port": 200,
-"local_address": "0.0.0.0",
-"local_port": 9000,
-"password": "fengkuang",
-"timeout": 60,
-"mode": "tcp_and_udp",
-"method": "aes-256-gcm"
+{"server": "<domain>"
+,"server_port": 200
+,"local_address": "0.0.0.0"
+,"local_port": 9000
+,"password": "fengkuang"
+,"timeout": 60
+,"mode": "tcp_and_udp"
+,"method": "aes-256-gcm"
 }
 '         >        /etc/shadowsocks-libev/root.json
 #启动服务
