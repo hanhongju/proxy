@@ -65,9 +65,9 @@ trojan    -t
 sysctl    -p
 crontab   -l
 ss        -plnt
-if          [[  $(ss   -plnt   |   grep    -oP    trojan )   ]]
-then        echo   "至此，trojan可正常工作。服务器密码为fengkuang。"
-else        echo   "您输入的域名地址可能没有正确解析或者短时间申请了太多的证书，不能正常申请证书，所以trojan不能正常工作。在您确认了域名解析没有问题后再请重新运行本脚本。"
+if         [[  $(ss   -plnt  |  grep  -oP  trojan )   ]]
+then       echo   "至此，trojan可正常工作。服务器密码为fengkuang。"
+else       echo   "您输入的域名地址可能没有正确解析或者短时间申请了太多的证书，不能正常申请证书，所以trojan不能正常工作。在您确认了域名解析没有问题后再请重新运行本脚本。"
 fi
 finish=$(date +%s)
 timeconsume=$(( finish - begin ))
