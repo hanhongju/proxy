@@ -1,6 +1,6 @@
 #  Wireguard安装脚本 @ Ubuntu 20.04
 apt   update
-apt   install   -y   wireguard net-tools
+apt   install   -y   wireguard
 
 #开启流量转发
 echo "
@@ -80,7 +80,7 @@ wg-quick  up   wg4  ||  {
      echo   启动wireguard失败，请检查/etc/wireguard/wg0.conf是否存在错误
 }
 wg
-
+ss         -plnt
 
 
 echo    "--------以下是客户端配置文件，请保存并在客户端中使用---------"
