@@ -2,7 +2,7 @@
 
 #安装shadowsocks
 apt      update
-apt      install     -y    shadowsocks-libev  net-tools
+apt      install     -y    shadowsocks-libev
 #创建shadowsocks-server配置文件
 echo '
 {"server":["[::0]", "0.0.0.0"]
@@ -16,7 +16,7 @@ echo '
 #重启服务
 service   shadowsocks-libev   restart
 sleep     1s
-netstat  -plnt
+ss       -plnt
 #回显ss-server监听端口
 
 
@@ -28,7 +28,7 @@ netstat  -plnt
 
 #安装shadowsocks
 apt      update
-apt      install     -y    shadowsocks-libev  net-tools
+apt      install     -y    shadowsocks-libev
 #写入服务器信息
 echo   '
 {"server": "<domain>"
@@ -45,7 +45,7 @@ echo   '
 systemctl   enable      shadowsocks-libev-local@root
 systemctl   restart     shadowsocks-libev-local@root
 sleep       1s
-netstat    -plnt
+ss         -plnt
 #回显ss-local监听端口
 
 
