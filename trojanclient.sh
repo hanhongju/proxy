@@ -1,7 +1,7 @@
 #trojan客户端使用脚本@Debian 10
 #安装trojan
 apt  update
-apt  install  -y   trojan net-tools
+apt  install  -y   trojan
 systemctl  enable  trojan 
 #写入配置文件
 echo   '
@@ -19,9 +19,9 @@ echo   '
 }
 '     >     /etc/trojan/config.json
 #启动客户端
-service   trojan  restart
-trojan   -t
-netstat  -plnt
+service     trojan  restart
+trojan     -t
+ss         -plnt
 #回显trojan监听地址
 
 
