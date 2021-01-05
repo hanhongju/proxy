@@ -25,7 +25,7 @@ apt    update
 apt    full-upgrade    -y
 apt    autoremove      -y
 apt    purge           -y         apache2 nginx
-apt    install         -y         python3-pip wget curl
+apt    install         -y         python3-pip curl
 #安装Certbot和V2Ray
 pip3   install     cryptography --upgrade
 pip3   install     certbot
