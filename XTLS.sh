@@ -84,7 +84,7 @@ xray       -test        -config=/usr/local/etc/xray/config.json
 sysctl     -p
 crontab    -l
 ss         -plnt
-if          [[  $(ss   -plnt  |  grep  -oP  xray )   ]]
+if          [[  $(ss   -plnt     2>&1 )   =~   xray   ]]
 then        echo   "至此，xray可正常工作。"
 else        echo   "您输入的域名地址可能没有正确解析或者短时间申请了太多的证书，不能正常申请证书，所以v2ray不能正常工作。在您确认了域名解析没有问题后再请重新运行本脚本。"
 fi
