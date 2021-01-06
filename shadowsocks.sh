@@ -1,4 +1,4 @@
-# Shadowsocks服务器安装脚本 @ Debian 10
+# Shadowsocks服务器安装脚本 @ Debian 10 or Ubuntu 18.04
 
 #安装shadowsocks
 apt      update
