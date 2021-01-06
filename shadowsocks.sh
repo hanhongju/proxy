@@ -24,7 +24,7 @@ ss       -plnt
 
 
 
-# Shadowsocks客户端使用脚本 @ Debian 10
+# Shadowsocks客户端使用脚本
 
 #安装shadowsocks
 apt      update
