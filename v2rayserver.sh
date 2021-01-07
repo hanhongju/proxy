@@ -55,11 +55,11 @@ service     nginx       stop
 certbot     certonly    --standalone    --agree-tos     -n     -d      $site     -m    86606682@qq.com
 #配置证书自动更新
 echo       '
-0 0 1 * *     service nginx stop
-1 0 1 * *     certbot renew
-2 0 1 * *     service nginx start
-1 0 * * *     apt full-upgrade  -y
-2 0 * * *     apt autoremove    -y
+0 0 1 * *     service   nginx   stop
+1 0 1 * *     certbot   renew
+2 0 1 * *     service   nginx   start
+0 1 * * *     apt   full-upgrade   -y
+0 2 * * *     apt   autoremove     -y
 '       |     crontab
 service       cron        restart
 #创建nginx配置文件
