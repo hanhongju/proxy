@@ -58,8 +58,8 @@ echo       '
 0 0 1 * *     service nginx stop
 1 0 1 * *     certbot renew
 2 0 1 * *     service nginx start
-1 0 * * *     apt   full-upgrade   -y
-2 0 * * *     apt   autoremove     -y
+1 0 * * *     apt full-upgrade  -y
+2 0 * * *     apt autoremove    -y
 '     |  crontab
 service   cron   restart
 #创建nginx配置文件
