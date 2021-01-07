@@ -66,8 +66,6 @@ service       cron        restart
 echo '
 server{
 server_name www.example.com;
-set $proxy_name pubmed.ncbi.nlm.nih.gov;
-resolver 8.8.8.8 8.8.4.4 valid=300s;
 listen 80;
 listen [::]:80;
 listen 443 ssl;
@@ -75,6 +73,7 @@ listen [::]:443 ssl;
 ssl_certificate          /etc/letsencrypt/live/www.example.com/fullchain.pem;  
 ssl_certificate_key      /etc/letsencrypt/live/www.example.com/privkey.pem;   
 if ( $scheme = http ){return 301 https://$server_name$request_uri;}
+set $proxy_name pubmed.ncbi.nlm.nih.gov;
 location /         {           #设置反代网站
 sub_filter   $proxy_name   $server_name;
 sub_filter_once off;
