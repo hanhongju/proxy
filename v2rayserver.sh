@@ -60,8 +60,8 @@ echo       '
 2 0 1 * *     service nginx start
 1 0 * * *     apt full-upgrade  -y
 2 0 * * *     apt autoremove    -y
-'     |  crontab
-service   cron   restart
+'       |     crontab
+service       cron        restart
 #创建nginx配置文件
 echo '
 server{
