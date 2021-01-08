@@ -113,7 +113,8 @@ ss         -plnt
 #如果nginx配置有错误，重置nginx配置文件
 if          [[  $(nginx    -t     2>&1 )   =~   successful   ]]
 then        echo   "至此，v2ray可正常工作。"
-else        echo   "您输入的域名地址可能没有正确解析或者短时间申请了太多的证书，不能正常申请证书，所以nginx不能正常工作。现在所有nginx配置都已被删除。在您确认了域名解析没有问题后再请重新运行本脚本。"
+else        echo   "您输入的域名地址可能没有正确解析或者短时间申请了太多的证书，不能正常申请证书，所以nginx不能正常工作。"
+            echo   "现在所有nginx配置都已被删除。在您确认了域名解析没有问题后再请重新运行本脚本。"
             rm     -rf     /etc/nginx/sites-enabled/*
 fi
 finish=$(date +%s)
