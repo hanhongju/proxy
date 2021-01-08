@@ -95,8 +95,8 @@ proxy_set_header Host $host;
 }
 }
 '         >       /etc/nginx/sites-enabled/$site.conf
-sed      -i       ''s/www.example.com/$site/g''             /etc/nginx/sites-enabled/$site.conf
-sed      -i        's/user.*/user\ root;/g'                 /etc/nginx/nginx.conf
+sed      -i        ''s/www.example.com/$site/g''             /etc/nginx/sites-enabled/$site.conf
+sed      -i        ''s/user.*/user\ root\;/g''               /etc/nginx/nginx.conf
 
 
 #启动V2Ray和Nginx：
