@@ -94,7 +94,7 @@ proxy_set_header Connection "upgrade";
 proxy_set_header Host $host;
 }
 }
-'         >       /etc/nginx/sites-enabled/$site.conf
+'         >         /etc/nginx/sites-enabled/$site.conf
 sed      -i        ''s/www.example.com/$site/g''             /etc/nginx/sites-enabled/$site.conf
 sed      -i        ''s/user.*/user\ root\;/g''               /etc/nginx/nginx.conf
 
