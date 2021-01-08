@@ -67,6 +67,7 @@ echo '
 server{
 server_name www.example.com;
 set $proxy_name pubmed.ncbi.nlm.nih.gov;
+resolver 8.8.8.8 8.8.4.4 valid=300s;
 listen 80;
 listen [::]:80;
 listen 443 ssl;
