@@ -100,10 +100,8 @@ sed      -i        ''s/user.*/user\ root\;/g''               /etc/nginx/nginx.co
 
 
 #启动V2Ray和Nginx：
-systemctl   enable    v2ray
-systemctl   enable    nginx
-service     v2ray     restart
-service     nginx     restart
+systemctl   enable      v2ray nginx
+systemctl   restart     v2ray nginx
 #验证配置文件，显示监听端口
 v2ray      -test        -config=/usr/local/etc/v2ray/config.json
 nginx      -t
