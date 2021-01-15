@@ -14,9 +14,10 @@ echo '
 }
 '     >           /etc/shadowsocks-libev/config.json
 #重启服务
-service   shadowsocks-libev   restart
-sleep     1s
-ss       -plnt
+systemctl   enable      shadowsocks-libev
+systemctl   restart     shadowsocks-libev
+sleep       1s
+ss         -plnt
 #回显ss-server监听端口
 
 
