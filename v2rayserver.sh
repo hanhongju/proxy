@@ -61,7 +61,6 @@ echo       '
 0 1 * * *     apt   full-upgrade   -y
 0 2 * * *     apt   autoremove     -y
 '       |     crontab
-service       cron        restart
 #创建nginx配置文件
 echo '
 server{
@@ -99,8 +98,8 @@ sed      -i        ''s/www.example.com/$site/g''             /etc/nginx/sites-en
 
 
 #启动V2Ray和Nginx：
-systemctl   enable      v2ray nginx
-systemctl   restart     v2ray nginx
+systemctl   enable      v2ray nginx cron
+systemctl   restart     v2ray nginx cron
 #验证配置文件，显示监听端口
 v2ray      -test        -config=/usr/local/etc/v2ray/config.json
 nginx      -t
