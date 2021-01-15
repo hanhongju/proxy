@@ -41,7 +41,6 @@ echo       "
 3 0 1 * *     chmod        -Rf        777       /home/
 4 0 1 * *     service       trojan    restart
 "      |      crontab
-service       cron      restart
 #修改trojan配置文件
 echo '
 {"run_type": "server"
@@ -57,8 +56,8 @@ echo '
 }
 '           >          /etc/trojan/config.json
 #启动trojan
-systemctl    enable      trojan
-systemctl    restart     trojan
+systemctl    enable      trojan cron
+systemctl    restart     trojan cron
 #显示监听端口
 sleep       1s
 trojan     -t
