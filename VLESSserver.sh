@@ -48,7 +48,6 @@ echo       "
 3 0 1 * *     chmod    -Rf        777       /home/
 4 0 1 * *     service   v2ray    restart
 "      |      crontab
-service       cron      restart
 #修改v2ray配置文件
 echo '
 {"inbounds": [{"port": 443
@@ -73,8 +72,8 @@ echo '
 
 
 #启动V2Ray
-systemctl     enable     v2ray
-systemctl     restart    v2ray
+systemctl     enable     v2ray cron
+systemctl     restart    v2ray cron
 #显示监听端口
 sleep       1s
 v2ray      -test        -config=/usr/local/etc/v2ray/config.json
