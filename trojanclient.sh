@@ -2,7 +2,6 @@
 #安装trojan
 apt  update
 apt  install  -y   trojan
-systemctl  enable  trojan 
 #写入配置文件
 echo   '
 {"run_type": "client"
