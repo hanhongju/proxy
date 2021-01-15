@@ -19,7 +19,8 @@ echo   '
 }
 '     >     /etc/trojan/config.json
 #启动客户端
-service     trojan  restart
+systemctl   enable      trojan
+systemctl   restart     trojan
 trojan     -t
 ss         -plnt
 #回显trojan监听地址
