@@ -29,20 +29,18 @@ apt    install         -y         python3-pip curl
 #安装Certbot和V2Ray
 pip3   install     cryptography --upgrade
 pip3   install     certbot
-bash   <(curl   -sL    https://raw.githubusercontent.com/v2fly/fhs-install-v2ray/master/install-release.sh)
+bash   <(curl     -sL      https://raw.githubusercontent.com/v2fly/fhs-install-v2ray/master/install-release.sh)
 #修改系统控制文件启用BBR
 echo     '
 net.core.default_qdisc=fq
 net.ipv4.tcp_congestion_control=bbr
 '         >       /etc/sysctl.conf
 #申请SSL证书
-service   nginx   stop
 certbot   certonly    --standalone    --agree-tos     -n     -d      $site     -m    86606682@qq.com 
 cp       /etc/letsencrypt/live/$site/*      /home/
 chmod    -Rf     777     /home/
 #配置证书每月1日自动更新
 echo       "
-0 0 1 * *     service   nginx   stop
 1 0 1 * *     certbot   renew
 2 0 1 * *     cp       /etc/letsencrypt/live/$site/*          /home/
 3 0 1 * *     chmod    -Rf        777       /home/
