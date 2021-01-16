@@ -1,4 +1,4 @@
-#trojan客户端使用脚本
+# Trojan客户端使用脚本 @ Debian 10
 #安装trojan
 apt  update
 apt  install  -y   trojan
