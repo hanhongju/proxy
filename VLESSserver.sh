@@ -22,8 +22,6 @@ sleep   5s
 begin=$(date +%s)
 #安装常用软件包：
 apt    update
-apt    full-upgrade    -y
-apt    autoremove      -y
 apt    purge           -y         apache2 nginx
 apt    install         -y         python3-pip curl
 #安装Certbot和V2Ray
