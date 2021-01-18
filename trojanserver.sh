@@ -9,10 +9,6 @@ echo    "请输入此VPS的IP对应的域名地址："
 read    site
 echo    "好的，现在要开始安装了。"
 sleep   5s
-
-
-
-
 #计时
 begin=$(date +%s)
 #安装软件：
@@ -68,6 +64,10 @@ finish=$(date +%s)
 timeconsume=$(( finish - begin ))
 echo   "脚本运行时间$timeconsume秒。"
 #至此trojan可正常工作
+
+
+
+
 
 
 
