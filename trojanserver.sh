@@ -19,11 +19,6 @@ begin=$(date +%s)
 apt    update
 apt    install   -y     python3-pip trojan
 pip3   install  --upgrade   cryptography certbot
-#修改系统控制文件启用BBR
-echo     '
-net.core.default_qdisc=fq
-net.ipv4.tcp_congestion_control=bbr
-'         >       /etc/sysctl.conf
 #申请SSL证书
 systemctl     stop     nginx apache2
 certbot       certonly    --standalone    --agree-tos     -n     -d      $site     -m    86606682@qq.com 
@@ -37,6 +32,11 @@ echo       "
 3 0 1 * *     chmod        -Rf        777       /home/
 4 0 1 * *     service       trojan    restart
 "      |      crontab
+#修改系统控制文件启用BBR
+echo     '
+net.core.default_qdisc=fq
+net.ipv4.tcp_congestion_control=bbr
+'         >       /etc/sysctl.conf
 #修改trojan配置文件
 echo '
 {"run_type": "server"
