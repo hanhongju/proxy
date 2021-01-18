@@ -1,8 +1,8 @@
 # Trojan客户端使用脚本 @ Debian 10
 
 #安装trojan
-apt  update
-apt  install  -y   trojan
+apt      update
+apt      install     -y    trojan
 #写入配置文件
 echo   '
 {"run_type": "client"
@@ -30,7 +30,7 @@ ss         -plnt
 
 
 #设置tsocks透明代理
-apt  install    -y   tsocks
+apt      install     -y    tsocks
 echo '
 server       =  127.0.0.1
 server_type  =  5
