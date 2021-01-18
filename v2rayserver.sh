@@ -26,6 +26,16 @@ apt    purge     -y    apache2
 apt    install   -y    python3-pip curl nginx
 pip3   install  --upgrade   cryptography certbot
 bash   <(curl    -sL    https://raw.githubusercontent.com/v2fly/fhs-install-v2ray/master/install-release.sh)
+
+#申请SSL证书
+systemctl     stop     nginx apache2
+certbot       certonly    --standalone    --agree-tos     -n     -d      $site     -m    86606682@qq.com 
+#配置证书自动更新
+echo       '
+0 0 1 * *     service   nginx   stop
+1 0 1 * *     certbot   renew
+2 0 1 * *     service   nginx   start
+'       |     crontab
 #修改系统控制文件启用BBR
 echo     '
 net.core.default_qdisc=fq
@@ -43,18 +53,6 @@ echo '
 ,"outbounds":[{"protocol": "freedom"}]
 }
 '     >     /usr/local/etc/v2ray/config.json
-
-
-
-#申请SSL证书
-systemctl     stop     nginx apache2
-certbot       certonly    --standalone    --agree-tos     -n     -d      $site     -m    86606682@qq.com 
-#配置证书自动更新
-echo       '
-0 0 1 * *     service   nginx   stop
-1 0 1 * *     certbot   renew
-2 0 1 * *     service   nginx   start
-'       |     crontab
 #创建nginx配置文件
 echo '
 server{
@@ -89,8 +87,6 @@ proxy_set_header Host $host;
 }
 '         >         /etc/nginx/sites-enabled/v2ray.conf
 sed      -i        ''s/www.example.com/$site/g''             /etc/nginx/sites-enabled/v2ray.conf
-
-
 #启动V2Ray和Nginx：
 systemctl   enable      v2ray nginx cron
 systemctl   restart     v2ray nginx cron
