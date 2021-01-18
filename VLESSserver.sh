@@ -20,10 +20,9 @@ sleep   5s
 
 #计时
 begin=$(date +%s)
-#安装常用软件包：
+#安装软件：
 apt    update
 apt    install   -y    python3-pip curl
-#安装Certbot和V2Ray
 pip3   install   cryptography --upgrade
 pip3   install   certbot
 bash   <(curl    -sL    https://raw.githubusercontent.com/v2fly/fhs-install-v2ray/master/install-release.sh)
