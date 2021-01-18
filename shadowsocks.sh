@@ -54,7 +54,7 @@ ss         -plnt
 
 
 #设置tsocks透明代理
-apt  install    -y   tsocks
+apt      install     -y    tsocks
 echo '
 server       =  127.0.0.1
 server_type  =  5
