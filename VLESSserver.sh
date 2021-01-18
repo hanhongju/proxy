@@ -25,11 +25,6 @@ apt    update
 apt    install   -y    python3-pip curl
 pip3   install  --upgrade   cryptography certbot
 bash   <(curl    -sL    https://raw.githubusercontent.com/v2fly/fhs-install-v2ray/master/install-release.sh)
-#修改系统控制文件启用BBR
-echo     '
-net.core.default_qdisc=fq
-net.ipv4.tcp_congestion_control=bbr
-'         >       /etc/sysctl.conf
 #申请SSL证书
 systemctl     stop     nginx apache2
 certbot       certonly    --standalone    --agree-tos     -n     -d      $site     -m    86606682@qq.com 
@@ -43,6 +38,11 @@ echo       "
 3 0 1 * *     chmod        -Rf        777       /home/
 4 0 1 * *     service       v2ray     restart
 "      |      crontab
+#修改系统控制文件启用BBR
+echo     '
+net.core.default_qdisc=fq
+net.ipv4.tcp_congestion_control=bbr
+'         >       /etc/sysctl.conf
 #修改v2ray配置文件
 echo '
 {"inbounds": [{"port": 443
@@ -63,9 +63,6 @@ echo '
 ,"outbounds": [{"protocol": "freedom"}]
 }
 '     >     /usr/local/etc/v2ray/config.json
-
-
-
 #启动V2Ray
 systemctl     enable     v2ray cron
 systemctl     restart    v2ray cron
