@@ -20,14 +20,12 @@ sleep   5s
 
 #计时
 begin=$(date +%s)
-#安装常用软件包：
+#安装软件：
 apt    update
-apt    purge           -y         apache2
-apt    install         -y         python3-pip curl nginx
-#安装Certbot和V2Ray
-pip3   install     cryptography --upgrade
-pip3   install     certbot
-bash   <(curl     -sL    https://raw.githubusercontent.com/v2fly/fhs-install-v2ray/master/install-release.sh)
+apt    purge     -y    apache2
+apt    install   -y    python3-pip curl nginx
+pip3   install  --upgrade   cryptography certbot
+bash   <(curl    -sL    https://raw.githubusercontent.com/v2fly/fhs-install-v2ray/master/install-release.sh)
 #修改系统控制文件启用BBR
 echo     '
 net.core.default_qdisc=fq
@@ -49,8 +47,8 @@ echo '
 
 
 #申请SSL证书
-service     nginx       stop
-certbot     certonly    --standalone    --agree-tos     -n     -d      $site     -m    86606682@qq.com
+systemctl     stop     nginx apache2
+certbot       certonly    --standalone    --agree-tos     -n     -d      $site     -m    86606682@qq.com 
 #配置证书自动更新
 echo       '
 0 0 1 * *     service   nginx   stop
