@@ -17,9 +17,8 @@ sleep   5s
 begin=$(date +%s)
 #安装软件：
 apt    update
-apt    install   -y    python3-pip trojan
-pip3   install   cryptography --upgrade
-pip3   install   certbot
+apt    install   -y     python3-pip trojan
+pip3   install  --upgrade   cryptography certbot
 #修改系统控制文件启用BBR
 echo     '
 net.core.default_qdisc=fq
