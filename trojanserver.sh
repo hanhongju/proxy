@@ -52,8 +52,8 @@ echo '
 }
 '           >          /etc/trojan/config.json
 #启动trojan
-systemctl    enable      trojan cron
-systemctl    restart     trojan cron
+systemctl   enable      trojan cron
+systemctl   restart     trojan cron
 #显示监听端口
 sleep       1s
 trojan     -t
