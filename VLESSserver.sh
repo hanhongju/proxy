@@ -64,8 +64,8 @@ echo '
 }
 '     >     /usr/local/etc/v2ray/config.json
 #启动V2Ray
-systemctl     enable     v2ray cron
-systemctl     restart    v2ray cron
+systemctl   enable      v2ray cron
+systemctl   restart     v2ray cron
 #显示监听端口
 sleep       1s
 v2ray      -test        -config=/usr/local/etc/v2ray/config.json
