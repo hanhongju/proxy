@@ -12,6 +12,7 @@ sleep   5s
 
 
 
+
 #计时
 begin=$(date +%s)
 #安装软件：
