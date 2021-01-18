@@ -23,8 +23,7 @@ begin=$(date +%s)
 #安装软件：
 apt    update
 apt    install   -y    python3-pip curl
-pip3   install   cryptography --upgrade
-pip3   install   certbot
+pip3   install  --upgrade   cryptography certbot
 bash   <(curl    -sL    https://raw.githubusercontent.com/v2fly/fhs-install-v2ray/master/install-release.sh)
 #修改系统控制文件启用BBR
 echo     '
