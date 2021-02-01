@@ -22,11 +22,11 @@ cp           /etc/letsencrypt/live/$site/*      /home/
 chmod        -Rf    777    /home/
 #配置证书每月1日自动更新
 echo       "
-0 0 1 * *     systemctl     stop     nginx apache2
+0 0 1 * *     systemctl     stop        nginx apache2
 1 0 1 * *     certbot       renew
 2 0 1 * *     cp           /etc/letsencrypt/live/$site/*          /home/
-3 0 1 * *     chmod        -Rf        777       /home/
-4 0 1 * *     service       trojan    restart
+3 0 1 * *     chmod        -Rf          777       /home/
+4 0 1 * *     systemctl     restart     trojan cron
 "      |      crontab
 #修改系统控制文件启用BBR
 echo     '
@@ -48,8 +48,8 @@ echo '
 }
 '           >          /etc/trojan/config.json
 #启动trojan
-systemctl   enable      trojan cron
-systemctl   restart     trojan cron
+systemctl     enable      trojan cron
+systemctl     restart     trojan cron
 #显示监听端口
 sleep       1s
 trojan     -t
