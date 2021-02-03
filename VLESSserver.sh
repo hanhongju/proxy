@@ -32,7 +32,7 @@ echo       "
 1 0 1 * *     certbot       renew
 2 0 1 * *     cp           /etc/letsencrypt/live/$site/*          /home/
 3 0 1 * *     chmod        -Rf        777       /home/
-4 0 1 * *     service       v2ray     restart
+4 0 * * *     systemctl     restart   v2ray
 "      |      crontab
 #修改系统控制文件启用BBR
 echo     '
