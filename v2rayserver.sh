@@ -27,11 +27,11 @@ bash   <(curl    -sL    https://raw.githubusercontent.com/v2fly/fhs-install-v2ra
 systemctl     stop        nginx apache2
 certbot       certonly    --standalone   --agree-tos  -n  -d  $site  -m  86606682@qq.com 
 #配置证书自动更新
-echo       '
+echo       "
 0 0 1 * *     systemctl   stop      nginx
 1 0 1 * *     certbot     renew
 2 0 * * *     systemctl   restart   nginx v2ray
-'      |      crontab
+"      |      crontab
 #修改系统控制文件启用BBR
 echo     '
 net.core.default_qdisc=fq
