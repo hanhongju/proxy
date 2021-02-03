@@ -30,7 +30,7 @@ certbot       certonly    --standalone    --agree-tos     -n     -d      $site  
 echo       "
 0 0 1 * *     systemctl   stop      nginx
 1 0 1 * *     certbot     renew
-2 0 * * *     systemctl   restart   nginx cron v2ray
+2 0 * * *     systemctl   restart   nginx v2ray
 "      |      crontab
 #修改系统控制文件启用BBR
 echo     '
