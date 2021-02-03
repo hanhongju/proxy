@@ -16,16 +16,16 @@ apt    update
 apt    install   -y     python3-pip trojan
 pip3   install  --upgrade   cryptography certbot
 #申请SSL证书
-systemctl     stop     nginx apache2
-certbot       certonly    --standalone    --agree-tos     -n     -d      $site     -m    86606682@qq.com 
-cp           /etc/letsencrypt/live/$site/*      /home/
-chmod        -Rf    777    /home/
+systemctl     stop        nginx apache2
+certbot       certonly    --standalone   --agree-tos  -n  -d  $site  -m  86606682@qq.com 
+cp            /etc/letsencrypt/live/$site/*   /home/
+chmod         -Rf    777  /home/
 #配置证书每月1日自动更新
 echo       "
 0 0 1 * *     systemctl     stop        nginx apache2
 1 0 1 * *     certbot       renew
-2 0 1 * *     cp           /etc/letsencrypt/live/$site/*          /home/
-3 0 1 * *     chmod        -Rf          777       /home/
+2 0 1 * *     cp            /etc/letsencrypt/live/$site/*   /home/
+3 0 1 * *     chmod         -Rf    777  /home/
 4 0 * * *     systemctl     restart     trojan
 "      |      crontab
 #修改系统控制文件启用BBR
