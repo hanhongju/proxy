@@ -24,8 +24,8 @@ apt    install   -y    python3-pip curl nginx
 pip3   install  --upgrade   cryptography certbot
 bash   <(curl    -sL    https://raw.githubusercontent.com/v2fly/fhs-install-v2ray/master/install-release.sh)
 #申请SSL证书
-systemctl     stop     nginx apache2
-certbot       certonly    --standalone    --agree-tos     -n     -d      $site     -m    86606682@qq.com 
+systemctl     stop        nginx apache2
+certbot       certonly    --standalone   --agree-tos  -n  -d  $site  -m  86606682@qq.com 
 #配置证书自动更新
 echo       "
 0 0 1 * *     systemctl   stop      nginx
