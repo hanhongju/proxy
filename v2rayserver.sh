@@ -20,7 +20,7 @@ begin=$(date +%s)
 #安装软件：
 apt    update
 apt    install   -y    python3-pip curl nginx
-yum    install   -y    python3-pip curl nginx
+yum    install   -y    epel-release python3-pip curl nginx
 pip3   install  --upgrade   cryptography certbot
 bash   <(curl    -sL    https://raw.githubusercontent.com/v2fly/fhs-install-v2ray/master/install-release.sh)
 #申请SSL证书
