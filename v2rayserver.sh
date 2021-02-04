@@ -19,7 +19,6 @@ sleep   5s
 begin=$(date +%s)
 #安装软件：
 apt    update
-apt    purge     -y    apache2
 apt    install   -y    python3-pip curl nginx
 yum    install   -y    python3-pip curl nginx
 pip3   install  --upgrade   cryptography certbot
