@@ -1,4 +1,4 @@
-# V2rayserver安装脚本 @ Debian 10 or Ubuntu 20.04
+# V2rayserver安装脚本 @ Debian 10 or Ubuntu 20.04 or CentOS 7
 echo    "
 本脚本可以自动安装v2ray，自动申请并使用tls证书加密保护v2ray的流量，反代美国国家生物技术信息中心网址进行网站伪装。需要您事先将此VPS的IP地址解析到一个有效域名上。
 如果此VPS使用KVM虚拟技术，此脚本自动开启BBR加速。安装完成后v2ray配置:
@@ -21,6 +21,7 @@ begin=$(date +%s)
 apt    update
 apt    purge     -y    apache2
 apt    install   -y    python3-pip curl nginx
+yum    install   -y    python3-pip curl nginx
 pip3   install  --upgrade   cryptography certbot
 bash   <(curl    -sL    https://raw.githubusercontent.com/v2fly/fhs-install-v2ray/master/install-release.sh)
 #申请SSL证书
@@ -85,7 +86,9 @@ proxy_set_header Host $host;
 sed      -i        ''s/www.example.com/$site/g''             /etc/nginx/sites-enabled/v2ray.conf
 #启动V2Ray和Nginx：
 systemctl   enable      v2ray nginx cron
+systemctl   enable      v2ray nginx crond
 systemctl   restart     v2ray nginx cron
+systemctl   restart     v2ray nginx crond
 #验证配置文件，显示监听端口
 v2ray      -test        -config=/usr/local/etc/v2ray/config.json
 nginx      -t
