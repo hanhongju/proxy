@@ -1,6 +1,4 @@
-# Shadowsocks服务器安装脚本 @ Debian 10 or Ubuntu 18.04
-
-#安装shadowsocks
+# Shadowsocks 服务器安装脚本 @ Debian 10 or Ubuntu 18.04
 apt      update
 apt      install     -y    shadowsocks-libev
 #创建shadowsocks-server配置文件
@@ -22,12 +20,7 @@ ss         -plnt
 
 
 
-
-
-
-# Shadowsocks客户端使用脚本
-
-#安装shadowsocks
+# Shadowsocks 客户端使用脚本
 apt      update
 apt      install     -y    shadowsocks-libev
 #写入服务器信息
@@ -51,8 +44,6 @@ ss         -plnt
 
 
 
-
-
 #设置tsocks透明代理
 apt      install     -y    tsocks
 echo '
@@ -63,7 +54,7 @@ default_user =  none
 default_pass =  none
 '          >              /etc/tsocks.conf
 #测试代理可用性
-tsocks      wget     https://cn.wordpress.org/latest-zh_CN.tar.gz      -O     /home/latest-zh_CN.tar.gz
+tsocks    wget    https://cn.wordpress.org/latest-zh_CN.tar.gz   -cP   /home/wordpress/
 
 
 
