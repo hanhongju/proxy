@@ -1,6 +1,4 @@
 # Trojan客户端使用脚本 @ Debian 10
-
-#安装trojan
 apt      update
 apt      install     -y    trojan
 #写入配置文件
@@ -24,8 +22,6 @@ systemctl   restart     trojan
 trojan     -t
 ss         -plnt
 #回显trojan监听地址
-
-
 
 
 
