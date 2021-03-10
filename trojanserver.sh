@@ -18,14 +18,10 @@ pip3   install  --upgrade   cryptography certbot
 #申请SSL证书
 systemctl     stop        nginx apache2
 certbot       certonly    --standalone   --agree-tos  -n  -d  $site  -m  86606682@qq.com 
-cp            /etc/letsencrypt/live/$site/*   /home/
-chmod         -Rf    777  /home/
 #配置证书每月1日自动更新
 echo       "
 0 0 1 * *     systemctl     stop        nginx apache2
 1 0 1 * *     certbot       renew
-2 0 1 * *     cp            /etc/letsencrypt/live/$site/*   /home/
-3 0 1 * *     chmod         -Rf    777  /home/
 4 0 * * *     systemctl     restart     trojan
 "      |      crontab
 #修改系统控制文件启用BBR
@@ -41,12 +37,15 @@ echo '
 ,"remote_addr": "www.rodong.rep.kp"
 ,"remote_port": 80
 ,"password": ["fengkuang"]
-,"ssl": {"cert": "/home/fullchain.pem"
-        ,"key" : "/home/privkey.pem"
+,"ssl": {"cert": "/etc/letsencrypt/live/www.example.com/fullchain.pem"
+        ,"key" : "/etc/letsencrypt/live/www.example.com/privkey.pem"
         ,"alpn": ["http/1.1"]
         }
 }
 '           >          /etc/trojan/config.json
+sed         -i        ''s/www.example.com/$site/g''             /etc/trojan/config.json
+#修改trojan服务文件运行用户
+sed         -i        ''s/^User.*//g''           /lib/systemd/system/trojan.service
 #启动trojan
 systemctl     enable      trojan cron
 systemctl     restart     trojan cron
