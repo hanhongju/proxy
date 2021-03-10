@@ -42,7 +42,7 @@ echo '
         ,"alpn": ["http/1.1"]
         }
 }
-'       >       /etc/trojan/config.json
+'        >       /etc/trojan/config.json
 sed     -i      ''s/www.example.com/$site/g''       /etc/trojan/config.json
 #修改trojan服务文件运行用户
 sed     -i      ''s/^User.*//g''         /lib/systemd/system/trojan.service
