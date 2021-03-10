@@ -49,7 +49,7 @@ sed     -i      ''s/^User.*//g''         /lib/systemd/system/trojan.service
 #启动trojan
 systemctl     enable      trojan cron
 systemctl     restart     trojan cron
-#显示监听端口
+#验证配置文件，显示监听端口
 trojan     -t
 sysctl     -p
 crontab    -l
