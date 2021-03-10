@@ -13,8 +13,8 @@ sleep   5s
 begin=$(date +%s)
 #安装软件：
 apt    update
-apt    install   -y     python3-pip trojan
-pip3   install  --upgrade   cryptography certbot
+apt    install   -y     python3-pip libssl-dev libffi-dev trojan
+pip3   install   --upgrade    cryptography certbot
 #申请SSL证书
 systemctl     stop        nginx apache2
 certbot       certonly    --standalone   --agree-tos  -n  -d  $site  -m  86606682@qq.com 
