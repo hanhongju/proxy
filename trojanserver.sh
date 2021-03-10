@@ -18,6 +18,7 @@ pip3   install   --upgrade    cryptography certbot
 #申请SSL证书
 systemctl     stop        nginx apache2
 certbot       certonly    --standalone   --agree-tos  -n  -d  $site  -m  86606682@qq.com 
+chmod         -R   755    /etc/letsencrypt/
 #配置证书每月1日自动更新
 echo       "
 0 0 1 * *     systemctl     stop        nginx apache2
@@ -44,8 +45,6 @@ echo '
 }
 '        >       /etc/trojan/config.json
 sed     -i      ''s/www.example.com/$site/g''       /etc/trojan/config.json
-#修改trojan服务文件运行用户
-sed     -i      ''s/^User.*//g''         /lib/systemd/system/trojan.service
 #启动trojan
 systemctl     enable      trojan cron
 systemctl     restart     trojan cron
