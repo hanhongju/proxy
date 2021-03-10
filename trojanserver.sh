@@ -22,7 +22,7 @@ certbot       certonly    --standalone   --agree-tos  -n  -d  $site  -m  8660668
 echo       "
 0 0 1 * *     systemctl     stop        nginx apache2
 1 0 1 * *     certbot       renew
-4 0 * * *     systemctl     restart     trojan
+2 0 * * *     systemctl     restart     trojan
 "      |      crontab
 #修改系统控制文件启用BBR
 echo     '
