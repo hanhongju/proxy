@@ -25,7 +25,7 @@ systemctl   stop        nginx apache2
 certbot     certonly    --standalone --agree-tos -n -d $site
 #配置证书自动更新
 echo       "
-0 0 1 * *     systemctl     stop        nginx apache2
+0 0 1 * *     systemctl     stop      nginx apache2
 1 0 1 * *     certbot       renew
 2 0 * * *     systemctl     restart   nginx v2ray
 "      |      crontab
