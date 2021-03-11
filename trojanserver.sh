@@ -15,7 +15,7 @@ begin=$(date +%s)
 apt    update
 apt    install   -y       trojan certbot
 systemctl     stop        nginx apache2
-certbot       certonly    --standalone   --agree-tos  -n  -d  $site  -m  86606682@qq.com
+certbot       certonly    --standalone --agree-tos -n -d $site
 chmod         -R   755    /etc/letsencrypt/
 #配置证书每月1日自动更新
 echo       "
