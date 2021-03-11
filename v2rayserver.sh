@@ -17,13 +17,12 @@ echo    "好的，现在要开始安装了。"
 sleep   5s
 #计时
 begin=$(date +%s)
-#安装软件：
+#安装软件申请证书
 apt    update
 apt    install   -y     curl nginx certbot
 bash   <(curl    -sL    https://raw.githubusercontent.com/v2fly/fhs-install-v2ray/master/install-release.sh)
-#申请SSL证书
-systemctl     stop        nginx apache2
-certbot       certonly    --standalone   --agree-tos  -n  -d  $site  -m  86606682@qq.com 
+systemctl   stop        nginx apache2
+certbot     certonly    --standalone --agree-tos -n -d $site
 #配置证书自动更新
 echo       "
 0 0 1 * *     systemctl     stop        nginx apache2
