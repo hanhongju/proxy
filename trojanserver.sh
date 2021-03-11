@@ -11,10 +11,9 @@ echo    "好的，现在要开始安装了。"
 sleep   5s
 #计时
 begin=$(date +%s)
-#安装软件：
+#安装软件申请证书
 apt    update
 apt    install   -y       trojan certbot
-#申请SSL证书
 systemctl     stop        nginx apache2
 certbot       certonly    --standalone   --agree-tos  -n  -d  $site  -m  86606682@qq.com
 chmod         -R   755    /etc/letsencrypt/
