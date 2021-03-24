@@ -1,10 +1,7 @@
 # Docker官方安装脚本安装
 apt   update
 apt   install   -y    curl
-curl -sSL https://get.docker.com/ | bash -s docker --mirror Aliyun
-
-
-curl -sSL https://get.docker.com/ | sh
+bash  <(curl    -sL   https://get.docker.com/)    --mirror    Aliyun
 systemctl enable docker
 docker run hello-world
 
