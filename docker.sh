@@ -2,7 +2,8 @@
 apt   update
 apt   install   -y    curl
 bash  <(curl    -sL   https://get.docker.com/)    --mirror    Aliyun
-systemctl enable docker
+systemctl enable  docker
+systemctl restart docker
 docker run hello-world
 
 
