@@ -18,7 +18,7 @@ systemctl     stop        nginx apache2
 certbot       certonly    --standalone -n --agree-tos -m 86606682@qq.com -d $site
 chmod         -R   777    /etc/letsencrypt/
 #配置证书每月1日自动更新
-echo       "
+echo    "
 0 0 1 * *     systemctl     stop        nginx apache2
 1 0 1 * *     certbot       renew
 2 0 1 * *     chmod         -R   777    /etc/letsencrypt/
