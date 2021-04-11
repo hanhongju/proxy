@@ -23,6 +23,7 @@ apt    install   -y       curl nginx certbot
 bash   <(curl    -sL      https://raw.githubusercontent.com/v2fly/fhs-install-v2ray/master/install-release.sh)
 systemctl     stop        nginx apache2
 certbot       certonly    --standalone -n --agree-tos -m 86606682@qq.com -d $site
+chmod         -R   777    /etc/letsencrypt/
 #配置证书自动更新
 echo    "
 0 0 1 * *     systemctl     stop        nginx apache2
