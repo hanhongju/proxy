@@ -24,7 +24,7 @@ bash   <(curl    -sL      https://raw.githubusercontent.com/v2fly/fhs-install-v2
 systemctl     stop        nginx apache2
 certbot       certonly    --standalone -n --agree-tos -m 86606682@qq.com -d $site
 #配置证书自动更新
-echo       "
+echo    "
 0 0 1 * *     systemctl     stop        nginx apache2
 1 0 1 * *     certbot       renew
 2 0 1 * *     chmod         -R   777    /etc/letsencrypt/
