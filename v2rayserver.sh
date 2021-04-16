@@ -56,6 +56,7 @@ ssl_preread on;
 }
 '         >        /etc/nginx/modules-available/upstream.conf
 sed      -i        ''s/vmess.example.com/$site/g''             /etc/nginx/modules-available/upstream.conf
+rm       -rf       /etc/nginx/modules-enabled/upstream.conf
 #创建nginx站点配置文件
 echo '
 server{
@@ -104,9 +105,6 @@ echo '
 ,"outbounds":[{"protocol": "freedom"}]
 }
 '     >     /usr/local/etc/v2ray/config.json
-#启用sni转发
-#\cp      -f        /etc/nginx/modules-available/upstream.conf       /etc/nginx/modules-enabled/upstream.conf
-#sed      -i        ''/443\ ssl/d''                                  /etc/nginx/sites-enabled/v2ray.conf
 #启动V2Ray和Nginx：
 systemctl   enable      v2ray nginx cron
 systemctl   restart     v2ray nginx cron
@@ -124,7 +122,12 @@ finish=$(date +%s)
 timeconsume=$(( finish - begin ))
 echo   "脚本运行时间$timeconsume秒。"
 #至此V2Ray可正常工作
-
+#启用sni转发
+snienable(){
+\cp         -f          /etc/nginx/modules-available/upstream.conf       /etc/nginx/modules-enabled/upstream.conf
+sed         -i          ''/443\ ssl/d''                                  /etc/nginx/sites-enabled/v2ray.conf
+systemctl   restart     v2ray nginx cron
+}
 
 
 
