@@ -37,13 +37,13 @@ echo '
 ,"remote_addr": "www.rodong.rep.kp"
 ,"remote_port": 80
 ,"password": ["fengkuang"]
-,"ssl": {"cert": "/etc/letsencrypt/live/www.example.com/fullchain.pem"
-        ,"key" : "/etc/letsencrypt/live/www.example.com/privkey.pem"
+,"ssl": {"cert": "/etc/letsencrypt/live/trojan.example.com/fullchain.pem"
+        ,"key" : "/etc/letsencrypt/live/trojan.example.com/privkey.pem"
         ,"alpn": ["http/1.1"]
         }
 }
 '        >       /etc/trojan/config.json
-sed     -i      ''s/www.example.com/$site/g''       /etc/trojan/config.json
+sed     -i      ''s/trojan.example.com/$site/g''       /etc/trojan/config.json
 #启动trojan
 systemctl     enable      trojan cron
 systemctl     restart     trojan cron
