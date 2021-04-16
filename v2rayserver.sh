@@ -36,27 +36,6 @@ echo     '
 net.core.default_qdisc=fq
 net.ipv4.tcp_congestion_control=bbr
 '         >       /etc/sysctl.conf
-#创建sni转发配置文件
-echo '
-stream {
-map $ssl_preread_server_name $backend_name {
-default web;
-vmess.example.com vmess;
-trojan.example.com trojan;
-}
-upstream web {server 127.0.0.1:10240;}
-upstream vmess {server 127.0.0.1:10241;}
-upstream trojan {server 127.0.0.1:10242;}
-server {
-listen 443 reuseport;
-listen [::]:443 reuseport;
-proxy_pass  $backend_name;
-ssl_preread on;
-}
-}
-'         >        /etc/nginx/modules-available/upstream.conf
-sed      -i        ''s/vmess.example.com/$site/g''             /etc/nginx/modules-available/upstream.conf
-rm       -rf       /etc/nginx/modules-enabled/upstream.conf
 #创建nginx站点配置文件
 echo '
 server{
@@ -124,6 +103,26 @@ echo   "脚本运行时间$timeconsume秒。"
 #至此V2Ray可正常工作
 #启用sni转发
 snienable(){
+echo '
+stream {
+map $ssl_preread_server_name $backend_name {
+default web;
+vmess.example.com vmess;
+trojan.example.com trojan;
+}
+upstream web {server 127.0.0.1:10240;}
+upstream vmess {server 127.0.0.1:10241;}
+upstream trojan {server 127.0.0.1:10242;}
+server {
+listen 443 reuseport;
+listen [::]:443 reuseport;
+proxy_pass  $backend_name;
+ssl_preread on;
+}
+}
+'           >           /etc/nginx/modules-available/upstream.conf
+sed         -i          ''s/vmess.example.com/$site/g''                  /etc/nginx/modules-available/upstream.conf
+rm          -rf         /etc/nginx/modules-enabled/upstream.conf
 \cp         -f          /etc/nginx/modules-available/upstream.conf       /etc/nginx/modules-enabled/upstream.conf
 sed         -i          ''/443\ ssl/d''                                  /etc/nginx/sites-enabled/v2ray.conf
 systemctl   restart     v2ray nginx cron
