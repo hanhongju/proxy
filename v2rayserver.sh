@@ -48,18 +48,22 @@ echo '
 ,"outbounds":[{"protocol": "freedom"}]
 }
 '     >     /usr/local/etc/v2ray/config.json
-#创建nginx配置文件
+#创建sni转发配置文件
+
+
+
+#创建nginx站点配置文件
 echo '
 server{
-server_name www.example.com;
+server_name vmess.example.com;
 set $proxy_name pubmed.ncbi.nlm.nih.gov;
 resolver 8.8.8.8 8.8.4.4 valid=300s;
 listen 80;
 listen [::]:80;
 listen 443 ssl;
 listen [::]:443 ssl;
-ssl_certificate          /etc/letsencrypt/live/www.example.com/fullchain.pem;
-ssl_certificate_key      /etc/letsencrypt/live/www.example.com/privkey.pem;
+ssl_certificate          /etc/letsencrypt/live/vmess.example.com/fullchain.pem;
+ssl_certificate_key      /etc/letsencrypt/live/vmess.example.com/privkey.pem;
 if ( $scheme = http ){return 301 https://$server_name$request_uri;}
 location /         {           #设置反代网站
 sub_filter   $proxy_name   $server_name;
@@ -81,7 +85,7 @@ proxy_set_header Host $host;
 }
 }
 '         >         /etc/nginx/sites-enabled/v2ray.conf
-sed      -i        ''s/www.example.com/$site/g''             /etc/nginx/sites-enabled/v2ray.conf
+sed      -i        ''s/vmess.example.com/$site/g''             /etc/nginx/sites-enabled/v2ray.conf
 #启动V2Ray和Nginx：
 systemctl   enable      v2ray nginx cron
 systemctl   restart     v2ray nginx cron
