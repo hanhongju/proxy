@@ -54,8 +54,8 @@ proxy_pass  $backend_name;
 ssl_preread on;
 }
 }
-'         >        /etc/nginx/modules-enabled/upstream.conf
-sed      -i        ''s/vmess.example.com/$site/g''             /etc/nginx/modules-enabled/upstream.conf
+'         >        /etc/nginx/modules-available/upstream.conf
+sed      -i        ''s/vmess.example.com/$site/g''             /etc/nginx/modules-available/upstream.conf
 #创建nginx站点配置文件
 echo '
 server{
@@ -64,6 +64,8 @@ set $proxy_name pubmed.ncbi.nlm.nih.gov;
 resolver 8.8.8.8 8.8.4.4 valid=300s;
 listen 80;
 listen [::]:80;
+listen 443 ssl;
+listen [::]:443 ssl;
 listen 10242 ssl;
 listen [::]:10242 ssl;
 ssl_certificate          /etc/letsencrypt/live/vmess.example.com/fullchain.pem;
@@ -102,6 +104,9 @@ echo '
 ,"outbounds":[{"protocol": "freedom"}]
 }
 '     >     /usr/local/etc/v2ray/config.json
+#启用sni转发
+#\cp      -f        /etc/nginx/modules-available/upstream.conf       /etc/nginx/modules-enabled/upstream.conf
+#sed      -i        ''/443\ ssl/d''                                  /etc/nginx/sites-enabled/v2ray.conf
 #启动V2Ray和Nginx：
 systemctl   enable      v2ray nginx cron
 systemctl   restart     v2ray nginx cron
