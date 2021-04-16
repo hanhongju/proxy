@@ -36,22 +36,26 @@ echo     '
 net.core.default_qdisc=fq
 net.ipv4.tcp_congestion_control=bbr
 '         >       /etc/sysctl.conf
-#修改v2ray配置
-echo '
-{"inbounds": [{"port": 8964
-              ,"protocol": "vmess"
-              ,"settings": {"clients": [{"id": "8c38d360-bb8f-11ea-9ffd-c182155e578a"}]}
-              ,"streamSettings": {"network": "ws"
-                                 ,"wsSettings": {"path": "/world"}
-                                 }
-             }]
-,"outbounds":[{"protocol": "freedom"}]
-}
-'     >     /usr/local/etc/v2ray/config.json
 #创建sni转发配置文件
-
-
-
+echo '
+stream {
+map $ssl_preread_server_name $backend_name {
+default web;
+vmess.example.com vmess;
+trojan.example.com trojan;
+}
+upstream web {server 127.0.0.1:10240;}
+upstream trojan {server 127.0.0.1:10241;}
+upstream vmess {server 127.0.0.1:10242;}
+server {
+listen 443 reuseport;
+listen [::]:443 reuseport;
+proxy_pass  $backend_name;
+ssl_preread on;
+}
+}
+'         >        /etc/nginx/modules-enabled/upstream.conf
+sed      -i        ''s/vmess.example.com/$site/g''             /etc/nginx/modules-enabled/upstream.conf
 #创建nginx站点配置文件
 echo '
 server{
@@ -60,8 +64,8 @@ set $proxy_name pubmed.ncbi.nlm.nih.gov;
 resolver 8.8.8.8 8.8.4.4 valid=300s;
 listen 80;
 listen [::]:80;
-listen 443 ssl;
-listen [::]:443 ssl;
+listen 10242 ssl;
+listen [::]:10242 ssl;
 ssl_certificate          /etc/letsencrypt/live/vmess.example.com/fullchain.pem;
 ssl_certificate_key      /etc/letsencrypt/live/vmess.example.com/privkey.pem;
 if ( $scheme = http ){return 301 https://$server_name$request_uri;}
@@ -84,8 +88,20 @@ proxy_set_header Connection "upgrade";
 proxy_set_header Host $host;
 }
 }
-'         >         /etc/nginx/sites-enabled/v2ray.conf
+'         >        /etc/nginx/sites-enabled/v2ray.conf
 sed      -i        ''s/vmess.example.com/$site/g''             /etc/nginx/sites-enabled/v2ray.conf
+#修改v2ray配置
+echo '
+{"inbounds": [{"port": 8964
+              ,"protocol": "vmess"
+              ,"settings": {"clients": [{"id": "8c38d360-bb8f-11ea-9ffd-c182155e578a"}]}
+              ,"streamSettings": {"network": "ws"
+                                 ,"wsSettings": {"path": "/world"}
+                                 }
+             }]
+,"outbounds":[{"protocol": "freedom"}]
+}
+'     >     /usr/local/etc/v2ray/config.json
 #启动V2Ray和Nginx：
 systemctl   enable      v2ray nginx cron
 systemctl   restart     v2ray nginx cron
