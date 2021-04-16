@@ -45,8 +45,8 @@ vmess.example.com vmess;
 trojan.example.com trojan;
 }
 upstream web {server 127.0.0.1:10240;}
-upstream trojan {server 127.0.0.1:10241;}
-upstream vmess {server 127.0.0.1:10242;}
+upstream vmess {server 127.0.0.1:10241;}
+upstream trojan {server 127.0.0.1:10242;}
 server {
 listen 443 reuseport;
 listen [::]:443 reuseport;
@@ -67,8 +67,8 @@ listen 80;
 listen [::]:80;
 listen 443 ssl;
 listen [::]:443 ssl;
-listen 10242 ssl;
-listen [::]:10242 ssl;
+listen 10241 ssl;
+listen [::]:10241 ssl;
 ssl_certificate          /etc/letsencrypt/live/vmess.example.com/fullchain.pem;
 ssl_certificate_key      /etc/letsencrypt/live/vmess.example.com/privkey.pem;
 if ( $scheme = http ){return 301 https://$server_name$request_uri;}
