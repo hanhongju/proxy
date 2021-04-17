@@ -126,7 +126,7 @@ echo   "脚本运行时间$timeconsume秒。"
 snienable(){
 \cp         -f          /etc/nginx/modules-available/upstream.conf       /etc/nginx/modules-enabled/upstream.conf
 sed         -i          ''/443\ ssl/d''                                  /etc/nginx/sites-enabled/v2ray.conf
-systemctl   restart     v2ray nginx cron
+systemctl   restart     nginx
 }
 
 
