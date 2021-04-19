@@ -4,7 +4,7 @@ echo    "
 理解这些信息后请按回车键继续，并在下一栏输入您解析的有效域名。
 "
 read    nothing
-echo    "请输入此VPS的IP对应的域名地址："
+echo    "请输入域名地址："
 read    site
 echo    "好的，现在要开始安装了。"
 sleep   5s
