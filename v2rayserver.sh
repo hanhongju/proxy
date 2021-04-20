@@ -35,7 +35,7 @@ echo     '
 net.core.default_qdisc=fq
 net.ipv4.tcp_congestion_control=bbr
 '         >       /etc/sysctl.conf
-#准备sni转发配置
+#启用sni转发配置
 echo '
 stream {
 map $ssl_preread_server_name $destination {
@@ -50,6 +50,7 @@ ssl_preread on;
 }
 '           >           /etc/nginx/modules-enabled/stream.conf
 mkdir       -p          /etc/nginx/map/
+#设置sni转发域名
 echo        'vmess.example.com     127.0.0.1:10241;'        >       /etc/nginx/map/v2ray.conf
 sed         -i          ''s/vmess.example.com/$site/g''             /etc/nginx/map/v2ray.conf
 #创建nginx站点配置文件
@@ -113,12 +114,7 @@ finish=$(date +%s)
 timeconsume=$(( finish - begin ))
 echo   "脚本运行时间$timeconsume秒。"
 #至此V2Ray可正常工作
-#启用sni转发
-snienable(){
-\cp         -f          /etc/nginx/modules-available/upstream.conf       /etc/nginx/modules-enabled/upstream.conf
-sed         -i          ''/443\ ssl/d''                                  /etc/nginx/sites-enabled/v2ray.conf
-systemctl   restart     nginx
-}
+
 
 
 
