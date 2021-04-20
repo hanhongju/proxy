@@ -47,8 +47,8 @@ proxy_pass $destination;
 }
 }
 '           >           /etc/nginx/modules-enabled/stream.conf
-mkdir       -p          /etc/nginx/map/
 #设置sni转发域名
+mkdir       -p          /etc/nginx/map/
 echo        'vmess.example.com     127.0.0.1:10241;'        >       /etc/nginx/map/v2ray.conf
 sed         -i          ''s/vmess.example.com/$site/g''             /etc/nginx/map/v2ray.conf
 #创建nginx站点配置文件
