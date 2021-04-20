@@ -61,7 +61,6 @@ listen 10241 ssl;
 listen [::]:10241 ssl;
 ssl_certificate          /etc/letsencrypt/live/vmess.example.com/fullchain.pem;
 ssl_certificate_key      /etc/letsencrypt/live/vmess.example.com/privkey.pem;
-if ( $scheme = http ){return 301 https://$server_name$request_uri;}
 location /         {           #设置反代网站
 sub_filter   $proxy_name   $server_name;
 sub_filter_once off;
