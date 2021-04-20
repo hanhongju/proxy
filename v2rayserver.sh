@@ -38,9 +38,7 @@ net.ipv4.tcp_congestion_control=bbr
 #启用sni转发配置
 echo '
 stream {
-map $ssl_preread_server_name $destination {
-include /etc/nginx/map/*.conf;
-}
+map $ssl_preread_server_name $destination {include /etc/nginx/map/*.conf;}
 server {
 listen 443       reuseport;
 listen [::]:443  reuseport;
