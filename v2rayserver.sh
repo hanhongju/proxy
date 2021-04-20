@@ -40,10 +40,10 @@ echo '
 stream {
 map $ssl_preread_server_name $destination {include /etc/nginx/map/*.conf;}
 server {
-ssl_preread      on;
-listen 443       reuseport;
-listen [::]:443  reuseport;
-proxy_pass       $destination;
+listen 443;
+listen [::]:443;
+ssl_preread on;
+proxy_pass $destination;
 }
 }
 '           >           /etc/nginx/modules-enabled/stream.conf
