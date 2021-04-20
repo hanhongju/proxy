@@ -39,30 +39,27 @@ net.ipv4.tcp_congestion_control=bbr
 echo '
 stream {
 map $ssl_preread_server_name $destination {
-default             127.0.0.1:10240;
-vmess.example.com   127.0.0.1:10241;
-trojan.example.com  127.0.0.1:10242;
+include /etc/nginx/modules-enabled/streamport/*.conf;
 }
 server {
-listen 443;
+listen 80      reuseport;
+listen [::]:80 reuseport;
+listen 443      reuseport;
 listen [::]:443 reuseport;
 proxy_pass  $destination;
 ssl_preread on;
 }
 }
-'           >           /etc/nginx/modules-available/upstream.conf
-sed         -i          ''s/vmess.example.com/$site/g''                  /etc/nginx/modules-available/upstream.conf
-rm          -rf         /etc/nginx/modules-enabled/upstream.conf
+'           >           /etc/nginx/modules-enabled/stream.conf
+mkdir       -p          /etc/nginx/modules-enabled/streamport
+echo        'vmess.example.com     127.0.0.1:10241;'        >       /etc/nginx/modules-enabled/streamport/v2ray.conf
+sed         -i          ''s/vmess.example.com/$site/g''             /etc/nginx/modules-enabled/streamport/v2ray.conf
 #创建nginx站点配置文件
 echo '
 server{
 server_name vmess.example.com;
 set $proxy_name pubmed.ncbi.nlm.nih.gov;
 resolver 8.8.8.8 8.8.4.4 valid=300s;
-listen 80;
-listen [::]:80;
-listen 443 ssl;
-listen [::]:443 ssl;
 listen 10241 ssl;
 listen [::]:10241 ssl;
 ssl_certificate          /etc/letsencrypt/live/vmess.example.com/fullchain.pem;
