@@ -42,8 +42,6 @@ map $ssl_preread_server_name $destination {
 include /etc/nginx/map/*.conf;
 }
 server {
-listen 80        reuseport;
-listen [::]:80   reuseport;
 listen 443       reuseport;
 listen [::]:443  reuseport;
 proxy_pass  $destination;
