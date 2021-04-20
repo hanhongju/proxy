@@ -39,7 +39,7 @@ net.ipv4.tcp_congestion_control=bbr
 echo '
 stream {
 map $ssl_preread_server_name $destination {
-include /etc/nginx/modules-enabled/streamport/*.conf;
+include /etc/nginx/map/*.conf;
 }
 server {
 listen 80        reuseport;
@@ -51,9 +51,9 @@ ssl_preread on;
 }
 }
 '           >           /etc/nginx/modules-enabled/stream.conf
-mkdir       -p          /etc/nginx/modules-enabled/streamport
-echo        'vmess.example.com     127.0.0.1:10241;'        >       /etc/nginx/modules-enabled/streamport/v2ray.conf
-sed         -i          ''s/vmess.example.com/$site/g''             /etc/nginx/modules-enabled/streamport/v2ray.conf
+mkdir       -p          /etc/nginx/map/
+echo        'vmess.example.com     127.0.0.1:10241;'        >       /etc/nginx/map/v2ray.conf
+sed         -i          ''s/vmess.example.com/$site/g''             /etc/nginx/map/v2ray.conf
 #创建nginx站点配置文件
 echo '
 server{
