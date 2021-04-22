@@ -35,32 +35,19 @@ echo     '
 net.core.default_qdisc=fq
 net.ipv4.tcp_congestion_control=bbr
 '         >       /etc/sysctl.conf
-#启用sni转发配置
-echo '
-stream {
-map $ssl_preread_server_name $destination {include /etc/nginx/map/*.conf;}
-server {
-listen 443;
-listen [::]:443;
-ssl_preread on;
-proxy_pass $destination;
-}
-}
-'           >           /etc/nginx/modules-enabled/stream.conf
-#设置sni转发域名
-mkdir       -p          /etc/nginx/map/
-echo        'vmess.example.com     127.0.0.1:10241;'        >       /etc/nginx/map/v2ray.conf
-sed         -i          ''s/vmess.example.com/$site/g''             /etc/nginx/map/v2ray.conf
 #创建nginx站点配置文件
 echo '
 server{
 server_name vmess.example.com;
 set $proxy_name pubmed.ncbi.nlm.nih.gov;
 resolver 8.8.8.8 8.8.4.4 valid=300s;
-listen 10241 ssl;
-listen [::]:10241 ssl;
+listen 80;
+listen [::]:80;
+listen 443 ssl;
+listen [::]:443 ssl;
 ssl_certificate          /etc/letsencrypt/live/vmess.example.com/fullchain.pem;
 ssl_certificate_key      /etc/letsencrypt/live/vmess.example.com/privkey.pem;
+if ( $scheme = http ){return 301 https://$server_name$request_uri;}
 location /         {           #设置反代网站
 sub_filter   $proxy_name   $server_name;
 sub_filter_once off;
