@@ -4,7 +4,7 @@ apt      install     -y    shadowsocks-libev
 #创建shadowsocks-server配置文件
 echo '
 {"server":["[::0]", "0.0.0.0"]
-,"server_port": 200
+,"server_port": 10086
 ,"password":"fengkuang"
 ,"timeout":60
 ,"mode":"tcp_and_udp"
@@ -26,7 +26,7 @@ apt      install     -y    shadowsocks-libev
 #写入服务器信息
 echo   '
 {"server": "one.thenote.site"
-,"server_port": 200
+,"server_port": 10086
 ,"local_address": "0.0.0.0"
 ,"local_port": 9000
 ,"password": "fengkuang"
