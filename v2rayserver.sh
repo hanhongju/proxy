@@ -18,8 +18,10 @@ sleep   5s
 begin=$(date +%s)
 #安装软件申请证书
 apt    update
-apt    install   -y       curl nginx certbot
-bash   <(curl    -sL      https://raw.githubusercontent.com/v2fly/fhs-install-v2ray/master/install-release.sh)
+apt    install   -y       curl nginx certbot wget unzip
+wget   https://raw.githubusercontent.com/v2fly/fhs-install-v2ray/master/install-release.sh   -cP    /home/
+wget   https://github.com/v2fly/v2ray-core/releases/download/v4.38.3/v2ray-linux-64.zip      -cP    /home/
+bash   /home/install-release.sh    -l    /home/v2ray-linux-64.zip
 systemctl     stop        nginx apache2
 certbot       certonly    --standalone -n --agree-tos -m 86606682@qq.com -d $site
 chmod         -R   777    /etc/letsencrypt/
