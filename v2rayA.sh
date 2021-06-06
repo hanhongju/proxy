@@ -9,3 +9,6 @@ wget   https://github.com/v2rayA/v2rayA/releases/download/v1.3.3/installer_debia
 apt    install    -y    /home/installer_debian_amd64_v1.3.3.deb
 # 访问http://localhost:2017/进行客户端节点配置
 
+
+
+
