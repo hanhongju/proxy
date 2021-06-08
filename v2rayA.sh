@@ -1,4 +1,4 @@
-# V2rayA客户端安装脚本 @ Debian 10 or Ubuntu 20.04
+# V2rayA客户端安装脚本 @ Debian 10 or Ubuntu 20.04 or CentOS 8
 #安装v2ray-core
 apt    update
 apt    install   -y    wget
