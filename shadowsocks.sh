@@ -14,7 +14,7 @@ echo '
 #重启服务
 systemctl   enable      shadowsocks-libev
 systemctl   restart     shadowsocks-libev
-#回显ss-server监听端口
+
 
 
 
@@ -36,7 +36,8 @@ echo   '
 #启动服务
 systemctl   enable      shadowsocks-libev-local@root
 systemctl   restart     shadowsocks-libev-local@root
-#回显ss-local监听端口
+
+
 
 
 
