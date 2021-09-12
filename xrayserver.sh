@@ -61,13 +61,7 @@ xray        -test        -config=/usr/local/etc/xray/config.json
 sysctl      -p
 crontab     -l
 ss          -plnt   |   awk 'NR>1 {print $4,$6}'   |   column   -t
-if          [[  $(ss      -plnt     2>&1 )   =~   xray    ]]
-then        echo   "至此，xray可正常工作。"
-else        echo   "您的xray配置文件有误，所以xray不能正常工作。"
-fi
-finish=$(date +%s)
-timeconsume=$(( finish - begin ))
-echo   "脚本运行时间$timeconsume秒。"
+
 
 
 
