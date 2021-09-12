@@ -16,7 +16,7 @@ sleep   5s
 begin=$(date +%s)
 #安装软件申请证书
 apt     update    -y
-apt     install   -y      curl nginx certbot wget unzip
+apt     install   -y      curl certbot
 bash          -c          "$(curl -L https://github.com/XTLS/Xray-install/raw/main/install-release.sh)" @ install
 systemctl     stop        nginx apache2
 certbot       certonly    --standalone -n --agree-tos -m 86606682@qq.com -d $site
@@ -54,8 +54,8 @@ echo '
              }]
 ,"outbounds":[{"protocol": "freedom"}]
 }
-'     >     /usr/local/etc/xray/config.json
-sed      -i        ''s/xray.example.com/$site/g''            /usr/local/etc/xray/config.json
+'                     >                           /usr/local/etc/xray/config.json
+sed   -i    ''s/xray.example.com/$site/g''        /usr/local/etc/xray/config.json
 #启动V2Ray和Nginx：
 systemctl   enable      xray cron
 systemctl   restart     xray cron
