@@ -11,7 +11,7 @@ sleep   5s
 #计时
 begin=$(date +%s)
 #安装软件申请证书
-apt    update
+apt    update    -y
 apt    install   -y       trojan certbot
 systemctl     stop        nginx apache2
 certbot       certonly    --standalone -n --agree-tos -m 86606682@qq.com -d $site
