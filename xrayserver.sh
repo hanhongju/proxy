@@ -12,7 +12,6 @@ echo    "请输入域名地址："
 read    site
 echo    "好的，现在要开始安装了。"
 sleep   5s
-begin=$(date +%s)
 #安装软件申请证书
 apt     update    -y
 apt     install   -y      curl certbot
