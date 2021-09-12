@@ -66,7 +66,7 @@ proxy_set_header Connection "upgrade";
 proxy_set_header Host $host;
 }
 }
-'         >        /etc/nginx/sites-enabled/v2ray.conf
+'                            >                                 /etc/nginx/sites-enabled/v2ray.conf
 sed      -i        ''s/vmess.example.com/$site/g''             /etc/nginx/sites-enabled/v2ray.conf
 #修改v2ray配置
 echo '
