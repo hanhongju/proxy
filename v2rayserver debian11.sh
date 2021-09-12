@@ -98,3 +98,14 @@ timeconsume=$(( finish - begin ))
 echo   "脚本运行时间$timeconsume秒。"
 #至此V2Ray可正常工作
 
+
+
+
+
+
+
+
+
+
+
+
