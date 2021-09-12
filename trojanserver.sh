@@ -41,24 +41,15 @@ echo '
         ,"alpn": ["http/1.1"]
         }
 }
-'        >       /etc/trojan/config.json
+'                            >                         /etc/trojan/config.json
 sed     -i      ''s/trojan.example.com/$site/g''       /etc/trojan/config.json
 #启动trojan
-systemctl     enable      trojan cron
-systemctl     restart     trojan cron
-#验证配置文件，显示监听端口
+systemctl   enable    trojan cron
+systemctl   restart   trojan cron
 trojan      -t
 sysctl      -p
 crontab     -l
-if          [[  $(ss   -plnt     2>&1 )   =~   trojan   ]]
-then        echo   "至此，trojan可正常工作。服务器密码为fengkuang。"
-else        echo   "您输入的域名地址可能没有正确解析或者短时间申请了太多的证书，不能正常申请证书，所以trojan不能正常工作。在您确认了域名解析没有问题后再请重新运行本脚本。"
-fi
-finish=$(date +%s)
-timeconsume=$(( finish - begin ))
-echo   "脚本运行时间$timeconsume秒。"
-#至此trojan可正常工作
-
+ss          -plnt   |   awk 'NR>1 {print $4,$6}'   |   column   -t
 
 
 
