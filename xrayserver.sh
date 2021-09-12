@@ -37,20 +37,18 @@ echo '
               ,"protocol": "vless"
               ,"settings": {"clients": [{"id": "8c38d360-bb8f-11ea-9ffd-c182155e578a"}]
                            ,"decryption": "none"
-                           ,"fallbacks": [{"dest": "www.rodong.rep.kp:80"}
-                                         ,{"alpn": "h2"
-                                          ,"dest": "www.rodong.rep.kp:80"}]
-                            }
+                           ,"fallbacks": [{"dest": "www.rodong.rep.kp:80"}]
+                           }
               ,"streamSettings": {"network": "tcp"
                                  ,"security": "tls"
                                  ,"tlsSettings": {"serverName": "xray.example.com"
-                                                   ,"alpn": ["h2","http/1.1"]
-                                                   ,"certificates":[{"certificateFile": "/etc/letsencrypt/live/xray.example.com/fullchain.pem"
-                                                                    ,"keyFile": "/etc/letsencrypt/live/xray.example.com/privkey.pem"}]
-                                                   }
+                                                  ,"alpn": ["http/1.1"]
+                                                  ,"certificates": [{"certificateFile": "/etc/letsencrypt/live/xray.example.com/fullchain.pem"
+                                                                   ,"keyFile": "/etc/letsencrypt/live/xray.example.com/privkey.pem"}]
+                                                  }
                                   }
              }]
-,"outbounds":[{"protocol": "freedom"}]
+,"outbounds": [{"protocol": "freedom"}]
 }
 '                     >                           /usr/local/etc/xray/config.json
 sed   -i    ''s/xray.example.com/$site/g''        /usr/local/etc/xray/config.json
