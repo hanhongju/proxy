@@ -12,7 +12,6 @@ echo    "请输入域名地址："
 read    site
 echo    "好的，现在要开始安装了。"
 sleep   5s
-#计时
 begin=$(date +%s)
 #安装软件申请证书
 apt     update    -y
@@ -33,7 +32,7 @@ echo     '
 net.core.default_qdisc=fq
 net.ipv4.tcp_congestion_control=bbr
 '         >       /etc/sysctl.conf
-#修改v2ray配置
+#修改配置
 echo '
 {"inbounds": [{"port": 443
               ,"protocol": "vless"
@@ -56,10 +55,8 @@ echo '
 }
 '                     >                           /usr/local/etc/xray/config.json
 sed   -i    ''s/xray.example.com/$site/g''        /usr/local/etc/xray/config.json
-#启动V2Ray和Nginx：
-systemctl   enable      xray cron
-systemctl   restart     xray cron
-#验证配置文件，显示监听端口
+systemctl   enable       xray cron
+systemctl   restart      xray cron
 xray        -test        -config=/usr/local/etc/xray/config.json
 sysctl      -p
 crontab     -l
@@ -71,7 +68,6 @@ fi
 finish=$(date +%s)
 timeconsume=$(( finish - begin ))
 echo   "脚本运行时间$timeconsume秒。"
-#至此V2Ray可正常工作
 
 
 
