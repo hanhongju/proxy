@@ -1,4 +1,4 @@
-# V2rayserver安装脚本 @ Debian 11
+# v2rayserver安装脚本 @ Debian 11
 echo    "
 本脚本可以自动安装v2ray，自动申请并使用tls证书加密保护v2ray的流量，反代美国国家生物技术信息中心网址进行网站伪装。安装完成后v2ray配置:
 端口为             443
