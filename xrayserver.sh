@@ -32,7 +32,7 @@ echo     '
 net.core.default_qdisc=fq
 net.ipv4.tcp_congestion_control=bbr
 '         >       /etc/sysctl.conf
-#修改配置
+#修改配置，启动
 echo '
 {"inbounds": [{"port": 443
               ,"protocol": "vless"
