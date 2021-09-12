@@ -1,6 +1,6 @@
 # xrayserver安装脚本 @ Debian 10 or Ubuntu 20.04
 echo    "
-本脚本可以自动安装xray，自动申请并使用tls证书加密保护xray的流量，反代美国国家生物技术信息中心网址进行网站伪装。安装完成后xray配置:
+本脚本可以自动安装xray，自动申请并使用tls证书加密保护xray的流量，反代朝鲜劳动新闻网进行网站伪装。安装完成后xray配置:
 端口为             443
 用户ID为           8c38d360-bb8f-11ea-9ffd-c182155e578a
 传输协议为         tcp
