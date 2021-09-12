@@ -28,7 +28,7 @@ echo     '
 net.core.default_qdisc=fq
 net.ipv4.tcp_congestion_control=bbr
 '         >       /etc/sysctl.conf
-#修改trojan配置文件
+#修改配置，启动
 echo '
 {"run_type": "server"
 ,"local_addr": "::"
@@ -43,7 +43,6 @@ echo '
 }
 '                            >                         /etc/trojan/config.json
 sed     -i      ''s/trojan.example.com/$site/g''       /etc/trojan/config.json
-#启动trojan
 systemctl   enable    trojan cron
 systemctl   restart   trojan cron
 trojan      -t
