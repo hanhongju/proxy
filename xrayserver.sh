@@ -42,8 +42,8 @@ echo '
               ,"streamSettings": {"network": "tcp"
                                  ,"security": "tls"
                                  ,"tlsSettings": {"serverName": "xray.example.com"
-                                                  ,"alpn": ["http/1.1"]
-                                                  ,"certificates": [{"certificateFile": "/etc/letsencrypt/live/xray.example.com/fullchain.pem"
+                                                 ,"alpn": ["http/1.1"]
+                                                 ,"certificates": [{"certificateFile": "/etc/letsencrypt/live/xray.example.com/fullchain.pem"
                                                                    ,"keyFile": "/etc/letsencrypt/live/xray.example.com/privkey.pem"}]
                                                   }
                                   }
