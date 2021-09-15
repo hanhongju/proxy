@@ -16,8 +16,7 @@ sleep   5s
 apt     update    -y
 apt     install   -y      wget certbot 
 wget    https://github.com/XTLS/Xray-install/raw/main/install-release.sh
-bash    install-release.sh  install
-
+bash    install-release.sh    install
 systemctl     stop        nginx apache2
 certbot       certonly    --standalone -n --agree-tos -m 86606682@qq.com -d $site
 chmod         -R   777    /etc/letsencrypt/
