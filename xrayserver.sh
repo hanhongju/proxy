@@ -15,7 +15,7 @@ sleep   5s
 #安装软件申请证书
 apt     update    -y
 apt     install   -y      wget certbot 
-wget    https://github.com/XTLS/Xray-install/raw/main/install-release.sh
+wget    https://github.com/XTLS/Xray-install/raw/main/install-release.sh   -c
 bash    install-release.sh    install
 systemctl     stop        nginx apache2
 certbot       certonly    --standalone -n --agree-tos -m 86606682@qq.com -d $site
