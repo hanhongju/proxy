@@ -5,7 +5,7 @@ apt      install     -y    shadowsocks-libev
 echo '
 {"server":["[::0]", "0.0.0.0"]
 ,"server_port": 10086
-,"password":"fengkuang"
+,"password":"feichengwurao"
 ,"timeout":60
 ,"mode":"tcp_and_udp"
 ,"method":"aes-256-gcm"
@@ -27,7 +27,7 @@ echo   '
 ,"server_port": 10086
 ,"local_address": "0.0.0.0"
 ,"local_port": 9000
-,"password": "fengkuang"
+,"password": "feichengwurao"
 ,"timeout": 60
 ,"mode": "tcp_and_udp"
 ,"method": "aes-256-gcm"
