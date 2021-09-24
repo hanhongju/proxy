@@ -33,7 +33,7 @@ echo '
 ,"local_port": 443
 ,"remote_addr": "www.rodong.rep.kp"
 ,"remote_port": 80
-,"password": ["fengkuang"]
+,"password": ["feichengwurao"]
 ,"ssl": {"cert": "/etc/letsencrypt/live/trojan.example.com/fullchain.pem"
         ,"key" : "/etc/letsencrypt/live/trojan.example.com/privkey.pem"
         ,"alpn": ["http/1.1"]
