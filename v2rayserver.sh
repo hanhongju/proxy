@@ -42,7 +42,7 @@ echo '
                                  ,"tlsSettings": {"serverName": "www.example.com"
                                                  ,"alpn": ["http/1.1"]
                                                  ,"certificates": [{"certificateFile": "/etc/letsencrypt/live/www.example.com/fullchain.pem"
-                                                                   ,"keyFile": "/etc/letsencrypt/live/www.example.com/privkey.pem"}]
+                                                                   ,"keyFile":         "/etc/letsencrypt/live/www.example.com/privkey.pem"}]
                                                   }
                                   }
              }]
