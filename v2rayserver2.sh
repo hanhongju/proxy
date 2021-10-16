@@ -23,7 +23,6 @@ echo    "
 0 0 1 * *     systemctl     stop        nginx apache2
 1 0 1 * *     certbot       renew
 2 0 1 * *     chmod         -R   777    /etc/letsencrypt/
-3 0 * * *     systemctl     restart     nginx
 "       |     crontab
 #修改系统控制文件启用BBR
 echo     '
