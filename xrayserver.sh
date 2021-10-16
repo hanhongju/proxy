@@ -14,9 +14,9 @@ echo    "请输入域名地址："
 read    site
 echo    "好的，现在要开始安装了。"
 sleep   5s
-
+#计时
 begin=$(date +%s)
-
+#安装软件申请证书
 apt     update
 apt     install   -y       nginx certbot
 wget    https://github.com/XTLS/Xray-install/raw/main/install-release.sh   -c
@@ -24,19 +24,19 @@ bash    install-release.sh    install
 systemctl     stop        nginx apache2
 certbot       certonly    --standalone -n --agree-tos -m 86606682@qq.com -d $site
 chmod         -R   777    /etc/letsencrypt/
-
+#配置证书自动更新
 echo    "
 0 0 1 * *     systemctl     stop        nginx apache2
 1 0 1 * *     certbot       renew
 2 0 1 * *     chmod         -R   777    /etc/letsencrypt/
 3 0 * * *     systemctl     restart     nginx
 "       |     crontab
-
+#修改系统控制文件启用BBR
 echo     '
 net.core.default_qdisc=fq
 net.ipv4.tcp_congestion_control=bbr
 '         >       /etc/sysctl.conf
-
+#修改配置，启动
 echo '
 server{
 server_name www.example.com;
@@ -70,7 +70,6 @@ proxy_set_header Host $host;
 }
 '                            >                                 /etc/nginx/sites-enabled/xray.conf
 sed      -i        ''s/www.example.com/$site/g''               /etc/nginx/sites-enabled/xray.conf
-
 echo '
 {"inbounds": [{"port": 8964
               ,"protocol": "vmess"
@@ -82,7 +81,6 @@ echo '
 ,"outbounds":[{"protocol": "freedom"}]
 }
 '     >     /usr/local/etc/xray/config.json
-
 systemctl   enable      xray nginx cron
 systemctl   restart     xray nginx cron
 xray        -test      -config=/usr/local/etc/xray/config.json
