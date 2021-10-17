@@ -39,8 +39,8 @@ echo '
         ,"alpn": ["http/1.1"]
         }
 }
-'                            >                         /etc/trojan/config.json
-sed     -i      ''s/trojan.example.com/$site/g''       /etc/trojan/config.json
+'                     >                                      /etc/trojan/config.json
+sed         -i        ''s/trojan.example.com/$site/g''       /etc/trojan/config.json
 systemctl   enable    trojan cron
 systemctl   restart   trojan cron
 trojan      -t
