@@ -10,7 +10,7 @@ echo    "好的，现在要开始安装了。"
 sleep   5s
 #安装软件申请证书
 apt    update    -y
-apt    install   -y       trojan certbot
+apt    install   -y       certbot trojan
 systemctl     stop        nginx apache2
 certbot       certonly    --standalone -n --agree-tos -m 86606682@qq.com -d $site
 chmod         -R   777    /etc/letsencrypt/
