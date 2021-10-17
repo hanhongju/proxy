@@ -17,10 +17,10 @@ sleep   5s
 #计时
 begin=$(date +%s)
 #安装软件申请证书
-apt     update
-apt     install   -y       wget nginx certbot
-wget    -c    https://github.com/XTLS/Xray-install/raw/main/install-release.sh
-bash    install-release.sh    install
+apt           update
+apt           -y    install     wget nginx certbot
+wget          -c    https://github.com/XTLS/Xray-install/raw/main/install-release.sh
+bash          install-release.sh    install
 systemctl     stop        nginx apache2
 certbot       certonly    --standalone -n --agree-tos -m 86606682@qq.com -d $site
 chmod         -R   777    /etc/letsencrypt/
