@@ -60,7 +60,7 @@ listen [::]:443 ssl;
 ssl_certificate          /etc/letsencrypt/live/www.example.com/fullchain.pem;
 ssl_certificate_key      /etc/letsencrypt/live/www.example.com/privkey.pem;
 if  ( $scheme = http )   {return 301 https://$server_name$request_uri;}
-location /         {           #设置反代网站
+location /          {
 sub_filter   $proxy_name   $server_name;
 sub_filter_once off;
 proxy_set_header X-Real-IP $remote_addr;
