@@ -1,4 +1,4 @@
-# Shadowsocks 服务器安装脚本 @ Debian 10 or Ubuntu 18.04
+# Shadowsocks 服务器安装脚本 @ Debian 10 or Ubuntu 18
 apt      update
 apt      install     -y    shadowsocks-libev
 #创建shadowsocks-server配置文件
