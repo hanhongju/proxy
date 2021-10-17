@@ -19,7 +19,7 @@ begin=$(date +%s)
 #安装软件申请证书
 apt     update
 apt     install   -y       nginx certbot
-wget    https://github.com/XTLS/Xray-install/raw/main/install-release.sh   -c
+wget    -c    https://github.com/XTLS/Xray-install/raw/main/install-release.sh
 bash    install-release.sh    install
 systemctl     stop        nginx apache2
 certbot       certonly    --standalone -n --agree-tos -m 86606682@qq.com -d $site
