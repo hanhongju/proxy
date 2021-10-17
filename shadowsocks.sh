@@ -52,7 +52,7 @@ default_user =  none
 default_pass =  none
 '          >              /etc/tsocks.conf
 #测试代理可用性
-tsocks    wget    https://cn.wordpress.org/latest-zh_CN.tar.gz   -cP   /home/wordpress/
+tsocks    wget   -c   https://cn.wordpress.org/latest-zh_CN.tar.gz   -P   /home/wordpress/
 
 
 
