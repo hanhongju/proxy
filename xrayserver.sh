@@ -38,6 +38,17 @@ net.ipv4.tcp_congestion_control=bbr
 '         >       /etc/sysctl.conf
 #修改配置，启动
 echo '
+{"inbounds": [{"port": 8964
+              ,"protocol": "vmess"
+              ,"settings": {"clients": [{"id": "8c38d360-bb8f-11ea-9ffd-c182155e578a"}]}
+              ,"streamSettings": {"network": "ws"
+                                 ,"wsSettings": {"path": "/world"}
+                                 }
+             }]
+,"outbounds":[{"protocol": "freedom"}]
+}
+'     >     /usr/local/etc/xray/config.json
+echo '
 server{
 server_name www.example.com;
 set $proxy_name pubmed.ncbi.nlm.nih.gov;
@@ -70,17 +81,6 @@ proxy_set_header Host $host;
 }
 '                            >                                 /etc/nginx/sites-enabled/xray.conf
 sed      -i        ''s/www.example.com/$site/g''               /etc/nginx/sites-enabled/xray.conf
-echo '
-{"inbounds": [{"port": 8964
-              ,"protocol": "vmess"
-              ,"settings": {"clients": [{"id": "8c38d360-bb8f-11ea-9ffd-c182155e578a"}]}
-              ,"streamSettings": {"network": "ws"
-                                 ,"wsSettings": {"path": "/world"}
-                                 }
-             }]
-,"outbounds":[{"protocol": "freedom"}]
-}
-'     >     /usr/local/etc/xray/config.json
 systemctl   enable      xray nginx cron
 systemctl   restart     xray nginx cron
 xray        -test      -config=/usr/local/etc/xray/config.json
