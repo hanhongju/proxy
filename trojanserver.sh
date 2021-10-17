@@ -56,7 +56,3 @@ ss          -plnt   |   awk 'NR>1 {print $4,$6}'   |   column   -t
 
 
 
-
-
-
-
