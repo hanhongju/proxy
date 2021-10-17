@@ -48,8 +48,8 @@ echo '
              }]
 ,"outbounds": [{"protocol": "freedom"}]
 }
-'                     >                         /etc/v2ray/config.json
-sed   -i    ''s/www.example.com/$site/g''       /etc/v2ray/config.json
+'                        >                                   /etc/v2ray/config.json
+sed         -i           ''s/www.example.com/$site/g''       /etc/v2ray/config.json
 systemctl   enable       v2ray cron
 systemctl   restart      v2ray cron
 v2ray       -test        -config=/etc/v2ray/config.json
