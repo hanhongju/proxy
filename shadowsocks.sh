@@ -1,6 +1,6 @@
 # shadowsocks 服务器安装脚本 @ Debian 10 or Ubuntu 18
-apt      update
-apt      install     -y    shadowsocks-libev
+apt    -y    update    
+apt    -y    install   shadowsocks-libev
 #创建shadowsocks-server配置文件
 echo '
 {"server":["[::0]", "0.0.0.0"]
@@ -19,8 +19,8 @@ systemctl   restart     shadowsocks-libev
 
 
 # Shadowsocks 客户端使用脚本
-apt      update
-apt      install     -y    shadowsocks-libev
+apt    -y    update    
+apt    -y    install   shadowsocks-libev
 #写入服务器信息
 echo   '
 {"server": "one.thenote.site"
@@ -42,7 +42,8 @@ systemctl   restart     shadowsocks-libev-local@root
 
 
 #设置tsocks透明代理
-apt      install     -y    tsocks
+apt    -y    update    
+apt    -y    install    tsocks
 echo '
 server       =  127.0.0.1
 server_type  =  5
