@@ -23,7 +23,7 @@ apt    -y    update
 apt    -y    install   shadowsocks-libev
 #写入服务器信息
 echo   '
-{"server": "one.thenote.site"
+{"server": "cloud1.thenote.site"
 ,"server_port": 10086
 ,"local_address": "0.0.0.0"
 ,"local_port": 9000
