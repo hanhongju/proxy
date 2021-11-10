@@ -80,7 +80,7 @@ proxy_set_header Host $host;
 }
 }
 '                       >                                           /etc/nginx/sites-enabled/xray.conf
-sed         -i          ''s/www.example.com/$site/g''               /etc/nginx/sites-enabled/xray.conf
+sed         -i          "s/www.example.com/$site/g"                 /etc/nginx/sites-enabled/xray.conf
 systemctl   enable      xray nginx cron
 systemctl   restart     xray nginx cron
 xray        -test       -config=/usr/local/etc/xray/config.json
