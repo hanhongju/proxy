@@ -5,14 +5,14 @@ apt   -y   install     wget tsocks trojan
 echo '
 server       =  127.0.0.1
 server_type  =  5
-server_port  =  1080
+server_port  =  10086
 default_user =  none
 default_pass =  none
 '           >           /etc/tsocks.conf
 echo '
 {"run_type": "client"
 ,"local_addr": "127.0.0.1"
-,"local_port": 1080
+,"local_port": 10086
 ,"remote_addr": "www.example.com"
 ,"remote_port": 443
 ,"password": ["feichengwurao"]
