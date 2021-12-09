@@ -36,7 +36,7 @@ echo '
 ,"password": ["feichengwurao"]
 ,"ssl": {"cert": "/etc/letsencrypt/live/www.example.com/fullchain.pem"
         ,"key" : "/etc/letsencrypt/live/www.example.com/privkey.pem"
-        ,"alpn": ["http/1.1","h2"]
+        ,"alpn": ["http/1.1"]
         }
 }
 '                     >                                   /etc/trojan/config.json
