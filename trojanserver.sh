@@ -10,6 +10,7 @@ sleep   5s
 #安装软件申请证书
 apt           -y   update    
 apt           -y   install  certbot trojan
+systemctl     stop          nginx apache2
 systemctl     disable       nginx apache2
 certbot       certonly      --standalone -n --agree-tos -m 86606682@qq.com -d $site
 chmod         -R   777      /etc/letsencrypt/
