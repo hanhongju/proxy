@@ -30,6 +30,9 @@ echo    "
 1 0 1 * *     certbot       renew
 2 0 1 * *     chmod         -R   777    /etc/letsencrypt/
 3 0 * * *     systemctl     restart     nginx
+0 4 * * *     apt           -y          update
+0 5 * * *     apt           -y          full-upgrade
+0 6 * * *     apt           -y          autoremove
 "       |     crontab
 #修改系统控制文件启用BBR
 echo     '
