@@ -22,7 +22,7 @@ echo    '
 1 0 1 * *     certbot       renew
 2 0 1 * *     chmod         -R   777    /etc/letsencrypt/
 3 0 * * *     systemctl     restart     trojan nginx apache2
-'      >>     /etc/crontab
+'      >>     /var/spool/cron/crontabs/root
 #修改系统控制文件启用BBR
 echo     '
 net.core.default_qdisc=fq
