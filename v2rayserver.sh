@@ -19,15 +19,15 @@ systemctl     stop          nginx apache2
 certbot       certonly      --standalone -n --agree-tos -m 86606682@qq.com -d $site
 chmod         -R   777      /etc/letsencrypt/
 #配置证书自动更新
-echo    "
+echo    '
+0 1 * * *     apt           -y          update
+0 2 * * *     apt           -y          full-upgrade
+0 3 * * *     apt           -y          autoremove
 0 0 1 * *     systemctl     stop        nginx apache2
 1 0 1 * *     certbot       renew
 2 0 1 * *     chmod         -R   777    /etc/letsencrypt/
 3 0 * * *     systemctl     restart     v2ray nginx apache2
-0 4 * * *     apt           -y          update
-0 5 * * *     apt           -y          full-upgrade
-0 6 * * *     apt           -y          autoremove
-"       |     crontab
+'      >>     /etc/crontab
 #修改系统控制文件启用BBR
 echo     '
 net.core.default_qdisc=fq
