@@ -43,8 +43,8 @@ echo '
 }
 '                     >                                   /etc/trojan/config.json
 sed         -i        "s/www.example.com/$site/g"         /etc/trojan/config.json
-systemctl   enable    trojan cron
-systemctl   restart   trojan cron
+systemctl   enable    trojan nginx cron
+systemctl   restart   trojan nginx cron
 cat         /etc/crontab
 trojan      -t
 sysctl      -p
