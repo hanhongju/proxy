@@ -22,7 +22,7 @@ echo    '
 1 0 1 * *     root       certbot       renew
 2 0 1 * *     root       chmod         -R   777    /etc/letsencrypt/
 3 0 * * *     root       systemctl     restart     trojan nginx apache2
-'         >>      /etc/crontab
+'             >>         /etc/crontab
 #修改系统控制文件启用BBR
 echo     '
 net.core.default_qdisc=fq
@@ -45,9 +45,9 @@ echo '
 sed         -i        "s/www.example.com/$site/g"         /etc/trojan/config.json
 systemctl   enable    trojan cron
 systemctl   restart   trojan cron
+cat         /etc/crontab
 trojan      -t
 sysctl      -p
-crontab     -l
 ss          -plnt   |   awk 'NR>1 {print $4,$6}'   |   column   -t
 
 
