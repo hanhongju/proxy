@@ -89,7 +89,6 @@ systemctl   restart     xray nginx cron
 xray        -test       -config=/usr/local/etc/xray/config.json
 nginx       -t
 sysctl      -p
-crontab     -l
 ss          -plnt     |    awk 'NR>1 {print $4,$6}'   |   column   -t
 if          [[  $(nginx    -t     2>&1 )   =~   successful   ]]
 then        echo   "至此，xray可正常工作。"
