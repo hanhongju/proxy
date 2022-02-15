@@ -54,8 +54,8 @@ echo '
 }
 '                        >                                   /etc/v2ray/config.json
 sed         -i           "s/www.example.com/$site/g"         /etc/v2ray/config.json
-systemctl   enable       v2ray cron
-systemctl   restart      v2ray cron
+systemctl   enable       v2ray nginx cron
+systemctl   restart      v2ray nginx cron
 v2ray       -test        -config=/etc/v2ray/config.json
 cat         /etc/crontab
 sysctl      -p
