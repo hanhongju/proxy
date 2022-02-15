@@ -58,7 +58,6 @@ systemctl   enable       v2ray cron
 systemctl   restart      v2ray cron
 v2ray       -test        -config=/etc/v2ray/config.json
 sysctl      -p
-crontab     -l
 ss          -plnt   |   awk 'NR>1 {print $4,$6}'   |   column   -t
 
 
