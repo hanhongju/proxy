@@ -27,7 +27,7 @@ echo    '
 1 0 1 * *     root       certbot       renew
 2 0 1 * *     root       chmod         -R   777    /etc/letsencrypt/
 3 0 * * *     root       systemctl     restart     v2ray nginx apache2
-'      >>     /etc/crontab
+'         >>      /etc/crontab
 #修改系统控制文件启用BBR
 echo     '
 net.core.default_qdisc=fq
