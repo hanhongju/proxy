@@ -33,7 +33,7 @@ echo    '
 1 0 1 * *     root       certbot       renew
 2 0 1 * *     root       chmod         -R   777    /etc/letsencrypt/
 3 0 * * *     root       systemctl     restart     nginx
-'         >>      /etc/crontab
+'             >>         /etc/crontab
 #修改系统控制文件启用BBR
 echo     '
 net.core.default_qdisc=fq
@@ -87,6 +87,7 @@ sed         -i          "s/www.example.com/$site/g"                 /etc/nginx/s
 systemctl   enable      xray nginx cron
 systemctl   restart     xray nginx cron
 xray        -test       -config=/usr/local/etc/xray/config.json
+cat         /etc/crontab
 nginx       -t
 sysctl      -p
 ss          -plnt     |    awk 'NR>1 {print $4,$6}'   |   column   -t
