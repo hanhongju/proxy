@@ -13,7 +13,7 @@ read    site
 echo    "好的，现在要开始安装了。"
 sleep   5s
 #安装软件申请证书
-apt           -y   update    
+apt           -y   update
 apt           -y   install  certbot v2ray
 systemctl     stop          nginx apache2
 certbot       certonly      --standalone -n --agree-tos -m 86606682@qq.com -d $site
