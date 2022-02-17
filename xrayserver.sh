@@ -17,7 +17,7 @@ sleep   5s
 #计时
 begin=$(date +%s)
 #安装软件申请证书
-apt           -y    update    
+apt           -y    update
 apt           -y    install         wget nginx certbot
 wget          -c    https://github.com/XTLS/Xray-install/raw/main/install-release.sh
 bash          install-release.sh    install
