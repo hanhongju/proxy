@@ -1,7 +1,7 @@
 # trojan客户端安装脚本 @ Debian 10 or Ubuntu 20
-site=cloud2.thenote.site
+site=cloud1.thenote.site
 apt   -y   update
-apt   -y   install     wget tsocks trojan
+apt   -y   install     wget curl tsocks trojan
 echo '
 server       =  127.0.0.1
 server_type  =  5
@@ -26,8 +26,8 @@ systemctl   enable    trojan
 systemctl   restart   trojan
 trojan      -t
 ss          -plnt     |    awk 'NR>1 {print $4,$6}'   |   column   -t
-tsocks      wget           https://cn.wordpress.org/latest-zh_CN.tar.gz          -P           /home/wordpress/
-
+curl        -x        socks5://127.0.0.1:10086 google.com
+tsocks      wget      https://cn.wordpress.org/latest-zh_CN.tar.gz          -P           /home/wordpress/
 
 
 
