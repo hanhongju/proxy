@@ -26,7 +26,7 @@ systemctl   enable    trojan
 systemctl   restart   trojan
 trojan      -t
 ss          -plnt     |    awk 'NR>1 {print $4,$6}'   |   column   -t
-curl        -x        socks5://127.0.0.1:10086 google.com
+curl        -x        socks5://127.0.0.1:10086        google.com
 tsocks      wget      https://cn.wordpress.org/latest-zh_CN.tar.gz          -P           /home/wordpress/
 
 
