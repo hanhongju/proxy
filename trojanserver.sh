@@ -52,5 +52,12 @@ ss          -plnt   |   awk 'NR>1 {print $4,$6}'   |   column   -t
 
 
 
+directsetup () {
+wget -qc https://raw.githubusercontent.com/hanhongju/proxy/master/trojanserver.sh & bash trojanserver.sh
+}
+
+
+
+
 
 
