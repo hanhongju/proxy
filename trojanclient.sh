@@ -15,7 +15,7 @@ echo '
 ,"local_port": 10086
 ,"remote_addr": "www.example.com"
 ,"remote_port": 443
-,"password": ["feichengwurao"]
+,"password": ["fengkuang"]
 ,"ssl": {"sni": "www.example.com"
         ,"alpn": ["http/1.1"]
         }
