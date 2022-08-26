@@ -106,6 +106,7 @@ directsetup () {
 apt  -y install wget
 wget -c https://raw.githubusercontent.com/hanhongju/proxy/master/xrayserver.sh
 bash    xrayserver.sh
+
 }
 
 
@@ -116,6 +117,7 @@ systemctl     stop        nginx apache2
 certbot       renew
 chmod         -R   777    /etc/letsencrypt/
 systemctl     restart     nginx
+
 }
 
 
