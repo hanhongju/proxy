@@ -57,6 +57,7 @@ directsetup () {
 apt  -y install wget
 wget -c https://raw.githubusercontent.com/hanhongju/proxy/master/trojanserver.sh
 bash    trojanserver.sh
+
 }
 
 
