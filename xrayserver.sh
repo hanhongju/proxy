@@ -18,7 +18,7 @@ sleep   5s
 begin=$(date +%s)
 #安装软件申请证书
 apt           -y    update
-apt           -y    install         wget nginx certbot
+apt           -y    install         wget nginx certbot net-tools
 wget          -c    https://github.com/XTLS/Xray-install/raw/main/install-release.sh
 bash          install-release.sh    install
 systemctl     stop                  nginx apache2
@@ -91,6 +91,7 @@ cat         /etc/crontab
 nginx       -t
 sysctl      -p
 ss          -plnt     |    awk 'NR>1 {print $4,$6}'   |   column   -t
+netstat     -pnlt
 if          [[  $(nginx    -t     2>&1 )   =~   successful   ]]
 then        echo   "至此，xray可正常工作。"
 else        echo   "您输入的域名地址可能没有正确解析或者短时间申请了太多的证书，不能正常申请证书，所以nginx不能正常工作。"
