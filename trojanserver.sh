@@ -9,7 +9,7 @@ echo    "好的，现在要开始安装了。"
 sleep   5s
 #安装软件申请证书
 apt           -y   update
-apt           -y   install  certbot trojan
+apt           -y   install  certbot trojan net-tools
 systemctl     stop          nginx apache2
 certbot       certonly      --standalone -n --agree-tos -m 86606682@qq.com -d $site
 chmod         -R   777      /etc/letsencrypt/
@@ -46,9 +46,10 @@ sed         -i        "s/www.example.com/$site/g"         /etc/trojan/config.jso
 systemctl   enable    trojan nginx cron
 systemctl   restart   trojan nginx cron
 cat         /etc/crontab
+netstat     -plnt
 trojan      -t
 sysctl      -p
-ss          -plnt   |   awk 'NR>1 {print $4,$6}'   |   column   -t
+
 
 
 
