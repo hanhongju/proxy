@@ -105,7 +105,7 @@ echo   "脚本运行时间$timeconsume秒。"
 
 directsetup () {
 apt  -y install wget
-wget -c https://raw.githubusercontent.com/hanhongju/proxy/master/xrayserver.sh
+wget -c https://github.com/hanhongju/proxy/raw/master/xrayserver.sh
 bash    xrayserver.sh
 
 }
