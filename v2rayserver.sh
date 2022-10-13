@@ -74,13 +74,3 @@ bash    setup.sh
 
 
 
-certbotrenew () {
-certbot       renew
-chmod         -R   777    /etc/letsencrypt/
-systemctl     restart     v2ray
-
-}
-
-
-
-
