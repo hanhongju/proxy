@@ -93,7 +93,7 @@ sysctl      -p
 ss          -plnt     |    awk 'NR>1 {print $4,$6}'   |   column   -t
 netstat     -plnt
 if          [[  $(nginx    -t     2>&1 )   =~   successful   ]]
-then        echo   "至此，xray可正常工作。"
+then        echo   "至此，服务器可正常工作。"
 else        echo   "您输入的域名地址可能没有正确解析或者短时间申请了太多的证书，不能正常申请证书，所以nginx不能正常工作。"
 fi
 finish=$(date +%s)
@@ -111,7 +111,7 @@ bash    setup.sh
 }
 
 
-11
+
 
 certbotrenew () {
 systemctl     stop        nginx apache2
