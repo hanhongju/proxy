@@ -64,4 +64,24 @@ ss          -plnt   |   awk 'NR>1 {print $4,$6}'   |   column   -t
 
 
 
+directsetup () {
+apt  -y install wget
+wget -c https://github.com/hanhongju/proxy/raw/master/v2rayserver.sh
+bash    v2rayserver.sh
+
+}
+
+
+
+
+certbotrenew () {
+systemctl     stop        nginx apache2
+certbot       renew
+chmod         -R   777    /etc/letsencrypt/
+systemctl     restart     nginx
+
+}
+
+
+
 
