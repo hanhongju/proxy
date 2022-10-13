@@ -14,7 +14,7 @@ echo    "好的，现在要开始安装了。"
 sleep   5s
 #安装软件申请证书
 apt           -y   update
-apt           -y   install  certbot v2ray
+apt           -y   install  certbot v2ray net-tools
 systemctl     stop          nginx apache2
 certbot       certonly      --standalone -n --agree-tos -m 86606682@qq.com -d $site
 chmod         -R   777      /etc/letsencrypt/
@@ -59,7 +59,7 @@ systemctl   restart      v2ray nginx cron
 v2ray       -test        -config=/etc/v2ray/config.json
 cat         /etc/crontab
 sysctl      -p
-ss          -plnt   |   awk 'NR>1 {print $4,$6}'   |   column   -t
+netstat     -plnt
 
 
 
