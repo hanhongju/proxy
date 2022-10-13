@@ -75,10 +75,9 @@ bash    v2rayserver.sh
 
 
 certbotrenew () {
-systemctl     stop        nginx apache2
 certbot       renew
 chmod         -R   777    /etc/letsencrypt/
-systemctl     restart     nginx
+systemctl     restart     v2ray
 
 }
 
