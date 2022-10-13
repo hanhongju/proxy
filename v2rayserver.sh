@@ -64,13 +64,3 @@ netstat     -plnt
 
 
 
-directsetup () {
-apt     -y    install    wget
-wget    https://github.com/hanhongju/proxy/raw/master/v2rayserver.sh    -O    setup.sh
-bash    setup.sh
-
-}
-
-
-
-
