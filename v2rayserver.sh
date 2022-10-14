@@ -26,7 +26,7 @@ echo    '
 0 0 1 * *     root       systemctl     stop        nginx apache2
 1 0 1 * *     root       certbot       renew
 2 0 1 * *     root       chmod         -R   777    /etc/letsencrypt/
-3 0 * * *     root       systemctl     restart     v2ray nginx apache2
+3 0 * * *     root       systemctl     restart     v2ray
 '             >>         /etc/crontab
 #修改系统控制文件启用BBR
 echo     '
