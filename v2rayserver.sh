@@ -39,12 +39,13 @@ echo '
               ,"protocol": "vless"
               ,"settings": {"clients": [{"id": "8c38d360-bb8f-11ea-9ffd-c182155e578a"}]
                            ,"decryption": "none"
-                           ,"fallbacks": [{"dest": "www.rodong.rep.kp:80"}]
+                           ,"fallbacks": [{"alpn": "http/1.1"
+                                          ,"dest": "www.rodong.rep.kp:80"}]
                            }
               ,"streamSettings": {"network": "ws"
                                  ,"security": "tls"
                                  ,"tlsSettings": {"serverName": "www.example.com"
-                                                 ,"alpn": ["http/1.1"]
+                                                 ,"alpn": ["http/1.1", "h2"]
                                                  ,"certificates": [{"certificateFile": "/etc/letsencrypt/live/www.example.com/fullchain.pem"
                                                                    ,"keyFile":         "/etc/letsencrypt/live/www.example.com/privkey.pem"}]
                                                   }
