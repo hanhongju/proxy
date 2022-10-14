@@ -41,7 +41,8 @@ echo '
                            ,"decryption": "none"
                            ,"fallbacks": [{"dest": "www.rodong.rep.kp:80"}]
                            }
-              ,"streamSettings": {"network": "tcp"
+              ,"streamSettings": {"network": "ws"
+                                 ,"wsSettings": {"path": "/world"}
                                  ,"security": "tls"
                                  ,"tlsSettings": {"serverName": "www.example.com"
                                                  ,"alpn": ["http/1.1"]
