@@ -39,8 +39,7 @@ echo '
               ,"protocol": "vless"
               ,"settings": {"clients": [{"id": "8c38d360-bb8f-11ea-9ffd-c182155e578a"}]
                            ,"decryption": "none"
-                           ,"fallbacks": [{"alpn": "http/1.1"
-                                          ,"dest": "www.rodong.rep.kp:80"}]
+                           ,"fallbacks": [{"dest": "www.rodong.rep.kp:80"}]
                            }
               ,"streamSettings": {"network": "ws"
                                  ,"security": "tls"
