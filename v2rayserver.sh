@@ -3,8 +3,8 @@ echo    "
 本脚本可以自动申请并使用tls证书加密保护流量，反代朝鲜劳动新闻网进行网站伪装。
 端口为             443
 用户ID为           8c38d360-bb8f-11ea-9ffd-c182155e578a
-传输协议为         tcp
-底层传输安全为     tls
+传输协议为          ws
+底层传输安全为      tls
 理解并记录下这些信息后请按回车键继续，并在下一栏输入您解析的有效域名。
 "
 read    nothing
@@ -42,7 +42,6 @@ echo '
                            ,"fallbacks": [{"dest": "www.rodong.rep.kp:80"}]
                            }
               ,"streamSettings": {"network": "ws"
-                                 ,"wsSettings": {"path": "/world"}
                                  ,"security": "tls"
                                  ,"tlsSettings": {"serverName": "www.example.com"
                                                  ,"alpn": ["http/1.1"]
