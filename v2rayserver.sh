@@ -65,3 +65,24 @@ netstat     -plnt
 
 
 
+directsetup () {
+apt     -y    install    wget
+wget    https://github.com/hanhongju/proxy/raw/master/v2rayserver.sh    -O    setup.sh
+bash    setup.sh
+
+}
+
+
+
+
+certbotrenew () {
+systemctl     stop        nginx apache2
+certbot       renew
+chmod         -R   777    /etc/letsencrypt/
+systemctl     restart     v2ray
+
+}
+
+
+
+
