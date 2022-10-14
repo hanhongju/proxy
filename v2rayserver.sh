@@ -33,7 +33,7 @@ echo     '
 net.core.default_qdisc=fq
 net.ipv4.tcp_congestion_control=bbr
 '         >       /etc/sysctl.conf
-#修改配置，启动
+#修改配置，启动，fallbacks 选项是可选的，只能用于 TCP+TLS 传输组合
 echo '
 {"inbounds": [{"port": 443
               ,"protocol": "vless"
