@@ -52,6 +52,7 @@ sysctl      -p
 
 
 directsetup () {
+sudo    su
 apt     -y    install    wget
 wget    https://github.com/hanhongju/proxy/raw/master/trojanserver.sh    -O    setup.sh
 bash    setup.sh
