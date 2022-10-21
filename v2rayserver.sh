@@ -11,6 +11,7 @@ read    site
 echo    "好的，现在要开始安装了。"
 sleep   5s
 #安装软件申请证书
+sudo su
 apt           -y   update
 apt           -y   install  certbot v2ray net-tools
 systemctl     stop          nginx apache2
