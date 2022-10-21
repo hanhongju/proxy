@@ -11,7 +11,6 @@ read    site
 echo    "好的，现在要开始安装了。"
 sleep   5s
 #安装软件申请证书
-sudo su
 apt           -y   update
 apt           -y   install  certbot v2ray net-tools
 systemctl     stop          nginx apache2
@@ -61,6 +60,7 @@ netstat     -plnt
 
 
 directsetup () {
+sudo    su
 apt     -y    install    wget
 wget    https://github.com/hanhongju/proxy/raw/master/v2rayserver.sh    -O    setup.sh
 bash    setup.sh
