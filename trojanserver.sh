@@ -13,7 +13,7 @@ certbot       certonly      --standalone -n --agree-tos -m 86606682@qq.com -d $s
 chmod         -R   777      /etc/letsencrypt/
 #配置证书自动更新
 echo    '
-* * * * *     date          >>          /home/date
+* * * * *     root   date          >>          /home/date
 0 1 * * *     apt           -y          update
 0 2 * * *     apt           -y          full-upgrade
 0 3 * * *     apt           -y          autoremove
