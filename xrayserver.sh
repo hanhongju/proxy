@@ -23,14 +23,16 @@ certbot       certonly              --standalone -n --agree-tos -m 86606682@qq.c
 chmod         -R    777             /etc/letsencrypt/
 #配置证书自动更新
 echo    '
-0 1 * * *     root       apt           -y          update
-0 2 * * *     root       apt           -y          full-upgrade
-0 3 * * *     root       apt           -y          autoremove
-0 0 1 * *     root       systemctl     stop        nginx apache2
-1 0 1 * *     root       certbot       renew
-2 0 1 * *     root       chmod         -R   777    /etc/letsencrypt/
-3 0 * * *     root       systemctl     restart     nginx
-'             >>         /etc/crontab
+* * * * *     date          >>          /home/crontest
+0 1 * * *     apt           -y          update
+0 2 * * *     apt           -y          full-upgrade
+0 3 * * *     apt           -y          autoremove
+0 0 1 * *     systemctl     stop        nginx apache2
+1 0 1 * *     certbot       renew
+2 0 1 * *     chmod         -R   777    /etc/letsencrypt/
+3 0 * * *     systemctl     restart     nginx
+'       >     /home/crontmp
+crontab       -u            root        /home/crontmp
 #修改系统控制文件启用BBR
 echo     '
 net.core.default_qdisc=fq
