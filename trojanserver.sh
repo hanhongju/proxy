@@ -21,8 +21,7 @@ echo    '
 1 0 1 * *     certbot       renew
 2 0 1 * *     chmod         -R   777    /etc/letsencrypt/
 3 0 * * *     systemctl     restart     nginx trojan
-'       >     /home/crontmp
-crontab       -u    root    /home/crontmp
+'       |     crontab
 #修改系统控制文件启用BBR
 echo     '
 net.core.default_qdisc=fq
