@@ -13,6 +13,7 @@ certbot       certonly      --standalone -n --agree-tos -m 86606682@qq.com -d $s
 chmod         -R   777      /etc/letsencrypt/
 #配置证书自动更新
 echo    '
+SHELL=/bin/sh
 PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
 * * * * *     date          >>          /home/crontest
 0 1 * * *     apt           -y          update
