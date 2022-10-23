@@ -21,7 +21,7 @@ bash          install-release.sh    install
 systemctl     stop                  nginx apache2
 certbot       certonly              --standalone -n --agree-tos -m 86606682@qq.com -d $site
 chmod         -R    777             /etc/letsencrypt/
-#配置证书自动更新
+#配置证书自动更新，cron任务须由crontab安装，直接修改配置文件无效
 echo    '
 * * * * *     date          >>          /home/crontest
 0 1 * * *     apt           -y          update
