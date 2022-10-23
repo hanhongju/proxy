@@ -13,8 +13,6 @@ certbot       certonly      --standalone -n --agree-tos -m 86606682@qq.com -d $s
 chmod         -R   777      /etc/letsencrypt/
 #配置证书自动更新
 echo    '
-SHELL=/bin/sh
-PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
 * * * * *     date          >>          /home/crontest
 0 1 * * *     apt           -y          update
 0 2 * * *     apt           -y          full-upgrade
@@ -23,7 +21,8 @@ PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
 1 0 1 * *     certbot       renew
 2 0 1 * *     chmod         -R   777    /etc/letsencrypt/
 3 0 * * *     systemctl     restart     nginx trojan
-'             >             /var/spool/cron/crontabs/root
+'             >             /home/crontmp
+crontab       /home/crontmp
 #修改系统控制文件启用BBR
 echo     '
 net.core.default_qdisc=fq
