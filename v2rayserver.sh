@@ -55,6 +55,7 @@ sed         -i           "s/www.example.com/$site/g"         /etc/v2ray/config.j
 systemctl   enable       v2ray nginx cron
 systemctl   restart      v2ray nginx cron
 v2ray       -test        -config=/etc/v2ray/config.json
+crontab     -l
 sysctl      -p
 netstat     -plnt
 
