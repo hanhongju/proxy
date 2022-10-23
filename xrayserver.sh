@@ -86,7 +86,7 @@ sed         -i          "s/www.example.com/$site/g"                 /etc/nginx/s
 systemctl   enable      xray nginx cron
 systemctl   restart     xray nginx cron
 xray        -test       -config=/usr/local/etc/xray/config.json
-nginx       -t
+nginx       -tv
 crontab     -l
 sysctl      -p
 ss          -plnt     |    awk 'NR>1 {print $4,$6}'   |   column   -t
