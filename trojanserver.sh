@@ -1,6 +1,6 @@
 # trojan服务器安装脚本 @ Debian 10 or Ubuntu 20
 echo    "
-本脚本可以自动申请并使用tls证书加密保护流量，反代朝鲜劳动新闻网进行网站伪装。输入解析的有效域名地址：
+本脚本可以自动申请并使用tls证书加密保护流量。输入解析的有效域名地址：
 "
 read    site
 echo    "好的，现在要开始安装了。"
@@ -32,7 +32,7 @@ echo '
 {"run_type": "server"
 ,"local_addr": "::"
 ,"local_port": 443
-,"remote_addr": "www.hanhongju.com"
+,"remote_addr": "127.0.0.1"
 ,"remote_port": 80
 ,"password": ["fengkuang"]
 ,"ssl": {"cert": "/etc/letsencrypt/live/www.example.com/fullchain.pem"
