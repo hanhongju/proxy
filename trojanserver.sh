@@ -32,7 +32,7 @@ echo '
 {"run_type": "server"
 ,"local_addr": "::"
 ,"local_port": 443
-,"remote_addr": "www.hanhongju.com"
+,"remote_addr": "127.0.0.1"
 ,"remote_port": 80
 ,"password": ["fengkuang"]
 ,"ssl": {"cert": "/etc/letsencrypt/live/www.example.com/fullchain.pem"
