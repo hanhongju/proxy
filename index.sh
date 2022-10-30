@@ -27,7 +27,7 @@ netstat       -plnt
 
 
 
-setupLNMP () {
+directsetup () {
 sudo    su
 apt     -y    install    wget
 wget    https://github.com/hanhongju/proxy/raw/master/index.sh    -O    setup.sh
