@@ -51,6 +51,7 @@ netstat     -plnt
 
 
 
+
 directsetup () {
 sudo    su
 apt     -y    install    wget
