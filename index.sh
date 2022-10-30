@@ -1,4 +1,4 @@
-# 网站反代主页安装脚本 @ Debian 10
+# 网站反代主页安装脚本 @ Debian 10 or Ubuntu 20
 apt     -y    update
 apt     -y    install       nginx net-tools
 #创建nginx配置文件
