@@ -12,7 +12,7 @@ default_pass =  none
 echo '
 {"run_type": "client"
 ,"local_addr": "127.0.0.1"
-,"local_port": 10086
+,"local_port": 8080
 ,"remote_addr": "www.example.com"
 ,"remote_port": 443
 ,"password": ["fengkuang"]
@@ -26,7 +26,7 @@ systemctl   enable    trojan
 systemctl   restart   trojan
 trojan      -t
 ss          -plnt     |    awk 'NR>1 {print $4,$6}'   |   column   -t
-curl        -x        socks5://127.0.0.1:10086        google.com
+curl        -x        socks5://127.0.0.1:8080        google.com
 tsocks      wget      https://cn.wordpress.org/latest-zh_CN.tar.gz          -P           /home/wordpress/
 
 
