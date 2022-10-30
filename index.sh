@@ -18,7 +18,7 @@ proxy_set_header Accept-Encoding "";
 }
 }
 '             >            /etc/nginx/sites-enabled/default
-#修改上传文件大小限制
+#启动网站
 systemctl     enable       nginx
 systemctl     restart      nginx
 nginx         -vt
