@@ -5,7 +5,7 @@ apt   -y   install     wget curl tsocks trojan net-tools
 echo '
 server       =  127.0.0.1
 server_type  =  5
-server_port  =  10086
+server_port  =  8080
 default_user =  none
 default_pass =  none
 '           >           /etc/tsocks.conf
