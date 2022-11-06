@@ -1,5 +1,5 @@
 # trojan客户端安装脚本 @ Debian 10 or Ubuntu 20
-site=cloud1.thenote.site
+site=gcp.aboutnote.live
 apt   -y   update
 apt   -y   install     wget curl tsocks trojan net-tools
 echo '
