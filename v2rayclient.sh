@@ -31,7 +31,7 @@ echo '
                                  }
               }]
 }
-'                     >                                   /etc/v2ray/config.json
+'           >                                             /etc/v2ray/config.json
 sed         -i        "s/www.example.com/$site/g"         /etc/v2ray/config.json
 systemctl   enable    v2ray
 systemctl   restart   v2ray
