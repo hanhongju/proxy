@@ -8,7 +8,7 @@ server_type  =  5
 server_port  =  8080
 default_user =  none
 default_pass =  none
-'           >           /etc/tsocks.conf
+'            >           /etc/tsocks.conf
 echo '
 {"run_type": "client"
 ,"local_addr": "127.0.0.1"
