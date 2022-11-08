@@ -1,4 +1,4 @@
-# v2rayserver安装脚本 @ Debian 11
+# v2rayclient安装脚本 @ Debian 11
 site=cloud.aboutnote.live
 apt   -y   update
 apt   -y   install     wget curl tsocks v2ray net-tools
