@@ -32,4 +32,15 @@ tsocks      wget      https://cn.wordpress.org/latest-zh_CN.tar.gz     -O      t
 
 
 
+uninstall () {
+sudo          su
+apt           -y        remove     trojan
+systemctl     stop      trojan
+systemctl     disable   trojan
+netstat       -plnt
+
+}
+
+
+
 
