@@ -22,7 +22,7 @@ echo '
                ,"settings": {"vnext": [{"address": "www.example.com"
                                        ,"port": 443
                                        ,"users": [{"id": "8c38d360-bb8f-11ea-9ffd-c182155e578a"
-                                                  ,"encryption":"none"
+                                                  ,"encryption": "none"
                                                  }]
                                       }]
                             }
