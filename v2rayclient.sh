@@ -14,6 +14,9 @@ echo '
               ,"protocol": "socks"
               ,"settings": {"auth": "noauth"
                            }
+              ,"sniffing": {"enabled": true
+                           ,"destOverride": ["http", "tls"]
+                           }
              }]
 ,"outbounds": [{"protocol": "vless"
                ,"settings": {"vnext": [{"address": "www.example.com"
