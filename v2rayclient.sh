@@ -8,7 +8,7 @@ server_type  =  5
 server_port  =  8080
 default_user =  none
 default_pass =  none
-'           >           /etc/tsocks.conf
+'            >           /etc/tsocks.conf
 echo '
 {"inbounds": [{"port": 8080
               ,"protocol": "socks"
