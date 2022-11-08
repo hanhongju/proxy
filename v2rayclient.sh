@@ -44,7 +44,7 @@ tsocks      wget      https://cn.wordpress.org/latest-zh_CN.tar.gz     -O      t
 
 
 uninstall () {
-apt           -y        remove     v2ray
+apt    -y     remove    v2ray
 systemctl     stop      v2ray
 systemctl     disable   v2ray
 netstat       -plnt
