@@ -1,6 +1,5 @@
 # v2rayclient安装脚本 @ Ubuntu 22
 site=cloud.aboutnote.live
-sudo  su
 apt   -y   update
 apt   -y   install     wget curl tsocks v2ray net-tools
 echo '
