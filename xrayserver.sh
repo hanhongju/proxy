@@ -84,11 +84,10 @@ proxy_set_header Host $host;
 sed         -i          "s/www.example.com/$site/g"                 /etc/nginx/sites-enabled/xray.conf
 systemctl   enable      xray nginx cron
 systemctl   restart     xray nginx cron
-xray        -test       -config=/usr/local/etc/xray/config.json
 nginx       -vt
+xray        -test       -config=/usr/local/etc/xray/config.json
 crontab     -l
 sysctl      -p
-ss          -plnt     |    awk 'NR>1 {print $4,$6}'   |   column   -t
 netstat     -plnt
 if          [[  $(nginx    -t     2>&1 )   =~   successful   ]]
 then        echo   "至此，服务器可正常工作。"
