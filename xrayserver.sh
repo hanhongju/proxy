@@ -15,8 +15,6 @@ sleep   5s
 begin=$(date +%s)
 #安装软件申请证书
 apt           -y    update
-apt           -y    full-upgrade
-apt           -y    autoremove
 apt           -y    install         wget nginx certbot net-tools
 wget          -c    https://github.com/XTLS/Xray-install/raw/main/install-release.sh
 bash          install-release.sh    install
