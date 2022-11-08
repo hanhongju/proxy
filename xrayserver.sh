@@ -1,6 +1,6 @@
 # xrayserver安装脚本 @ Debian 10 or Ubuntu 20
 echo    "
-本脚本可以自动申请并使用tls证书加密保护流量，反代美国国家生物技术信息中心网址进行网站伪装。Xray可配合Netch代理UDP协议的网络游戏数据包。安装完成后配置：
+本脚本可以自动申请并使用tls证书加密保护流量，反代美国国家生物技术信息中心网址进行网站伪装。安装完成后配置：
 端口为             443
 用户ID为           8c38d360-bb8f-11ea-9ffd-c182155e578a
 传输协议为          ws
@@ -39,7 +39,7 @@ echo     '
 net.core.default_qdisc=fq
 net.ipv4.tcp_congestion_control=bbr
 '         >       /etc/sysctl.conf
-#修改配置，启动
+#修改配置，启动。Xray的VMESS协议可配合Netch代理UDP协议的网络游戏数据包，VLESS协议不可以。
 echo '
 {"inbounds": [{"port": 8964
               ,"protocol": "vmess"
