@@ -11,8 +11,6 @@ echo    "
 read    site
 echo    "好的，现在要开始安装了。"
 sleep   5s
-#计时
-begin=$(date +%s)
 #安装软件申请证书
 apt           -y    update
 apt           -y    install         wget nginx certbot net-tools
@@ -89,13 +87,6 @@ xray        -test       -config=/usr/local/etc/xray/config.json
 crontab     -l
 sysctl      -p
 netstat     -plnt
-if          [[  $(nginx    -t     2>&1 )   =~   successful   ]]
-then        echo   "至此，服务器可正常工作。"
-else        echo   "您输入的域名地址可能没有正确解析或者短时间申请了太多的证书，不能正常申请证书，所以nginx不能正常工作。"
-fi
-finish=$(date +%s)
-timeconsume=$(( finish - begin ))
-echo   "脚本运行时间$timeconsume秒。"
 
 
 
