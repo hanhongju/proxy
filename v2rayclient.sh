@@ -1,5 +1,5 @@
 # v2rayclient安装脚本 @ Ubuntu 22
-site=az2.aboutnote.live
+site=gcphk.aboutnote.live
 apt   -y   update
 apt   -y   install     wget curl tsocks v2ray net-tools
 echo '
