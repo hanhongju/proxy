@@ -2,14 +2,9 @@
 site=gcphk.aboutnote.live
 apt   -y   update
 apt   -y   install     wget curl tsocks net-tools
-
-wget  https://github.com/XTLS/Xray-core/releases/download/v1.6.3/Xray-linux-64.zip
-
-/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-brew install v2ray
-
-
-
+wget       https://github.com/XTLS/Xray-install/raw/main/install-release.sh
+wget       https://github.com/XTLS/Xray-core/releases/download/v1.6.3/Xray-linux-64.zip
+bash       install-release.sh    -l    Xray-linux-64.zip
 echo '
 server       =  127.0.0.1
 server_type  =  5
