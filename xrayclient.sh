@@ -3,7 +3,7 @@ site=gcphk.aboutnote.live
 apt     -y     update
 apt     -y     install     wget curl tsocks net-tools
 #wget   -c     https://github.com/XTLS/Xray-install/raw/main/install-release.sh
-#wget   -c     https://github.com/XTLS/Xray-core/releases/download/v1.6.3/Xray-linux-64.zip      -O      client.zip
+#wget   -c     https://github.com/XTLS/Xray-core/releases/download/v1.6.3/Xray-linux-64.zip      -O      /home/wordpress/client.zip
 wget    -c     http://www.hanhongju.com/install-release.sh
 wget    -c     http://www.hanhongju.com/client.zip
 bash           install-release.sh   -l  client.zip
