@@ -35,9 +35,9 @@ echo '
 }
 '           >                                             /etc/v2ray/config.json
 sed         -i        "s/www.example.com/$site/g"         /etc/v2ray/config.json
-systemctl   enable    v2ray
-systemctl   restart   v2ray
-v2ray       -test     -config=/etc/v2ray/config.json
+systemctl   enable    xray
+systemctl   restart   xray
+xray        -test     -config=/etc/v2ray/config.json
 netstat     -plnt
 curl        -x        socks5://127.0.0.1:8080        google.com
 tsocks      wget      https://cn.wordpress.org/latest-zh_CN.tar.gz     -O      testdownloadfile
@@ -46,9 +46,9 @@ tsocks      wget      https://cn.wordpress.org/latest-zh_CN.tar.gz     -O      t
 
 
 uninstall () {
-apt    -y     remove    v2ray
-systemctl     stop      v2ray
-systemctl     disable   v2ray
+apt    -y     remove    xray
+systemctl     stop      xray
+systemctl     disable   xray
 netstat       -plnt
 
 }
