@@ -2,9 +2,11 @@
 site=gcphk.aboutnote.live
 apt   -y   update
 apt   -y   install     wget curl tsocks net-tools
-wget       https://github.com/XTLS/Xray-install/raw/main/install-release.sh
-wget       https://github.com/XTLS/Xray-core/releases/download/v1.6.3/Xray-linux-64.zip
-bash       install-release.sh    -l    Xray-linux-64.zip
+#wget      https://github.com/XTLS/Xray-install/raw/main/install-release.sh
+#wget      https://github.com/XTLS/Xray-core/releases/download/v1.6.3/Xray-linux-64.zip
+wget       http://www.hanhongju.com/install-release.sh
+wget       http://www.hanhongju.com/Xray-linux-64.zip
+bash       install-release.sh  -l   Xray-linux-64.zip
 echo '
 server       =  127.0.0.1
 server_type  =  5
@@ -35,11 +37,11 @@ echo '
                                  }
               }]
 }
-'           >                                             /etc/v2ray/config.json
-sed         -i        "s/www.example.com/$site/g"         /etc/v2ray/config.json
+'           >                                             /usr/local/etc/xray/config.json
+sed         -i        "s/www.example.com/$site/g"         /usr/local/etc/xray/config.json
 systemctl   enable    xray
 systemctl   restart   xray
-xray        -test     -config=/etc/v2ray/config.json
+xray        -test     -config=/usr/local/etc/xray/config.json
 netstat     -plnt
 curl        -x        socks5://127.0.0.1:8080        google.com
 tsocks      wget      https://cn.wordpress.org/latest-zh_CN.tar.gz     -O      testdownloadfile
