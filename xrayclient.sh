@@ -3,8 +3,8 @@ site=gcphk.aboutnote.live
 apt     -y     update
 apt     -y     install     wget curl tsocks net-tools
 wget    -c     http://www.hanhongju.com/install-release.sh
-wget    -c     http://www.hanhongju.com/Xray-linux-64.zip
-bash           install-release.sh   -l  Xray-linux-64.zip
+wget    -c     http://www.hanhongju.com/Xray.zip
+bash           install-release.sh   -l  Xray.zip
 echo '
 server       =  127.0.0.1
 server_type  =  5
@@ -49,8 +49,8 @@ tsocks      wget      https://cn.wordpress.org/latest-zh_CN.tar.gz     -O      t
 
 prepareinstallfiles () {
 wget    -c     https://github.com/XTLS/Xray-install/raw/main/install-release.sh                  -O      /home/wordpress/install-release.sh
-wget    -c     https://github.com/XTLS/Xray-core/releases/download/v1.6.3/Xray-linux-64.zip      -O      /home/wordpress/Xray-linux-64.zip
-zip     -d     /home/wordpress/Xray-linux-64.zip      README.md
+wget    -c     https://github.com/XTLS/Xray-core/releases/download/v1.6.3/Xray-linux-64.zip      -O      /home/wordpress/Xray.zip
+zip     -d     /home/wordpress/Xray.zip      README.md
 
 }
 
