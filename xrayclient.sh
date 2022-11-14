@@ -1,10 +1,12 @@
 # xrayclient安装脚本 @ Ubuntu 20
 site=gcphk.aboutnote.live
+#安装软件
 apt     -y     update
 apt     -y     install     wget curl tsocks net-tools
 wget    -c     http://www.hanhongju.com/install-release.sh
 wget    -c     http://www.hanhongju.com/Xray-linux-64.zip
 bash           install-release.sh   -l  Xray-linux-64.zip
+#写入配置文件
 echo '
 server       =  127.0.0.1
 server_type  =  5
@@ -37,6 +39,7 @@ echo '
 }
 '           >                                             /usr/local/etc/xray/config.json
 sed         -i        "s/www.example.com/$site/g"         /usr/local/etc/xray/config.json
+#启动
 systemctl   enable    xray
 systemctl   restart   xray
 xray        -test     -config=/usr/local/etc/xray/config.json
