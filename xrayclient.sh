@@ -2,8 +2,8 @@
 site=gcphk.aboutnote.live
 apt     -y     update
 apt     -y     install     wget curl tsocks net-tools
-wget    -c     http://www.hanhongju.com/install-release.sh     -O     install-release.sh
-wget    -c     http://www.hanhongju.com/Xray-linux-64.zip      -O     Xray-linux-64.zip
+wget    -c     http://www.hanhongju.com/install-release.sh
+wget    -c     http://www.hanhongju.com/Xray-linux-64.zip
 bash           install-release.sh   -l  Xray-linux-64.zip
 echo '
 server       =  127.0.0.1
