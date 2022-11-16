@@ -5,7 +5,7 @@ apt     -y     update
 apt     -y     install     wget curl tsocks net-tools
 wget    -c     http://www.hanhongju.com/Xray-install.sh
 wget    -c     http://www.hanhongju.com/Xray-linux-64.zip
-bash           install-release.sh   -l  Xray-linux-64.zip
+bash           Xray-install.sh    -l    Xray-linux-64.zip
 #写入配置文件
 echo '
 server       =  127.0.0.1
