@@ -14,11 +14,11 @@ sleep   5s
 #安装软件申请证书
 apt           -y    update
 apt           -y    install         wget nginx certbot net-tools
-wget          -c    https://github.com/XTLS/Xray-install/raw/main/install-release.sh
+wget          https://github.com/XTLS/Xray-install/raw/main/install-release.sh    -cP    .
 bash          install-release.sh    install
 systemctl     stop                  nginx apache2
 certbot       certonly              --standalone -n --agree-tos -m 86606682@qq.com -d $site
-chmod         -R    777             /etc/letsencrypt/
+chmod         -R        777         /etc/letsencrypt/
 #配置证书自动更新，cron任务须由crontab安装，直接修改配置文件无效
 echo    '
 * * * * *     date          >>          /home/crontest
