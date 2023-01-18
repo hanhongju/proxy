@@ -14,8 +14,8 @@ sleep   5s
 #安装软件申请证书
 apt           -y    update
 apt           -y    install         wget nginx certbot net-tools
-wget          https://github.com/XTLS/Xray-install/raw/main/install-release.sh    -O    Xray-install.sh
-bash          Xray-install.sh       install
+wget          https://github.com/XTLS/Xray-install/raw/main/install-release.sh    -cP     .
+bash          install-release.sh    install
 systemctl     stop                  nginx apache2
 certbot       certonly              --standalone -n --agree-tos -m 86606682@qq.com -d $site
 chmod         -R        777         /etc/letsencrypt/
