@@ -42,8 +42,8 @@ echo '
 }
 '                     >                                   /etc/trojan/config.json
 sed         -i        "s/www.example.com/$site/g"         /etc/trojan/config.json
-systemctl   enable    trojan nginx cron
-systemctl   restart   trojan nginx cron
+systemctl   enable    trojan cron
+systemctl   restart   trojan cron
 trojan      -t
 crontab     -l
 sysctl      -p
@@ -57,6 +57,17 @@ sudo    su
 apt     -y    install    wget
 wget    https://github.com/hanhongju/proxy/raw/master/trojanserver.sh    -O    setup.sh
 bash    setup.sh
+
+}
+
+
+
+
+uninstall () {
+sudo          su
+systemctl     stop      trojan
+systemctl     disable   trojan
+netstat       -plnt
 
 }
 
