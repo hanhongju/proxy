@@ -65,6 +65,7 @@ bash    setup.sh
 
 uninstall () {
 sudo          su
+apt    -y     remove    trojan
 systemctl     stop      trojan
 systemctl     disable   trojan
 netstat       -plnt
