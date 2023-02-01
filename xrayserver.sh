@@ -102,3 +102,17 @@ bash    setup.sh
 
 
 
+uninstall () {
+sudo          su
+apt    -y     remove    xray
+systemctl     stop      xray
+systemctl     disable   xray
+rm            /etc/nginx/sites-enabled/xray.conf
+systemctl     restart   nginx
+netstat       -plnt
+
+}
+
+
+
+
