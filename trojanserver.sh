@@ -68,7 +68,6 @@ sudo          su
 apt    -y     remove    trojan
 systemctl     stop      trojan
 systemctl     disable   trojan
-systemctl     daemon-reload
 netstat       -plnt
 
 }
