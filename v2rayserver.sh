@@ -62,7 +62,6 @@ netstat     -plnt
 
 
 directsetup () {
-sudo    su
 apt     -y    install    wget
 wget    https://github.com/hanhongju/proxy/raw/master/v2rayserver.sh    -O    setup.sh
 bash    setup.sh
@@ -73,7 +72,6 @@ bash    setup.sh
 
 
 uninstall () {
-sudo          su
 apt    -y     remove    v2ray
 systemctl     stop      v2ray
 systemctl     disable   v2ray
