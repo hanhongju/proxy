@@ -28,7 +28,6 @@ netstat       -plnt
 
 
 directsetup () {
-sudo    su
 apt     -y    install    wget
 wget    https://github.com/hanhongju/proxy/raw/master/index.sh    -O    setup.sh
 bash    setup.sh
