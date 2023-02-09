@@ -53,6 +53,7 @@ netstat     -plnt
 
 
 directsetup () {
+sudo    su
 apt     -y    install    wget
 wget    https://github.com/hanhongju/proxy/raw/master/trojanserver.sh    -O    setup.sh
 bash    setup.sh
@@ -63,6 +64,7 @@ bash    setup.sh
 
 
 uninstall () {
+sudo   su
 apt    -y     remove    trojan
 systemctl     stop      trojan
 systemctl     disable   trojan
