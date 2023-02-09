@@ -51,8 +51,9 @@ tsocks      wget      https://cn.wordpress.org/latest-zh_CN.tar.gz     -O      t
 
 
 prepareinstallfiles () {
-wget      https://github.com/XTLS/Xray-install/raw/main/install-release.sh                  -O      /home/wordpress/Xray-install.sh
-wget      https://github.com/XTLS/Xray-core/releases/download/v1.6.3/Xray-linux-64.zip      -O      /home/wordpress/Xray-linux-64.zip
+sudo    su
+wget    https://github.com/XTLS/Xray-install/raw/main/install-release.sh                  -O      /home/wordpress/Xray-install.sh
+wget    https://github.com/XTLS/Xray-core/releases/download/v1.6.3/Xray-linux-64.zip      -O      /home/wordpress/Xray-linux-64.zip
 
 }
 
