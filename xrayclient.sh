@@ -61,7 +61,7 @@ wget    https://github.com/XTLS/Xray-core/releases/download/v1.6.3/Xray-linux-64
 
 
 uninstall () {
-sudo          su
+sudo   su
 apt    -y     remove    xray
 systemctl     stop      xray
 systemctl     disable   xray
