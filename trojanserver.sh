@@ -34,7 +34,6 @@ sed         -i        "s/www.example.com/$site/g"         /etc/trojan/config.jso
 systemctl   enable    trojan nginx cron
 systemctl   restart   trojan nginx cron
 trojan      -t
-crontab     -l
 sysctl      -p
 netstat     -plnt
 
