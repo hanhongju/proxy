@@ -19,17 +19,6 @@ bash          install-release.sh     install
 systemctl     stop                   nginx apache2
 certbot       certonly               --standalone -n --agree-tos -m 86606682@qq.com -d $site
 chmod         -R        777          /etc/letsencrypt/
-#配置证书自动更新，cron任务须由crontab安装，直接修改配置文件无效
-echo    '
-* * * * *     date          >>          /home/crontest
-0 1 * * *     apt           -y          update
-0 2 * * *     apt           -y          full-upgrade
-0 3 * * *     apt           -y          autoremove
-0 0 1 * *     systemctl     stop        nginx apache2
-1 0 1 * *     certbot       renew
-2 0 1 * *     chmod         -R   777    /etc/letsencrypt/
-3 0 * * *     systemctl     restart     nginx
-'       |     crontab
 #修改系统控制文件启用BBR
 echo     '
 net.core.default_qdisc=fq
@@ -95,6 +84,17 @@ directsetup () {
 sudo    su
 apt     -y    install    wget
 wget    https://github.com/hanhongju/proxy/raw/master/xrayserver.sh    -O    setup.sh
+bash    setup.sh
+
+}
+
+
+
+
+autoupdatecert () {
+sudo    su
+apt     -y    install    wget
+wget    https://github.com/hanhongju/proxy/raw/master/autoupdatecert.sh    -O    setup.sh
 bash    setup.sh
 
 }
