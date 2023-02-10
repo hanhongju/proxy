@@ -60,7 +60,7 @@ bash    setup.sh
 
 
 
-auto_update_cert () {
+autoupdatecert () {
 sudo    su
 apt     -y    install    wget
 wget    https://github.com/hanhongju/proxy/raw/master/auto_update_cert.sh    -O    setup.sh
