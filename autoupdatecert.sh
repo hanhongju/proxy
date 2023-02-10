@@ -13,6 +13,7 @@ echo    '
 3 0 * * *     systemctl     restart     nginx v2ray trojan
 '       |     crontab
 crontab       -l
+netstat       -plnt
 
 
 
