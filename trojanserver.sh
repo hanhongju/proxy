@@ -55,7 +55,7 @@ bash    setup.sh
 updatecert () {
 sudo    su
 apt     -y    install    wget
-wget    https://github.com/hanhongju/proxy/raw/master/updatecert.sh    -O    setup.sh
+wget    https://github.com/hanhongju/proxy/raw/master/autoupdatecert.sh    -O    setup.sh
 bash    setup.sh
 
 }
