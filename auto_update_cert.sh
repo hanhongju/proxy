@@ -15,14 +15,3 @@ netstat       -plnt
 
 
 
-autoupdatecert () {
-sudo    su
-apt     -y    install    wget
-wget    https://github.com/hanhongju/proxy/raw/master/auto_update_cert.sh    -O    setup.sh
-bash    setup.sh
-
-}
-
-
-
-
