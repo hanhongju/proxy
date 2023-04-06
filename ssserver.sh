@@ -12,7 +12,7 @@ echo '
 {"inbounds": [{"port": 10086
               ,"protocol": "shadowsocks"
               ,"settings": {"method": "aes-256-gcm"
-                                ,"password": "fengkuang"
+                                ,"password": "ssproxyserver"
                                  }
              }]
 ,"outbounds": [{"protocol": "freedom"}]
