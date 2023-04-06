@@ -1,4 +1,4 @@
-# v2rayserver安装脚本 @ Debian 11
+# shadowsocks安装脚本 @ Debian 11
 sudo    su
 apt     -y     update
 apt     -y     install     v2ray net-tools
