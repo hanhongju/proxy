@@ -1,13 +1,4 @@
 # v2rayserver安装脚本 @ Debian 11
-echo    "
-本脚本可以自动架设shadowsocks服务器。安装完成后配置：
-端口为             10086
-传输协议为         tcp
-加密方式为         aes-256-gcm
-输入解析的有效域名地址：
-"
-sleep   5s
-#安装软件
 sudo    su
 apt     -y     update
 apt     -y     install     v2ray net-tools
