@@ -8,6 +8,7 @@ echo    "
 "
 sleep   5s
 #安装软件
+sudo    su
 apt     -y     update
 apt     -y     install     v2ray net-tools
 #修改系统控制文件启用BBR
@@ -31,17 +32,6 @@ systemctl   restart      v2ray
 v2ray       -test        -config=/etc/v2ray/config.json
 sysctl      -p
 netstat     -plnt
-
-
-
-
-directsetup () {
-sudo    su
-apt     -y    install    wget
-wget    https://github.com/hanhongju/proxy/raw/master/v2rayserver.sh    -O    setup.sh
-bash    setup.sh
-
-}
 
 
 
