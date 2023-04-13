@@ -29,7 +29,6 @@ netstat     -plnt
 
 uninstall () {
 sudo   su
-apt    -y     remove    v2ray
 systemctl     stop      v2ray
 systemctl     disable   v2ray
 netstat       -plnt
