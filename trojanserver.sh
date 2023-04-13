@@ -47,8 +47,8 @@ echo '
 }
 '           >                                             /etc/trojan/config.json
 sed         -i        "s/www.example.com/$site/g"         /etc/trojan/config.json
-systemctl   enable    trojan nginx cron
-systemctl   restart   trojan nginx cron
+systemctl   enable    trojan nginx
+systemctl   restart   trojan nginx
 nginx       -vt
 trojan      -t
 sysctl      -p
@@ -70,7 +70,6 @@ bash    setup.sh
 
 uninstall () {
 sudo   su
-apt    -y     remove    trojan nginx
 systemctl     stop      trojan nginx
 systemctl     disable   trojan nginx
 netstat       -plnt
