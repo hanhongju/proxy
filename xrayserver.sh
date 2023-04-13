@@ -14,7 +14,7 @@ sleep   5s
 #安装软件申请证书
 apt           -y        update
 apt           -y        install      wget nginx certbot net-tools
-wget          -cP.      https://github.com/XTLS/Xray-install/raw/main/install-release.sh
+wget          -c        https://github.com/XTLS/Xray-install/raw/main/install-release.sh
 bash          install-release.sh     install
 systemctl     stop                   nginx apache2
 certbot       certonly               --standalone -n --agree-tos -m 86606682@qq.com -d $site
@@ -69,8 +69,8 @@ proxy_set_header Host $host;
 }
 '                       >                                           /etc/nginx/sites-enabled/xray.conf
 sed         -i          "s/www.example.com/$site/g"                 /etc/nginx/sites-enabled/xray.conf
-systemctl   enable      xray nginx cron
-systemctl   restart     xray nginx cron
+systemctl   enable      xray nginx
+systemctl   restart     xray nginx
 nginx       -vt
 xray        -test       -config=/usr/local/etc/xray/config.json
 crontab     -l
@@ -93,10 +93,9 @@ bash    setup.sh
 
 uninstall () {
 sudo          su
-systemctl     stop      xray
-systemctl     disable   xray
 rm            /etc/nginx/sites-enabled/xray.conf
-systemctl     restart   nginx
+systemctl     stop      xray nginx
+systemctl     disable   xray nginx
 netstat       -plnt
 
 }
