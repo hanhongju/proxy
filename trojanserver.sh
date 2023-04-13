@@ -45,7 +45,7 @@ echo '
         ,"alpn": ["http/1.1"]
         }
 }
-'                     >                                   /etc/trojan/config.json
+'           >                                             /etc/trojan/config.json
 sed         -i        "s/www.example.com/$site/g"         /etc/trojan/config.json
 systemctl   enable    trojan nginx cron
 systemctl   restart   trojan nginx cron
