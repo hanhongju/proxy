@@ -73,7 +73,6 @@ systemctl   enable      xray nginx
 systemctl   restart     xray nginx
 nginx       -vt
 xray        -test       -config=/usr/local/etc/xray/config.json
-crontab     -l
 sysctl      -p
 netstat     -plnt
 
