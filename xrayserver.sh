@@ -93,7 +93,6 @@ bash    setup.sh
 
 uninstall () {
 sudo          su
-rm            /etc/nginx/sites-enabled/xray.conf
 systemctl     stop      xray nginx
 systemctl     disable   xray nginx
 netstat       -plnt
