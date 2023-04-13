@@ -3,8 +3,8 @@ site=gcphk.aboutnote.live
 #安装软件
 apt     -y     update
 apt     -y     install     wget curl tsocks net-tools
-wget    -cP.   http://www.hanhongju.com/Xray-install.sh
-wget    -cP.   http://www.hanhongju.com/Xray-linux-64.zip
+wget    -c     http://www.hanhongju.com/Xray-install.sh
+wget    -c     http://www.hanhongju.com/Xray-linux-64.zip
 bash    Xray-install.sh    -l    Xray-linux-64.zip
 #写入配置文件
 echo '
@@ -62,7 +62,6 @@ wget    https://github.com/XTLS/Xray-core/releases/download/v1.6.3/Xray-linux-64
 
 uninstall () {
 sudo   su
-apt    -y     remove    xray
 systemctl     stop      xray
 systemctl     disable   xray
 netstat       -plnt
