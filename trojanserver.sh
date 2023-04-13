@@ -51,7 +51,6 @@ systemctl   enable    trojan nginx
 systemctl   restart   trojan nginx
 nginx       -vt
 trojan      -t
-sysctl      -p
 netstat     -plnt
 
 
