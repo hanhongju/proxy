@@ -7,7 +7,7 @@ echo    "好的，现在要开始安装了。"
 sleep   5s
 #安装软件申请证书
 apt           -y   update
-apt           -y   install  certbot trojan net-tools
+apt           -y   install  certbot trojan nginx net-tools
 systemctl     stop          nginx apache2
 certbot       certonly      --standalone -n --agree-tos -m 86606682@qq.com -d $site
 chmod         -R   777      /etc/letsencrypt/
@@ -17,6 +17,22 @@ net.core.default_qdisc=fq
 net.ipv4.tcp_congestion_control=bbr
 '         >       /etc/sysctl.conf
 #修改配置，启动
+echo '
+server{
+set $proxy_name pubmed.ncbi.nlm.nih.gov;
+resolver 8.8.8.8 8.8.4.4 valid=300s;
+listen 80;
+listen [::]:80;
+location /          {
+proxy_set_header X-Real-IP $remote_addr;
+proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+proxy_set_header Referer https://$proxy_name;
+proxy_set_header Host $proxy_name;
+proxy_pass https://$proxy_name;
+proxy_set_header Accept-Encoding "";
+}
+}
+'           >        /etc/nginx/sites-enabled/default
 echo '
 {"run_type": "server"
 ,"local_addr": "::"
@@ -33,6 +49,7 @@ echo '
 sed         -i        "s/www.example.com/$site/g"         /etc/trojan/config.json
 systemctl   enable    trojan nginx cron
 systemctl   restart   trojan nginx cron
+nginx       -vt
 trojan      -t
 sysctl      -p
 netstat     -plnt
@@ -53,9 +70,9 @@ bash    setup.sh
 
 uninstall () {
 sudo   su
-apt    -y     remove    trojan
-systemctl     stop      trojan
-systemctl     disable   trojan
+apt    -y     remove    trojan nginx
+systemctl     stop      trojan nginx
+systemctl     disable   trojan nginx
 netstat       -plnt
 
 }
