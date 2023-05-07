@@ -3,9 +3,9 @@ site=gcphk.aboutnote.live
 #安装软件
 apt     -y     update
 apt     -y     install     wget curl tsocks net-tools
-wget    -c     http://www.hanhongju.com/Xray-install.sh
-wget    -c     http://www.hanhongju.com/Xray-linux-64.zip
-bash    Xray-install.sh    -l    Xray-linux-64.zip
+wget    -c     https://github.com/XTLS/Xray-install/raw/main/install-release.sh
+wget    -c     https://github.com/XTLS/Xray-core/releases/download/v1.6.3/Xray-linux-64.zip
+bash    install-release.sh    -l    Xray-linux-64.zip
 #写入配置文件
 echo '
 server       =  127.0.0.1
@@ -46,16 +46,6 @@ xray        -test     -config=/usr/local/etc/xray/config.json
 netstat     -plnt
 curl        -x        socks5://127.0.0.1:8080        google.com
 tsocks      wget      https://cn.wordpress.org/latest-zh_CN.tar.gz     -O      testdownloadfile
-
-
-
-
-prepareinstallfiles () {
-sudo    su
-wget    https://github.com/XTLS/Xray-install/raw/main/install-release.sh                  -O      /home/wordpress/Xray-install.sh
-wget    https://github.com/XTLS/Xray-core/releases/download/v1.6.3/Xray-linux-64.zip      -O      /home/wordpress/Xray-linux-64.zip
-
-}
 
 
 
