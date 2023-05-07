@@ -1,5 +1,4 @@
 # shadowsocks安装脚本 @ Debian 11
-sudo    su
 apt     -y     update
 apt     -y     install     v2ray net-tools
 #修改系统控制文件启用BBR
