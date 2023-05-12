@@ -1,4 +1,3 @@
-# proxy
 # trojan
 sudo    su  
 apt     -y    install    wget  
