@@ -71,7 +71,7 @@ proxy_set_header Host $host;
 sed         -i          "s/www.example.com/$site/g"                 /etc/nginx/sites-enabled/xray.conf
 systemctl   enable      xray nginx
 systemctl   restart     xray nginx
-nginx       -vt
+nginx       -t
 xray        -test       -config=/usr/local/etc/xray/config.json
 netstat     -plnt
 
