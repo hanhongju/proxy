@@ -49,7 +49,7 @@ echo '
 sed         -i        "s/www.example.com/$site/g"         /etc/trojan/config.json
 systemctl   enable    trojan nginx
 systemctl   restart   trojan nginx
-nginx       -vt
+nginx       -t
 trojan      -t
 netstat     -plnt
 
