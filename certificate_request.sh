@@ -1,4 +1,5 @@
-
+#通过cloudflare API申请证书
+sudo  su
 apt   -y    update
 apt   -y    install    certbot python3-pip
 pip         install    certbot-dns-cloudflare
