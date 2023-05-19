@@ -29,13 +29,12 @@ echo '
 '     >     /usr/local/etc/xray/config.json
 echo '
 server{
-server_name _;
 set $proxy_name pubmed.ncbi.nlm.nih.gov;
 resolver 8.8.8.8 8.8.4.4 valid=300s;
 listen 80;
 listen [::]:80;
-listen 443 ssl;
-listen [::]:443 ssl;
+listen 443 ssl default_server;
+listen [::]:443 ssl default_server;
 ssl_certificate           /home/fullchain.pem;
 ssl_certificate_key       /home/privkey.pem;
 if  ( $scheme = http )   {return 301 https://$server_name$request_uri;}
