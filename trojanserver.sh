@@ -8,9 +8,7 @@ sleep   5s
 #安装软件申请证书
 apt    -y     update
 apt    -y     install       certbot trojan nginx net-tools
-systemctl     stop          nginx apache2
-certbot       certonly      --standalone -n --agree-tos -m 86606682@qq.com -d $site
-chmod         -R   777      /etc/letsencrypt/
+certbot       certonly      --standalone  -n  --agree-tos  -m  86606682@qq.com  -d  $site  --pre-hook  "systemctl stop nginx"  --post-hook  "systemctl start nginx"  --deploy-hook "chmod -R 777 /etc/letsencrypt/" 
 #修改系统控制文件启用BBR
 echo     '
 net.core.default_qdisc=fq
