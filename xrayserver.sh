@@ -1,25 +1,16 @@
 # xrayserver安装脚本 @ Debian 10 or Ubuntu 20
-echo    "
-本脚本可以自动申请并使用tls证书加密保护流量，反代美国国家生物技术信息中心网址进行网站伪装。安装完成后配置：
-端口为             443
-用户ID为           8c38d360-bb8f-11ea-9ffd-c182155e578a
-传输协议为          ws
-底层传输安全为      tls
-路径为             /world
-输入解析的有效域名地址：
-"
-read    site
-echo    "好的，现在要开始安装了。"
-sleep   5s
-#安装软件申请证书
-apt           -y        update
-apt           -y        install      wget nginx certbot net-tools
-wget          -c        https://github.com/XTLS/Xray-install/raw/main/install-release.sh
-bash          install-release.sh     install
-systemctl     stop                   nginx apache2
-certbot       certonly               --standalone -n --agree-tos -m 86606682@qq.com -d $site
-chmod         -R        777          /etc/letsencrypt/
-#修改系统控制文件启用BBR
+
+site=wenjie.bio
+
+apt   -y    update
+apt   -y    install    wget nginx net-tools certbot python3-pip
+pip         install    certbot-dns-cloudflare
+wget  -c    https://github.com/XTLS/Xray-install/raw/main/install-release.sh
+bash        install-release.sh     install
+echo        "dns_cloudflare_api_token = jPOSoygxMtPyzr7I47YO3WWA4WrnmFFRgc0xYZ3l"       >       /home/cloudflare_credentials.ini
+certbot     certonly  --agree-tos  --eff-email  -m  86606682@qq.com  --dns-cloudflare  --dns-cloudflare-credentials  /home/cloudflare_credentials.ini  -d  *.$site  --deploy-hook  "chmod -R 777 /etc/letsencrypt/" 
+cp          /etc/letsencrypt/live/$site/fullchain.pem     /home/fullchain.pem
+cp          /etc/letsencrypt/live/$site/privkey.pem       /home/privkey.pem
 echo     '
 net.core.default_qdisc=fq
 net.ipv4.tcp_congestion_control=bbr
@@ -45,8 +36,8 @@ listen 80;
 listen [::]:80;
 listen 443 ssl;
 listen [::]:443 ssl;
-ssl_certificate          /etc/letsencrypt/live/www.example.com/fullchain.pem;
-ssl_certificate_key      /etc/letsencrypt/live/www.example.com/privkey.pem;
+ssl_certificate           /home/fullchain.pem;
+ssl_certificate_key       /home/privkey.pem;
 if  ( $scheme = http )   {return 301 https://$server_name$request_uri;}
 location /          {
 sub_filter   $proxy_name   $server_name;
@@ -67,13 +58,22 @@ proxy_set_header Connection "upgrade";
 proxy_set_header Host $host;
 }
 }
-'                       >                                           /etc/nginx/sites-enabled/xray.conf
-sed         -i          "s/www.example.com/$site/g"                 /etc/nginx/sites-enabled/xray.conf
+'           >           /etc/nginx/sites-enabled/xray.conf
 systemctl   enable      xray nginx
 systemctl   restart     xray nginx
 nginx       -t
 xray        -test       -config=/usr/local/etc/xray/config.json
 netstat     -plnt
+
+
+echo    "
+安装完成后配置：
+端口为             443
+用户ID为           8c38d360-bb8f-11ea-9ffd-c182155e578a
+传输协议为          ws
+底层传输安全为      tls
+路径为             /world
+"
 
 
 
@@ -96,7 +96,6 @@ systemctl     disable   xray nginx
 netstat       -plnt
 
 }
-
 
 
 
