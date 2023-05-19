@@ -37,7 +37,7 @@ listen 443 ssl default_server;
 listen [::]:443 ssl default_server;
 ssl_certificate           /home/fullchain.pem;
 ssl_certificate_key       /home/privkey.pem;
-if  ( $scheme = http )   {return 301 https://$server_name$request_uri;}
+if  ( $scheme = http )   {return 301 https://$host$request_uri;}
 location /          {
 sub_filter   $proxy_name   $server_name;
 sub_filter_once off;
