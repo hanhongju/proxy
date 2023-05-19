@@ -66,16 +66,6 @@ xray        -test       -config=/usr/local/etc/xray/config.json
 netstat     -plnt
 
 
-echo    "
-安装完成后配置：
-端口为             443
-用户ID为           8c38d360-bb8f-11ea-9ffd-c182155e578a
-传输协议为          ws
-底层传输安全为      tls
-路径为             /world
-"
-
-
 
 
 directsetup () {
