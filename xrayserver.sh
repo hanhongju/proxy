@@ -31,8 +31,8 @@ echo '
 server{
 set $proxy_name pubmed.ncbi.nlm.nih.gov;
 resolver 8.8.8.8 8.8.4.4 valid=300s;
-listen 80;
-listen [::]:80;
+listen 80 default_server;
+listen [::]:80 default_server;
 listen 443 ssl default_server;
 listen [::]:443 ssl default_server;
 ssl_certificate           /home/fullchain.pem;
@@ -57,7 +57,7 @@ proxy_set_header Connection "upgrade";
 proxy_set_header Host $host;
 }
 }
-'           >           /etc/nginx/sites-enabled/xray.conf
+'           >           /etc/nginx/sites-enabled/default
 systemctl   enable      xray nginx
 systemctl   restart     xray nginx
 nginx       -t
