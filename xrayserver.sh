@@ -39,7 +39,7 @@ ssl_certificate           /home/fullchain.pem;
 ssl_certificate_key       /home/privkey.pem;
 if  ( $scheme = http )   {return 301 https://$host$request_uri;}
 location /          {
-sub_filter   $proxy_name   $server_name;
+sub_filter   $proxy_name   $host;
 sub_filter_once off;
 proxy_set_header X-Real-IP $remote_addr;
 proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
