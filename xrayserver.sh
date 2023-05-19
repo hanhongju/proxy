@@ -29,7 +29,7 @@ echo '
 '     >     /usr/local/etc/xray/config.json
 echo '
 server{
-server_name www.example.com;
+server_name _;
 set $proxy_name pubmed.ncbi.nlm.nih.gov;
 resolver 8.8.8.8 8.8.4.4 valid=300s;
 listen 80;
