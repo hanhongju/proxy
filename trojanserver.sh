@@ -20,8 +20,8 @@ echo '
 server{
 set $proxy_name pubmed.ncbi.nlm.nih.gov;
 resolver 8.8.8.8 8.8.4.4 valid=300s;
-listen 80;
-listen [::]:80;
+listen 80 default_server;
+listen [::]:80 default_server;
 location /          {
 proxy_set_header X-Real-IP $remote_addr;
 proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
