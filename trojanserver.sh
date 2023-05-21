@@ -7,8 +7,8 @@ echo    "好的，现在要开始安装了。"
 sleep   5s
 #安装软件申请证书
 apt    -y     update
-apt    -y     install       certbot trojan nginx net-tools
-certbot       certonly      --standalone  -n  --agree-tos  -m  86606682@qq.com  -d  $site\
+apt    -y     install     certbot trojan nginx net-tools
+certbot       certonly    --standalone  -n  --agree-tos  -m  86606682@qq.com  -d  $site\
               --pre-hook  "systemctl stop nginx"  --post-hook  "systemctl restart nginx"
 #修改系统控制文件启用BBR
 echo     '
