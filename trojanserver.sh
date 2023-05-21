@@ -9,7 +9,7 @@ sleep   5s
 apt    -y     update
 apt    -y     install     certbot trojan nginx net-tools
 certbot       certonly    --standalone  -n  --agree-tos  -m  86606682@qq.com  -d  $site\
-              --pre-hook  "systemctl stop nginx"  --post-hook  "systemctl restart nginx"
+              --pre-hook  "systemctl stop nginx"  --post-hook  "systemctl restart nginx trojan"
 #修改系统控制文件启用BBR
 echo     '
 net.core.default_qdisc=fq
@@ -46,8 +46,8 @@ echo '
 }
 '           >                                             /etc/trojan/config.json
 sed         -i        "s/www.example.com/$site/g"         /etc/trojan/config.json
-systemctl   enable    trojan nginx
-systemctl   restart   trojan nginx
+systemctl   enable    nginx trojan
+systemctl   restart   nginx trojan
 nginx       -t
 trojan      -t
 netstat     -plnt
@@ -68,8 +68,8 @@ bash    setup.sh
 
 uninstall () {
 sudo   su
-systemctl     stop      trojan nginx
-systemctl     disable   trojan nginx
+systemctl     stop      nginx trojan
+systemctl     disable   nginx trojan
 netstat       -plnt
 
 }
