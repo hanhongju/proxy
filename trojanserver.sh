@@ -6,17 +6,23 @@ read    site
 echo    "好的，现在要开始安装了。"
 sleep   5s
 #安装软件申请证书
-apt    -y     update
-apt    -y     install     certbot trojan nginx net-tools
-certbot       certonly    --standalone  -n  --agree-tos  -m  86606682@qq.com  -d  $site\
-              --pre-hook  "systemctl stop nginx"  --post-hook  "systemctl restart nginx trojan"
-#修改系统控制文件启用BBR
-echo     '
+apt     -y     update
+apt     -y     install     certbot trojan nginx net-tools
+certbot        certonly    --standalone  -n  --agree-tos  -m  86606682@qq.com  -d  $site\
+               --pre-hook  "systemctl stop nginx"  --post-hook  "systemctl restart nginx trojan"
+echo    '
 net.core.default_qdisc=fq
 net.ipv4.tcp_congestion_control=bbr
-'         >       /etc/sysctl.conf
+'       >       /etc/sysctl.conf
+echo    '
+* * * * *     date   >>    /home/crontest
+0 1 * * *     apt    -y    update
+0 2 * * *     apt    -y    full-upgrade
+0 3 * * *     apt    -y    autoremove
+1 0 1 * *     certbot      renew
+'       |     crontab
 #修改配置，启动
-echo '
+echo    '
 server{
 set $proxy_name pubmed.ncbi.nlm.nih.gov;
 resolver 8.8.8.8 8.8.4.4 valid=300s;
@@ -50,6 +56,7 @@ systemctl   enable    nginx trojan
 systemctl   restart   nginx trojan
 nginx       -t
 trojan      -t
+crontab     -l
 netstat     -plnt
 
 
