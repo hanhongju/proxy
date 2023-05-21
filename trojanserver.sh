@@ -9,7 +9,7 @@ sleep   5s
 apt    -y     update
 apt    -y     install       certbot trojan nginx net-tools
 certbot       certonly      --standalone  -n  --agree-tos  -m  86606682@qq.com  -d  $site\
-              --pre-hook  "systemctl stop nginx"  --post-hook  "systemctl restart nginx"\
+              --pre-hook  "systemctl stop nginx"  --post-hook  "systemctl restart nginx"
 #修改系统控制文件启用BBR
 echo     '
 net.core.default_qdisc=fq
