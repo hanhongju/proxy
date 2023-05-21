@@ -10,6 +10,7 @@ bash        install-release.sh     install
 echo        "dns_cloudflare_api_token = jPOSoygxMtPyzr7I47YO3WWA4WrnmFFRgc0xYZ3l"       >       /home/cloudflare_credentials.ini
 certbot     certonly  --agree-tos  --eff-email  -m  86606682@qq.com  --dns-cloudflare\
             --dns-cloudflare-credentials  /home/cloudflare_credentials.ini  -d  *.$site\
+            --post-hook  "systemctl restart nginx trojan"
 echo        '
 net.core.default_qdisc=fq
 net.ipv4.tcp_congestion_control=bbr
