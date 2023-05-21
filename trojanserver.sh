@@ -12,14 +12,14 @@ certbot        certonly    --standalone  -n  --agree-tos  -m  86606682@qq.com  -
 echo    '
 net.core.default_qdisc=fq
 net.ipv4.tcp_congestion_control=bbr
-'       >       /etc/sysctl.conf
+'       >      /etc/sysctl.conf
 echo    '
-* * * * *     date   >>    /home/crontest
-0 1 * * *     apt    -y    update
-0 2 * * *     apt    -y    full-upgrade
-0 3 * * *     apt    -y    autoremove
-1 0 1 * *     certbot      renew
-'       |     crontab
+* * * * *      date   >>    /home/crontest
+0 1 * * *      apt    -y    update
+0 2 * * *      apt    -y    full-upgrade
+0 3 * * *      apt    -y    autoremove
+1 0 1 * *      certbot      renew
+'       |      crontab
 echo    '
 server{
 set $proxy_name pubmed.ncbi.nlm.nih.gov;
