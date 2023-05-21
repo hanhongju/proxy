@@ -10,15 +10,18 @@ bash        install-release.sh     install
 echo        "dns_cloudflare_api_token = jPOSoygxMtPyzr7I47YO3WWA4WrnmFFRgc0xYZ3l"       >       /home/cloudflare_credentials.ini
 certbot     certonly  --agree-tos  --eff-email  -m  86606682@qq.com  --dns-cloudflare\
             --dns-cloudflare-credentials  /home/cloudflare_credentials.ini  -d  *.$site\
-            --deploy-hook  "chmod -R 777 /etc/letsencrypt/" 
-cp          /etc/letsencrypt/live/$site/fullchain.pem     /home/fullchain.pem
-cp          /etc/letsencrypt/live/$site/privkey.pem       /home/privkey.pem
-echo     '
+echo        '
 net.core.default_qdisc=fq
 net.ipv4.tcp_congestion_control=bbr
-'         >       /etc/sysctl.conf
+'           >       /etc/sysctl.conf
+echo        '
+cp          /etc/letsencrypt/live/www.example.com/fullchain.pem     /home/fullchain.pem
+cp          /etc/letsencrypt/live/www.example.com/privkey.pem       /home/privkey.pem
+'           >                              /etc/letsencrypt/renewal-hooks/post/copy_cert_to_home.sh
+sed    -i   "s/www.example.com/$site/g"    /etc/letsencrypt/renewal-hooks/post/copy_cert_to_home.sh
+chmod       777                            /etc/letsencrypt/renewal-hooks/post/copy_cert_to_home.sh
 #修改配置，启动。Xray的VMESS协议可配合Netch代理UDP协议的网络游戏数据包，VLESS协议不可以。
-echo '
+echo        '
 {"inbounds": [{"port": 8964
               ,"protocol": "vmess"
               ,"settings": {"clients": [{"id": "8c38d360-bb8f-11ea-9ffd-c182155e578a"}]}
@@ -28,8 +31,8 @@ echo '
              }]
 ,"outbounds":[{"protocol": "freedom"}]
 }
-'     >     /usr/local/etc/xray/config.json
-echo '
+'            >             /usr/local/etc/xray/config.json
+echo         '
 server{
 set $proxy_name pubmed.ncbi.nlm.nih.gov;
 resolver 8.8.8.8 8.8.4.4 valid=300s;
