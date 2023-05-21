@@ -14,13 +14,20 @@ certbot     certonly  --agree-tos  --eff-email  -m  86606682@qq.com  --dns-cloud
 echo        '
 net.core.default_qdisc=fq
 net.ipv4.tcp_congestion_control=bbr
-'           >       /etc/sysctl.conf
+'           >      /etc/sysctl.conf
 echo        '
 cp          /etc/letsencrypt/live/www.example.com/fullchain.pem     /home/fullchain.pem
 cp          /etc/letsencrypt/live/www.example.com/privkey.pem       /home/privkey.pem
 '           >                              /etc/letsencrypt/renewal-hooks/post/copy_cert_to_home.sh
 sed    -i   "s/www.example.com/$site/g"    /etc/letsencrypt/renewal-hooks/post/copy_cert_to_home.sh
 chmod       777                            /etc/letsencrypt/renewal-hooks/post/copy_cert_to_home.sh
+echo        '
+* * * * *          date   >>    /home/crontest
+0 1 * * *          apt    -y    update
+0 2 * * *          apt    -y    full-upgrade
+0 3 * * *          apt    -y    autoremove
+1 0 1 * *          certbot      renew
+'           |      crontab
 #修改配置，启动。Xray的VMESS协议可配合Netch代理UDP协议的网络游戏数据包，VLESS协议不可以。
 echo        '
 {"inbounds": [{"port": 8964
