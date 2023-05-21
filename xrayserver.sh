@@ -15,7 +15,7 @@ echo        '
 net.core.default_qdisc=fq
 net.ipv4.tcp_congestion_control=bbr
 '           >      /etc/sysctl.conf
-cp          /etc/letsencrypt/live/$site/fullchain.pem     /home/fullchain.pem
+cp          /etc/letsencrypt/live/$site/fullchain.pem      /home/fullchain.pem
 cp          /etc/letsencrypt/live/$sitem/privkey.pem       /home/privkey.pem
 echo        '
 cp          /etc/letsencrypt/live/www.example.com/fullchain.pem     /home/fullchain.pem
