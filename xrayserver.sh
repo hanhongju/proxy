@@ -10,19 +10,14 @@ bash        install-release.sh     install
 echo        "dns_cloudflare_api_token = jPOSoygxMtPyzr7I47YO3WWA4WrnmFFRgc0xYZ3l"       >       /home/cloudflare_credentials.ini
 certbot     certonly  --agree-tos  --eff-email  -m  86606682@qq.com  --dns-cloudflare\
             --dns-cloudflare-credentials  /home/cloudflare_credentials.ini  -d  *.$site\
-            --post-hook  "systemctl restart nginx"
+            --post-hook  "chmod 777 -R /etc/letsencrypt/
+                          cp    /etc/letsencrypt/live/$site/fullchain.pem     /home/fullchain.pem
+                          cp    /etc/letsencrypt/live/$site/privkey.pem       /home/privkey.pem
+                          systemctl restart nginx"
 echo        '
 net.core.default_qdisc=fq
 net.ipv4.tcp_congestion_control=bbr
 '           >      /etc/sysctl.conf
-cp          /etc/letsencrypt/live/$site/fullchain.pem      /home/fullchain.pem
-cp          /etc/letsencrypt/live/$site/privkey.pem        /home/privkey.pem
-echo        '
-cp          /etc/letsencrypt/live/www.example.com/fullchain.pem     /home/fullchain.pem
-cp          /etc/letsencrypt/live/www.example.com/privkey.pem       /home/privkey.pem
-'           >                              /etc/letsencrypt/renewal-hooks/post/copy_cert_to_home.sh
-sed    -i   "s/www.example.com/$site/g"    /etc/letsencrypt/renewal-hooks/post/copy_cert_to_home.sh
-chmod       777                            /etc/letsencrypt/renewal-hooks/post/copy_cert_to_home.sh
 echo        '
 * * * * *          date   >>    /home/crontest
 0 1 * * *          apt    -y    update
