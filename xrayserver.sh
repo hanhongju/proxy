@@ -11,8 +11,8 @@ echo        "dns_cloudflare_api_token = jPOSoygxMtPyzr7I47YO3WWA4WrnmFFRgc0xYZ3l
 certbot     certonly  --agree-tos  --eff-email  -m  86606682@qq.com  --dns-cloudflare\
             --dns-cloudflare-credentials  /home/cloudflare_credentials.ini  -d  *.$site\
             --post-hook  "chmod 777 -R /etc/letsencrypt/
-                          cp   -p   /etc/letsencrypt/live/$site/fullchain.pem     /home/fullchain.pem
-                          cp   -p   /etc/letsencrypt/live/$site/privkey.pem       /home/privkey.pem
+                          cp   -p   /etc/letsencrypt/live/$site/fullchain.pem     /srv/fullchain.pem
+                          cp   -p   /etc/letsencrypt/live/$site/privkey.pem       /srv/privkey.pem
                           systemctl restart nginx"
 echo        '
 net.core.default_qdisc=fq
@@ -45,8 +45,8 @@ listen 80 default_server;
 listen [::]:80 default_server;
 listen 443 ssl default_server;
 listen [::]:443 ssl default_server;
-ssl_certificate           /home/fullchain.pem;
-ssl_certificate_key       /home/privkey.pem;
+ssl_certificate           /srv/fullchain.pem;
+ssl_certificate_key       /srv/privkey.pem;
 if  ( $scheme = http )   {return 301 https://$host$request_uri;}
 location /          {
 sub_filter   $proxy_name   $host;
