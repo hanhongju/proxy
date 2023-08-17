@@ -1,4 +1,3 @@
-# trojan客户端安装脚本 @ Debian 10 or Ubuntu 20
 site=gcp.aboutnote.live
 apt   -y   update
 apt   -y   install     wget curl tsocks trojan net-tools
@@ -33,7 +32,6 @@ tsocks      wget      https://cn.wordpress.org/latest-zh_CN.tar.gz     -O      t
 
 
 uninstall () {
-sudo   su
 systemctl     stop      trojan
 systemctl     disable   trojan
 netstat       -plnt
@@ -43,3 +41,4 @@ netstat       -plnt
 
 
 
+# trojan客户端安装脚本 @ Debian 10 or Ubuntu 20
