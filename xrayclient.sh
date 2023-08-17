@@ -1,12 +1,9 @@
-# xrayclient安装脚本 @ Ubuntu 20
 site=gcphk.aboutnote.live
-#安装软件
 apt     -y     update
 apt     -y     install     wget curl tsocks net-tools
 wget    -c     https://github.com/XTLS/Xray-install/raw/main/install-release.sh
 wget    -c     https://github.com/XTLS/Xray-core/releases/download/v1.6.3/Xray-linux-64.zip
 bash    install-release.sh    -l    Xray-linux-64.zip
-#写入配置文件
 echo '
 server       =  127.0.0.1
 server_type  =  5
@@ -39,7 +36,6 @@ echo '
 }
 '           >                                             /usr/local/etc/xray/config.json
 sed         -i        "s/www.example.com/$site/g"         /usr/local/etc/xray/config.json
-#启动
 systemctl   enable    xray
 systemctl   restart   xray
 xray        -test     -config=/usr/local/etc/xray/config.json
@@ -51,7 +47,6 @@ tsocks      wget      https://cn.wordpress.org/latest-zh_CN.tar.gz     -O      t
 
 
 uninstall () {
-sudo   su
 systemctl     stop      xray
 systemctl     disable   xray
 netstat       -plnt
@@ -61,3 +56,4 @@ netstat       -plnt
 
 
 
+# xrayclient安装脚本 @ Ubuntu 20
