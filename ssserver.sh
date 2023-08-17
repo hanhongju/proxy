@@ -24,7 +24,6 @@ netstat     -plnt
 
 
 directsetup () {
-sudo    su
 apt     -y    install    wget
 wget    https://github.com/hanhongju/proxy/raw/master/ssserver.sh    -O    setup.sh
 bash    setup.sh
@@ -35,7 +34,6 @@ bash    setup.sh
 
 
 uninstall () {
-sudo   su
 systemctl     stop      v2ray
 systemctl     disable   v2ray
 netstat       -plnt
