@@ -1,7 +1,4 @@
-# xrayserver安装脚本 @ Debian 10 or Ubuntu 20
-
 site=wenjie.bio
-
 apt   -y    update
 apt   -y    install    wget nginx net-tools certbot python3-pip
 pip         install    certbot-dns-cloudflare
@@ -25,7 +22,6 @@ echo        '
 0 3 * * *          apt    -y    autoremove
 1 0 1 * *          certbot      renew
 '           |      crontab
-#修改配置，启动。Xray的VMESS协议可配合Netch代理UDP协议的网络游戏数据包，VLESS协议不可以。
 echo        '
 {"inbounds": [{"port": 8964
               ,"protocol": "vmess"
@@ -78,7 +74,6 @@ netstat     -plnt
 
 
 directsetup () {
-sudo    su
 apt     -y    install    wget
 wget    https://github.com/hanhongju/proxy/raw/master/xrayserver.sh    -O    setup.sh
 bash    setup.sh
@@ -89,7 +84,6 @@ bash    setup.sh
 
 
 uninstall () {
-sudo          su
 systemctl     stop      xray nginx
 systemctl     disable   xray nginx
 netstat       -plnt
@@ -99,3 +93,5 @@ netstat       -plnt
 
 
 
+# xrayserver安装脚本 @ Debian 10 or Ubuntu 20
+#Xray的VMESS协议可配合Netch代理UDP协议的网络游戏数据包，VLESS协议不可以。
