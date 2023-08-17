@@ -1,4 +1,3 @@
-# trojan服务器安装脚本 @ Debian 10 or Ubuntu 20
 echo    "
 本脚本可以自动申请并使用tls证书加密保护流量。输入解析的有效域名地址：
 "
@@ -62,7 +61,6 @@ netstat     -plnt
 
 
 directsetup () {
-sudo    su
 apt     -y    install    wget
 wget    https://github.com/hanhongju/proxy/raw/master/trojanserver.sh    -O    setup.sh
 bash    setup.sh
@@ -73,7 +71,6 @@ bash    setup.sh
 
 
 uninstall () {
-sudo   su
 systemctl     stop      nginx trojan
 systemctl     disable   nginx trojan
 netstat       -plnt
@@ -83,3 +80,4 @@ netstat       -plnt
 
 
 
+# trojan服务器安装脚本 @ Debian 10 or Ubuntu 20
