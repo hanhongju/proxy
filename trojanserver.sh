@@ -18,7 +18,7 @@ echo    '
 0 1 * * *      apt    -y    update
 0 2 * * *      apt    -y    full-upgrade
 0 3 * * *      apt    -y    autoremove
-1 0 1 * *      certbot      renew
+0 4 * * *      certbot      renew
 '       |      crontab
 echo    '
 server{
