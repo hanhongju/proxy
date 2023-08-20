@@ -1,9 +1,9 @@
 # trojan
-apt     -y    install    wget  
-wget    https://github.com/hanhongju/proxy/raw/master/trojanserver.sh    -O    setup.sh  
+apt     -y    install    wget
+wget    https://raw.githubusercontent.com/hanhongju/proxy/master/trojanserver.sh    -O    setup.sh
 bash    setup.sh
 
 # xray
-apt     -y    install    wget  
-wget    https://github.com/hanhongju/proxy/raw/master/xrayserver.sh    -O    setup.sh  
-bash    setup.sh  
+apt     -y    install    wget
+wget    https://raw.githubusercontent.com/hanhongju/proxy/master/xrayserver.sh    -O    setup.sh
+bash    setup.sh
