@@ -1,16 +1,18 @@
-site=wenjie.bio
-apt   -y    update
-apt   -y    install    wget nginx net-tools certbot python3-pip
-pip         install    certbot-dns-cloudflare
-wget  -c    https://github.com/XTLS/Xray-install/raw/main/install-release.sh
-bash        install-release.sh     install
-echo        "dns_cloudflare_api_token = jPOSoygxMtPyzr7I47YO3WWA4WrnmFFRgc0xYZ3l"       >       /home/cloudflare_credentials.ini
-certbot     certonly  --agree-tos  --eff-email  -m  86606682@qq.com  --dns-cloudflare\
-            --dns-cloudflare-credentials  /home/cloudflare_credentials.ini  -d  *.$site\
-            --post-hook  "chmod 777 -R /etc/letsencrypt/
-                          cp    -p     /etc/letsencrypt/live/$site/fullchain.pem     /srv/fullchain.pem
-                          cp    -p     /etc/letsencrypt/live/$site/privkey.pem       /srv/privkey.pem
-                          systemctl restart nginx"
+echo    "
+本脚本可以自动申请并使用tls证书加密保护流量。输入解析的有效域名地址：
+"
+read    site
+echo    "好的，现在要开始安装了。"
+sleep   2s
+apt     -y    update
+apt     -y    install    wget nginx net-tools certbot
+wget    -c    https://github.com/XTLS/Xray-install/raw/main/install-release.sh
+bash          install-release.sh     install
+certbot       certonly     --standalone  -n  --agree-tos  -m  86606682@qq.com  -d  $site\
+              --post-hook  "chmod 777 -R /etc/letsencrypt/
+                            cp    -p     /etc/letsencrypt/live/$site/fullchain.pem     /srv/fullchain.pem
+                            cp    -p     /etc/letsencrypt/live/$site/privkey.pem       /srv/privkey.pem
+                            systemctl    restart nginx"
 echo        '
 net.core.default_qdisc=fq
 net.ipv4.tcp_congestion_control=bbr
