@@ -46,7 +46,6 @@ listen 443 ssl default_server;
 listen [::]:443 ssl default_server;
 ssl_certificate           /srv/fullchain.pem;
 ssl_certificate_key       /srv/privkey.pem;
-
 location /          {
 sub_filter   $proxy_name   $host;
 sub_filter_once off;
