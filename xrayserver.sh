@@ -8,7 +8,7 @@ apt     -y    update
 apt     -y    install    wget nginx net-tools certbot
 wget    -c    https://github.com/XTLS/Xray-install/raw/main/install-release.sh
 bash          install-release.sh     install
-certbot       certonly     --standalone  -n  --agree-tos  -m  86606682@qq.com  -d  $site\
+certbot       certonly     --standalone  -n  --agree-tos  -m  admin@hanhongju.com  -d  $site\
               --pre-hook   "systemctl    stop      nginx"\
               --post-hook  "chmod 777 -R /etc/letsencrypt/
                             cp    -p     /etc/letsencrypt/live/$site/fullchain.pem     /srv/fullchain.pem
