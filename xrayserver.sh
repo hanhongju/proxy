@@ -11,9 +11,9 @@ bash          install-release.sh     install
 certbot       certonly     --standalone  -n  --agree-tos  -m  admin@hanhongju.com  -d  $site\
               --pre-hook   "systemctl    stop      nginx"\
               --post-hook  "chmod 777 -R /etc/letsencrypt/
-                            mkdir        /srv/xray/
-                            cp    -p     /etc/letsencrypt/live/$site/fullchain.pem     /srv/xray/fullchain.pem
-                            cp    -p     /etc/letsencrypt/live/$site/privkey.pem       /srv/xray/privkey.pem
+                            mkdir  -p    /srv/xray/
+                            cp     -p    /etc/letsencrypt/live/$site/fullchain.pem     /srv/xray/fullchain.pem
+                            cp     -p    /etc/letsencrypt/live/$site/privkey.pem       /srv/xray/privkey.pem
                             systemctl    restart   nginx"
 echo        '
 net.core.default_qdisc=fq
