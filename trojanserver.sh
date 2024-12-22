@@ -24,7 +24,7 @@ echo    '
 {"run_type": "server"
 ,"local_addr": "::"
 ,"local_port": 443
-,"remote_addr": "drams.zhmda.org.cn"
+,"remote_addr": "guangdong.chinatax.gov.cn"
 ,"remote_port": 80
 ,"password": ["fengkuang"]
 ,"ssl": {"cert": "/etc/letsencrypt/live/www.example.com/fullchain.pem"
