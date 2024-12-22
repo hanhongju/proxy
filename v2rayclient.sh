@@ -31,22 +31,15 @@ echo '
                                  }
               }]
 }
-'           >                                             /usr/local/etc/xray/config.json
-sed         -i        "s/www.example.com/$site/g"         /usr/local/etc/xray/config.json
-systemctl   enable    xray
-systemctl   restart   xray
-xray        -test     -config=/usr/local/etc/xray/config.json
+'           >                                             /etc/v2ray/config.json
+sed         -i        "s/www.example.com/$site/g"         /etc/v2ray/config.json
+systemctl   enable    v2ray
+systemctl   restart   v2ray
+v2ray       -test     -config=/etc/v2ray/config.json
 netstat     -plnt
 curl        -x        socks5://127.0.0.1:8080        google.com
 tsocks      wget      https://cn.wordpress.org/latest-zh_CN.tar.gz     -O      testdownloadfile
 
 
 
-
-uninstall () {
-systemctl     stop      xray
-systemctl     disable   xray
-netstat       -plnt
-
-}
 
