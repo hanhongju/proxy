@@ -33,14 +33,5 @@ bash    setup.sh
 
 
 
-uninstall () {
-systemctl     stop      v2ray
-systemctl     disable   v2ray
-netstat       -plnt
-
-}
-
-
-
 
 # shadowsocks安装脚本 @ Debian 11
