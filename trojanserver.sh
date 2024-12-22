@@ -5,10 +5,10 @@ read    site
 echo    "好的，现在要开始安装了。"
 sleep   5s
 apt     -y     update
-apt     -y     install     certbot trojan nginx net-tools
+apt     -y     install     certbot trojan net-tools
 certbot        delete      --noninteractive    --cert-name    $site
 certbot        certonly    --noninteractive    --domain       $site    --standalone    --agree-tos    --email     admin@hanhongju.com\
-               --pre-hook  "systemctl stop nginx trojan"  --post-hook "chmod 777 -R /etc/letsencrypt/; systemctl restart nginx trojan"
+               --pre-hook  "systemctl stop trojan"  --post-hook "chmod 777 -R /etc/letsencrypt/; systemctl restart trojan"
 echo    '
 net.core.default_qdisc=fq
 net.ipv4.tcp_congestion_control=bbr
@@ -21,26 +21,10 @@ echo    '
 0 4 * * *      certbot      renew
 '       |      crontab
 echo    '
-server{
-set $proxy_name pubmed.ncbi.nlm.nih.gov;
-resolver 8.8.8.8 8.8.4.4 valid=300s;
-listen 80 default_server;
-listen [::]:80 default_server;
-location /          {
-proxy_set_header X-Real-IP $remote_addr;
-proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-proxy_set_header Referer https://$proxy_name;
-proxy_set_header Host $proxy_name;
-proxy_pass https://$proxy_name;
-proxy_set_header Accept-Encoding "";
-}
-}
-'       >        /etc/nginx/sites-enabled/default
-echo    '
 {"run_type": "server"
 ,"local_addr": "::"
 ,"local_port": 443
-,"remote_addr": "127.0.0.1"
+,"remote_addr": "drams.zhmda.org.cn"
 ,"remote_port": 80
 ,"password": ["fengkuang"]
 ,"ssl": {"cert": "/etc/letsencrypt/live/www.example.com/fullchain.pem"
@@ -67,15 +51,6 @@ bash    setup.sh
 
 }
 
-
-
-
-uninstall () {
-systemctl     stop      nginx trojan
-systemctl     disable   nginx trojan
-netstat       -plnt
-
-}
 
 
 
