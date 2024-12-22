@@ -34,8 +34,8 @@ echo    '
 }
 '       >                                             /etc/trojan/config.json
 sed         -i        "s/www.example.com/$site/g"     /etc/trojan/config.json
-systemctl   enable    nginx trojan
-systemctl   restart   nginx trojan
+systemctl   enable    trojan
+systemctl   restart   trojan
 nginx       -t
 trojan      -t
 crontab     -l
