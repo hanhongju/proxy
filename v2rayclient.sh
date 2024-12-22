@@ -43,3 +43,4 @@ tsocks      wget      https://cn.wordpress.org/latest-zh_CN.tar.gz     -O      t
 
 
 
+# v2rayclient安装脚本 @ Debian 12 or Ubuntu 24
