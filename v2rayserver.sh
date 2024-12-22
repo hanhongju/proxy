@@ -5,16 +5,14 @@ read    site
 echo    "好的，现在要开始安装了。"
 sleep   2s
 apt     -y    update
-apt     -y    install    wget nginx net-tools certbot
-wget    -c    https://github.com/XTLS/Xray-install/raw/main/install-release.sh
-bash          install-release.sh     install
+apt     -y    install    wget nginx net-tools certbot v2ray
 certbot       delete       --noninteractive    --cert-name    $site
 certbot       certonly     --noninteractive    --domain       $site    --standalone    --agree-tos    --email     admin@hanhongju.com\
               --pre-hook   "systemctl    stop      nginx"\
               --post-hook  "chmod 777 -R /etc/letsencrypt/
-                            mkdir  -p    /srv/xray/
-                            cp     -p    /etc/letsencrypt/live/$site/fullchain.pem     /srv/xray/fullchain.pem
-                            cp     -p    /etc/letsencrypt/live/$site/privkey.pem       /srv/xray/privkey.pem
+                            mkdir  -p    /srv/v2ray/
+                            cp     -p    /etc/letsencrypt/live/$site/fullchain.pem     /srv/v2ray/fullchain.pem
+                            cp     -p    /etc/letsencrypt/live/$site/privkey.pem       /srv/v2ray/privkey.pem
                             systemctl    restart   nginx"
 echo        '
 net.core.default_qdisc=fq
@@ -37,7 +35,7 @@ echo        '
              }]
 ,"outbounds":[{"protocol": "freedom"}]
 }
-'            >             /usr/local/etc/xray/config.json
+'            >             /usr/local/etc/v2ray/config.json
 echo         '
 server{
 set $proxy_name pubmed.ncbi.nlm.nih.gov;
@@ -46,8 +44,8 @@ listen 80 default_server;
 listen [::]:80 default_server;
 listen 443 ssl default_server;
 listen [::]:443 ssl default_server;
-ssl_certificate           /srv/xray/fullchain.pem;
-ssl_certificate_key       /srv/xray/privkey.pem;
+ssl_certificate           /srv/v2ray/fullchain.pem;
+ssl_certificate_key       /srv/v2ray/privkey.pem;
 location /          {
 sub_filter   $proxy_name   $host;
 sub_filter_once off;
@@ -68,10 +66,10 @@ proxy_set_header Host $host;
 }
 }
 '           >           /etc/nginx/sites-enabled/default
-systemctl   enable      xray nginx
-systemctl   restart     xray nginx
+systemctl   enable      v2ray nginx
+systemctl   restart     v2ray nginx
 nginx       -t
-xray        -test       -config=/usr/local/etc/xray/config.json
+xray        -test       -config=/usr/local/etc/v2ray/config.json
 netstat     -plnt
 
 
@@ -79,7 +77,7 @@ netstat     -plnt
 
 directsetup () {
 apt     -y    install    wget
-wget    https://raw.githubusercontent.com/hanhongju/proxy/master/xrayserver.sh    -O    setup.sh
+wget    https://raw.githubusercontent.com/hanhongju/proxy/master/v2rayserver.sh    -O    setup.sh
 bash    setup.sh
 
 }
@@ -88,8 +86,8 @@ bash    setup.sh
 
 
 uninstall () {
-systemctl     stop      xray nginx
-systemctl     disable   xray nginx
+systemctl     stop      v2ray nginx
+systemctl     disable   v2ray nginx
 netstat       -plnt
 
 }
@@ -97,5 +95,5 @@ netstat       -plnt
 
 
 
-# xrayserver安装脚本 @ Debian 10 or Ubuntu 20
-#Xray的VMESS协议可配合Netch代理UDP协议的网络游戏数据包，VLESS协议不可以。
+# v2rayserver安装脚本 @ Debian 12 or Ubuntu 22
+# v2ray的VMESS协议可配合Netch代理UDP协议的网络游戏数据包，VLESS协议不可以。
