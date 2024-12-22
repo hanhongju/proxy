@@ -35,7 +35,7 @@ echo        '
              }]
 ,"outbounds":[{"protocol": "freedom"}]
 }
-'            >             /usr/local/etc/v2ray/config.json
+'            >             /etc/v2ray/config.json
 echo         '
 server{
 set $proxy_name pubmed.ncbi.nlm.nih.gov;
@@ -69,7 +69,7 @@ proxy_set_header Host $host;
 systemctl   enable      v2ray nginx
 systemctl   restart     v2ray nginx
 nginx       -t
-xray        -test       -config=/usr/local/etc/v2ray/config.json
+v2ray       -test       -config=/etc/v2ray/config.json
 netstat     -plnt
 
 
