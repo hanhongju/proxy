@@ -31,14 +31,5 @@ tsocks      wget      https://cn.wordpress.org/latest-zh_CN.tar.gz     -O      t
 
 
 
-uninstall () {
-systemctl     stop      trojan
-systemctl     disable   trojan
-netstat       -plnt
-
-}
-
-
-
 
 # trojan客户端安装脚本 @ Debian 10 or Ubuntu 20
