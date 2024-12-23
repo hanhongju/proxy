@@ -1,6 +1,6 @@
 site=gcphk.aboutnote.live
 apt     -y     update
-apt     -y     install     wget curl tsocks net-tools v2ray
+apt     -y     install     net-tools wget curl tsocks v2ray
 echo '
 server       =  127.0.0.1
 server_type  =  5
