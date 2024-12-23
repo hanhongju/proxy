@@ -5,7 +5,7 @@ read    site
 echo    "好的，现在要开始安装了。"
 sleep   5s
 apt     -y     update
-apt     -y     install     certbot trojan net-tools
+apt     -y     install     net-tools certbot trojan
 certbot        delete      --noninteractive    --cert-name    $site
 certbot        certonly    --noninteractive    --domain       $site    --standalone    --agree-tos    --email     admin@hanhongju.com\
                --pre-hook  "systemctl stop trojan"  --post-hook "chmod 777 -R /etc/letsencrypt/; systemctl restart trojan"
