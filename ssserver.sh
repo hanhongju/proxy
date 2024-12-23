@@ -17,7 +17,6 @@ echo '
 systemctl   enable       v2ray
 systemctl   restart      v2ray
 v2ray       -test        -config=/etc/v2ray/config.json
-sysctl      -p
 netstat     -plnt
 
 
