@@ -21,18 +21,18 @@ echo    '
 0 4 * * *      certbot      renew
 '       |      crontab
 echo    '
-{"run_type": "server"
-,"local_addr": "::"
-,"local_port": 443
-,"remote_addr": "policy.mofcom.gov.cn"
-,"remote_port": 80
-,"password": ["fengkuang"]
-,"ssl": {"cert": "/etc/letsencrypt/live/www.example.com/fullchain.pem"
-        ,"key" : "/etc/letsencrypt/live/www.example.com/privkey.pem"
-        ,"alpn": ["http/1.1"]
-        }
+{"run_type"    : "server"
+,"local_addr"  : "::"
+,"local_port"  : 443
+,"remote_addr" : "policy.mofcom.gov.cn"
+,"remote_port" : 80
+,"password"    : ["fengkuang"]
+,"ssl"         : {"cert": "/etc/letsencrypt/live/www.example.com/fullchain.pem"
+                 ,"key" : "/etc/letsencrypt/live/www.example.com/privkey.pem"
+                 ,"alpn": ["http/1.1"]
+                 }
 }
-'       >                                             /etc/trojan/config.json
+'           >                                         /etc/trojan/config.json
 sed         -i        "s/www.example.com/$site/g"     /etc/trojan/config.json
 systemctl   enable    trojan
 systemctl   restart   trojan
