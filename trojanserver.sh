@@ -38,7 +38,6 @@ systemctl   enable    trojan
 systemctl   restart   trojan
 nginx       -t
 trojan      -t
-crontab     -l
 netstat     -plnt
 
 
