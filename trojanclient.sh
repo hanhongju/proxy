@@ -1,6 +1,6 @@
 site=gcp.aboutnote.live
 apt   -y   update
-apt   -y   install     wget curl tsocks trojan net-tools
+apt   -y   install     net-tools wget curl tsocks trojan
 echo '
 server       =  127.0.0.1
 server_type  =  5
