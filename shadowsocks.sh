@@ -20,15 +20,5 @@ netstat     -plnt
 
 
 
-directsetup () {
-apt     -y    install    wget
-wget    https://raw.githubusercontent.com/hanhongju/proxy/master/ssserver.sh    -O    setup.sh
-bash    setup.sh
-
-}
-
-
-
-
 
 # shadowsocks安装脚本 @ Debian 10 or Ubuntu 20
