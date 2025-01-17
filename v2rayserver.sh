@@ -44,6 +44,7 @@ listen 80 default_server;
 listen [::]:80 default_server;
 listen 443 ssl default_server;
 listen [::]:443 ssl default_server;
+if  ( $scheme = http )    {return 301 https://$server_name$request_uri;}
 ssl_certificate           /srv/v2ray/fullchain.pem;
 ssl_certificate_key       /srv/v2ray/privkey.pem;
 location /          {
