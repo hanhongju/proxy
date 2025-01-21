@@ -86,6 +86,5 @@ bash    setup.sh
 
 
 
-
 # v2rayserver安装脚本 @ Debian 12 or Ubuntu 24
 # v2ray的VMESS协议可配合Netch代理UDP协议的网络游戏数据包，VLESS协议不可以。
