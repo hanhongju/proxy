@@ -20,5 +20,4 @@ netstat     -plnt
 
 
 
-
 # shadowsocks安装脚本 @ Debian 10 or Ubuntu 20
