@@ -18,7 +18,6 @@ net.core.default_qdisc=fq
 net.ipv4.tcp_congestion_control=bbr
 '           >      /etc/sysctl.conf
 echo        '
-* * * * *          date   >>    /root/crontest
 0 1 * * *          apt    -y    update
 0 2 * * *          apt    -y    full-upgrade
 0 3 * * *          apt    -y    autoremove
