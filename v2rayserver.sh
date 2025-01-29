@@ -10,9 +10,8 @@ certbot       delete       --noninteractive    --cert-name    $site
 certbot       certonly     --noninteractive    --domain       $site    --standalone    --agree-tos    --email     admin@hanhongju.com\
               --pre-hook   "systemctl    stop      nginx"\
               --post-hook  "chmod 777 -R /etc/letsencrypt/
-                            mkdir  -p    /srv/v2ray/
-                            cp     -p    /etc/letsencrypt/live/$site/fullchain.pem     /srv/v2ray/fullchain.pem
-                            cp     -p    /etc/letsencrypt/live/$site/privkey.pem       /srv/v2ray/privkey.pem
+                            cp     -p    /etc/letsencrypt/live/$site/fullchain.pem     /srv/v2rayfullchain.pem
+                            cp     -p    /etc/letsencrypt/live/$site/privkey.pem       /srv/v2rayprivkey.pem
                             systemctl    restart   nginx"
 echo        '
 net.core.default_qdisc=fq
@@ -45,8 +44,8 @@ listen [::]:80 default_server;
 listen 443 ssl default_server;
 listen [::]:443 ssl default_server;
 if  ( $scheme = http )    {return 301 https://$server_name$request_uri;}
-ssl_certificate           /srv/v2ray/fullchain.pem;
-ssl_certificate_key       /srv/v2ray/privkey.pem;
+ssl_certificate           /srv/v2rayfullchain.pem;
+ssl_certificate_key       /srv/v2rayprivkey.pem;
 location /          {
 sub_filter   $proxy_name   $host;
 sub_filter_once off;
