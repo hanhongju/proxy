@@ -1,4 +1,4 @@
-site=gcphk.aboutnote.live
+site=gcphk.hanhongju.live
 apt     -y     update
 apt     -y     install     net-tools wget curl tsocks v2ray
 echo '
