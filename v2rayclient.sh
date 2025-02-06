@@ -37,7 +37,6 @@ systemctl   enable    v2ray
 systemctl   restart   v2ray
 v2ray       -test     -config=/etc/v2ray/config.json
 netstat     -plnt
-curl        -x        socks5://127.0.0.1:8080        google.com
 tsocks      wget      https://cn.wordpress.org/latest-zh_CN.tar.gz     -O      testdownloadfile
 
 
