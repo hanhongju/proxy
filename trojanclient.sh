@@ -1,4 +1,4 @@
-site=gcp.aboutnote.live
+site=gcptrojan.hanhongju.com
 apt   -y   update
 apt   -y   install     net-tools wget curl tsocks trojan
 echo '
