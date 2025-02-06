@@ -25,7 +25,6 @@ systemctl   enable    trojan
 systemctl   restart   trojan
 trojan      -t
 netstat     -plnt
-curl        -x        socks5://127.0.0.1:8080        google.com
 tsocks      wget      https://cn.wordpress.org/latest-zh_CN.tar.gz     -O      testdownloadfile
 
 
