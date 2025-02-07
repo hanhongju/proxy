@@ -4,14 +4,14 @@ apt   -y   install     net-tools wget curl tsocks trojan
 echo '
 server       =  127.0.0.1
 server_type  =  5
-server_port  =  8081
+server_port  =  8080
 default_user =  none
 default_pass =  none
 '            >           /etc/tsocks.conf
 echo '
 {"run_type"    : "client"
 ,"local_addr"  : "127.0.0.1"
-,"local_port"  : 8081
+,"local_port"  : 8080
 ,"remote_addr" : "www.example.com"
 ,"remote_port" : 443
 ,"password"    : ["fengkuang"]
