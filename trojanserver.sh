@@ -3,7 +3,7 @@ echo    "
 "
 read    site
 echo    "好的，现在要开始安装了。"
-sleep   5s
+sleep   2s
 apt     -y     update
 apt     -y     install     net-tools certbot trojan
 certbot        delete      --noninteractive    --cert-name    $site
