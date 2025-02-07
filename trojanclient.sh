@@ -9,13 +9,13 @@ default_user =  none
 default_pass =  none
 '            >           /etc/tsocks.conf
 echo '
-{"run_type": "client"
-,"local_addr": "127.0.0.1"
-,"local_port": 8081
-,"remote_addr": "www.example.com"
-,"remote_port": 443
-,"password": ["fengkuang"]
-,"ssl": {"sni": "www.example.com"
+{"run_type"    : "client"
+,"local_addr"  : "127.0.0.1"
+,"local_port"  : 8081
+,"remote_addr" : "www.example.com"
+,"remote_port" : 443
+,"password"    : ["fengkuang"]
+,"ssl": {"sni" : "www.example.com"
         ,"alpn": ["http/1.1"]
         }
 }
