@@ -1,5 +1,4 @@
-site=gcptrojan.hanhongju.com
-apt   -y   update
+site=gcphktj.hanhongju.com
 apt   -y   install     net-tools wget curl tsocks trojan
 echo '
 server       =  127.0.0.1
