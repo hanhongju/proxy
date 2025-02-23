@@ -24,7 +24,7 @@ systemctl   enable    trojan
 systemctl   restart   trojan
 trojan      -t
 netstat     -plnt
-tsocks      wget      https://cn.wordpress.org/latest-zh_CN.tar.gz     -O      testdownloadfile
+tsocks      curl      -O      https://cn.wordpress.org/latest-zh_CN.tar.gz
 
 
 
