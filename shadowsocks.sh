@@ -1,4 +1,3 @@
-apt      -y     update
 apt      -y     install      net-tools shadowsocks-libev
 echo     '
 net.core.default_qdisc=fq
