@@ -24,7 +24,7 @@ systemctl   enable    trojan
 systemctl   restart   trojan
 trojan      -t
 netstat     -plnt
-wget        -c   --no-check-certificate    https://cn.wordpress.org/latest-zh_CN.tar.gz
+tsocks      wget      -c   --no-check-certificate    https://cn.wordpress.org/latest-zh_CN.tar.gz
 
 
 
