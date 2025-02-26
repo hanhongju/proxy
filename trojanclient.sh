@@ -18,7 +18,7 @@ systemctl   restart   trojan
 trojan      -t
 netstat     -plnt
 curl        -L        --socks5-hostname    127.0.0.1:8000  \
-            -O        https://github.com/2dust/v2rayN/releases/download/7.9.3/v2rayN-linux-64.deb
+            -O        https://download-cdn.resilio.com/2.7.3.1381/Debian/resilio-sync_2.7.3.1381-1_amd64.deb
 
 
 
