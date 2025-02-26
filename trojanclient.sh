@@ -1,12 +1,5 @@
 site=gcphktj.hanhongju.com
-apt   -y   install     net-tools wget tsocks trojan
-echo '
-server       =  127.0.0.1
-server_type  =  5
-server_port  =  8000
-default_user =  none
-default_pass =  none
-'            >           /etc/tsocks.conf
+apt   -y   install     net-tools curl  trojan
 echo '
 {"run_type"    : "client"
 ,"local_addr"  : "127.0.0.1"
@@ -24,7 +17,8 @@ systemctl   enable    trojan
 systemctl   restart   trojan
 trojan      -t
 netstat     -plnt
-tsocks      wget      -c     https://cn.wordpress.org/latest-zh_CN.tar.gz
+curl        --socks5-hostname    127.0.0.1:8000   -O   https://linux-packages.resilio.com/resilio-sync/key.asc
+
 
 
 
