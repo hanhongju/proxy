@@ -1,5 +1,5 @@
 site=gcphktj.hanhongju.com
-apt   -y   install     net-tools curl  trojan
+apt   -y   install     net-tools curl trojan
 echo '
 {"run_type"    : "client"
 ,"local_addr"  : "127.0.0.1"
