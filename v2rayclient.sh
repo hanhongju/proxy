@@ -2,7 +2,7 @@ site=gcphk.hanhongju.live
 apt     -y     update
 apt     -y     install     net-tools curl v2ray
 echo '
-{"inbounds": [{"port": 7080
+{"inbounds": [{"port": 7000
               ,"protocol": "socks"
               ,"settings": {"auth": "noauth"
                            }
