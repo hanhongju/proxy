@@ -4,6 +4,7 @@ echo    "
 read    site
 echo    "好的，现在要开始安装了。"
 sleep   2s
+apt     -y    update
 apt     -y    install      nginx net-tools certbot v2ray
 certbot       delete       --noninteractive    --cert-name    $site
 certbot       certonly     --noninteractive    --domain       $site    --standalone    --agree-tos    --email     admin@hanhongju.com\
