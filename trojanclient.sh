@@ -1,4 +1,4 @@
-site=gcphktj.hanhongju.com
+site=gcphk.hanhongju.com
 apt   -y   install     net-tools curl trojan
 echo '
 {"run_type"    : "client"
