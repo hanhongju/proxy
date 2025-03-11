@@ -4,6 +4,7 @@ echo    "
 read    site
 echo    "好的，现在要开始安装了。"
 sleep   2s
+apt     -y    update
 apt     -y    install      net-tools certbot trojan
 certbot       delete       --noninteractive    --cert-name    $site
 certbot       certonly     --noninteractive    --domain       $site    --standalone    --agree-tos    --email     admin@hanhongju.com\
@@ -41,7 +42,6 @@ netstat     -plnt
 
 
 directsetup () {
-apt     -y    update
 apt     -y    install    wget
 wget    https://raw.githubusercontent.com/hanhongju/proxy/master/trojanserver.sh    -O    setup.sh
 bash    setup.sh
