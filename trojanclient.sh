@@ -17,8 +17,7 @@ systemctl   enable    trojan
 systemctl   restart   trojan
 trojan      -t
 netstat     -plnt
-curl        --location           --continue-at -          \
-            --socks5-hostname    127.0.0.1:4000           \
+curl        --location           --continue-at -        --socks5-hostname 127.0.0.1:4000       \
             --remote-name        https://download-cdn.resilio.com/2.7.3.1381/Debian/resilio-sync_2.7.3.1381-1_amd64.deb
 
 
