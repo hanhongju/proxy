@@ -3,7 +3,7 @@ apt   -y   install     net-tools curl trojan
 echo '
 {"run_type"    : "client"
 ,"local_addr"  : "127.0.0.1"
-,"local_port"  : 7000
+,"local_port"  : 4000
 ,"remote_addr" : "www.example.com"
 ,"remote_port" : 443
 ,"password"    : ["fengkuang"]
