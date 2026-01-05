@@ -15,7 +15,6 @@ echo        '
                                                      ,"privateKey": "SP2bynVtlwks1cmoF6f9kp-0MnoYq_NizAumOkjx5H4"
                                                      ,"shortIds": [""]
                                                      }
-                                                     
                                  }
              }]
 ,"outbounds":[{"protocol": "freedom"}]
