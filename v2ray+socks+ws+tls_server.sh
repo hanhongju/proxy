@@ -79,7 +79,7 @@ netstat     -plnt
 
 directsetup () {
 apt     -y    install    wget
-wget    https://raw.githubusercontent.com/hanhongju/proxy/master/v2ray+vmess+ws+tls_server.sh    -O    setup.sh
+wget    https://raw.githubusercontent.com/hanhongju/proxy/master/v2ray+socks+ws+tls_server.sh    -O    setup.sh
 bash    setup.sh
 
 }
@@ -87,5 +87,4 @@ bash    setup.sh
 
 
 
-# v2rayserver安装脚本 @ Debian 11 or Ubuntu 22
-# v2ray的VMESS协议可配合Netch代理UDP协议的网络游戏数据包，VLESS协议不可以。该配置可在v2rayN v5客户端运行。
+# v2rayserver安装脚本 @ Debian 12
