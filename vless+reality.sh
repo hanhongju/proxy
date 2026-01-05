@@ -33,8 +33,7 @@ netstat     -plnt
 uninstall () {
 systemctl   disable     xray
 systemctl   stop        xray
-apt    -y   purge       xray
-apt    -y   autoremove
+bash        -c          "$(curl -L https://github.com/XTLS/Xray-install/raw/main/install-release.sh)" @ remove --purge
 netstat     -plnt
 
 }
