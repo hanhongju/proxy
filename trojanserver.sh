@@ -56,6 +56,7 @@ systemctl   disable     trojan
 systemctl   restart     trojan
 apt    -y   purge       trojan
 apt    -y   autoremove
+netstat     -plnt
 
 }
 
