@@ -87,5 +87,16 @@ bash    setup.sh
 
 
 
+uninstall () {
+systemctl   disable     v2ray nginx
+systemctl   restart     v2ray nginx
+apt    -y   purge       v2ray nginx
+apt    -y   autoremove
+
+}
+
+
+
+
 # v2ray+socks+ws+tls安装脚本 @ Debian 12
 # 无法在v2rayN v7中分享链接，无法在v2rayN v5中使用。可使用Cloudflare 中转流量。
