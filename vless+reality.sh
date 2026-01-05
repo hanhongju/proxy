@@ -13,8 +13,8 @@ echo        '
                            }
               ,"streamSettings": {"network": "raw"
                                  ,"security": "reality"
-                                 ,"realitySettings": {"target": "dl.google.com:443"
-                                                     ,"serverNames": ["dl.google.com"]
+                                 ,"realitySettings": {"target": "yahoo.com:443"
+                                                     ,"serverNames": ["yahoo.com"]
                                                      ,"privateKey": "SP2bynVtlwks1cmoF6f9kp-0MnoYq_NizAumOkjx5H4"   # Password: 1psC7ZNJWFAj8zG9mGM1EGibv17mQKoujkLEixNWJyo
                                                      ,"shortIds": [""]
                                                      }
