@@ -84,5 +84,16 @@ bash    setup.sh
 
 
 
+uninstall () {
+systemctl   disable     v2ray nginx
+systemctl   restart     v2ray nginx
+apt    -y   purge       v2ray nginx
+apt    -y   autoremove
+
+}
+
+
+
+
 # v2ray+vmess+ws+tls安装脚本 @ Debian 11 or Ubuntu 22
 # v2ray的VMESS协议可配合Netch代理UDP协议的网络游戏数据包，VLESS协议不可以。该配置可在v2rayN v5客户端运行。可使用Cloudflare 中转流量。
