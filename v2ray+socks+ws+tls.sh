@@ -79,7 +79,7 @@ netstat     -plnt
 
 directsetup () {
 apt     -y    install    wget
-wget    https://raw.githubusercontent.com/hanhongju/proxy/master/v2ray+socks+ws+tls_server.sh    -O    setup.sh
+wget    https://raw.githubusercontent.com/hanhongju/proxy/master/v2ray+socks+ws+tls.sh    -O    setup.sh
 bash    setup.sh
 
 }
@@ -87,5 +87,5 @@ bash    setup.sh
 
 
 
-# v2ray+socks+ws+tls_server安装脚本 @ Debian 12
+# v2ray+socks+ws+tls安装脚本 @ Debian 12
 # 无法在v2rayN v7中分享链接，无法在v2rayN v5中使用。可使用Cloudflare 中转流量。
