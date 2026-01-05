@@ -8,9 +8,7 @@ bash -c "$(curl -L https://github.com/XTLS/Xray-install/raw/main/install-release
 echo        '
 {"inbounds": [{"port": 443
               ,"protocol": "vless"
-              ,"settings": {"clients": [{"id": "8c38d360-bb8f-11ea-9ffd-c182155e578a"
-                                        ,"flow": "xtls-rprx-vision"
-                                       }]
+              ,"settings": {"clients": [{"id": "8c38d360-bb8f-11ea-9ffd-c182155e578a"}]
                            ,"decryption": "none"
                            }
               ,"streamSettings": {"network": "raw"
