@@ -76,7 +76,7 @@ netstat     -plnt
 
 directsetup () {
 apt     -y    install    wget
-wget    https://raw.githubusercontent.com/hanhongju/proxy/master/v2rayserver.sh    -O    setup.sh
+wget    https://raw.githubusercontent.com/hanhongju/proxy/master/v2ray+vmess+ws+tls_server.sh    -O    setup.sh
 bash    setup.sh
 
 }
