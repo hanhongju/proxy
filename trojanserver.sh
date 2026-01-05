@@ -51,4 +51,15 @@ bash    setup.sh
 
 
 
+uninstall () {
+systemctl   disable     trojan
+systemctl   restart     trojan
+apt    -y   purge       trojan
+apt    -y   autoremove
+
+}
+
+
+
+
 # trojan服务器安装脚本 @ Debian 10 or Ubuntu 20
