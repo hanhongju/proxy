@@ -53,7 +53,7 @@ bash    setup.sh
 
 uninstall () {
 systemctl   disable     trojan
-systemctl   restart     trojan
+systemctl   stop        trojan
 apt    -y   purge       trojan
 apt    -y   autoremove
 netstat     -plnt
