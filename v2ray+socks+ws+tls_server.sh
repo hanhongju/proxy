@@ -87,4 +87,5 @@ bash    setup.sh
 
 
 
-# v2rayserver安装脚本 @ Debian 12
+# v2ray+socks+ws+tls_server安装脚本 @ Debian 12
+# 无法在v2rayN v7中分享链接，无法在v2rayN v5中使用。
