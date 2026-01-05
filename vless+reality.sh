@@ -1,4 +1,4 @@
-
+# Password: 1psC7ZNJWFAj8zG9mGM1EGibv17mQKoujkLEixNWJyo
 
 
 apt     -y    update
@@ -15,7 +15,7 @@ echo        '
                                  ,"security": "reality"
                                  ,"realitySettings": {"target": "www.mbusa.com:443"
                                                      ,"serverNames": ["www.mbusa.com"]
-                                                     ,"privateKey": "SP2bynVtlwks1cmoF6f9kp-0MnoYq_NizAumOkjx5H4"   # Password: 1psC7ZNJWFAj8zG9mGM1EGibv17mQKoujkLEixNWJyo
+                                                     ,"privateKey": "SP2bynVtlwks1cmoF6f9kp-0MnoYq_NizAumOkjx5H4"
                                                      ,"shortIds": [""]
                                                      }
                                                      
