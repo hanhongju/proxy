@@ -31,6 +31,7 @@ xray        -test       -config=/usr/local/etc/xray/config.json
 
 systemctl   enable      xray
 systemctl   restart     xray
+sleep       2s
 netstat     -plnt
 
 
