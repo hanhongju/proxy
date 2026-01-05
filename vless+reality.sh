@@ -1,9 +1,6 @@
-# Password: 1psC7ZNJWFAj8zG9mGM1EGibv17mQKoujkLEixNWJyo
-
-
 apt     -y    update
 apt     -y    install     net-tools curl
-bash -c "$(curl -L https://github.com/XTLS/Xray-install/raw/main/install-release.sh)" @ install
+bash    -c    "$(curl -L https://github.com/XTLS/Xray-install/raw/main/install-release.sh)" @ install
 
 echo        '
 {"inbounds": [{"port": 443
@@ -23,12 +20,8 @@ echo        '
              }]
 ,"outbounds":[{"protocol": "freedom"}]
 }
-'            >            /usr/local/etc/xray/config.json
+'            >          /usr/local/etc/xray/config.json
 xray        -test       -config=/usr/local/etc/xray/config.json
-
-
-
-
 systemctl   enable      xray
 systemctl   restart     xray
 sleep       1s
@@ -37,6 +30,6 @@ netstat     -plnt
 
 
 
-
-# v2rayserver安装脚本 @ Debian 11 or Ubuntu 22
-# v2ray的VMESS协议可配合Netch代理UDP协议的网络游戏数据包，VLESS协议不可以。该配置可在v2rayN v5客户端运行。可使用Cloudflare 中转流量。
+# vless+reality安装脚本 @ Debian 12
+# Password: 1psC7ZNJWFAj8zG9mGM1EGibv17mQKoujkLEixNWJyo
+# 本脚本无需申请tls证书。借用其他网站的tls证书保护流量。
