@@ -41,6 +41,6 @@ netstat     -plnt
 
 
 
-# vless+reality安装脚本 @ Debian 12
+# xray+vless+reality安装脚本 @ Debian 12
 # Password: 1psC7ZNJWFAj8zG9mGM1EGibv17mQKoujkLEixNWJyo
 # 本脚本无需申请tls证书。借用其他网站的tls证书保护流量。
