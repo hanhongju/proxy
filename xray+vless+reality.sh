@@ -1,7 +1,11 @@
 apt     -y    update
 apt     -y    install     net-tools curl
 bash    -c    "$(curl -L https://github.com/XTLS/Xray-install/raw/main/install-release.sh)" @ install
-
+echo        '
+0 1 * * *          apt    -y    update
+0 2 * * *          apt    -y    full-upgrade
+0 3 * * *          apt    -y    autoremove
+'           |      crontab
 echo        '
 {"inbounds": [{"port": 443
               ,"protocol": "vless"
