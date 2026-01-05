@@ -86,9 +86,10 @@ bash    setup.sh
 
 uninstall () {
 systemctl   disable     v2ray nginx
-systemctl   restart     v2ray nginx
+systemctl   stop        v2ray nginx
 apt    -y   purge       v2ray nginx
 apt    -y   autoremove
+netstat     -plnt
 
 }
 
