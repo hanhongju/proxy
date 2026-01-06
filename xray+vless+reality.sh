@@ -2,6 +2,12 @@ apt    -y   update
 apt    -y   install     net-tools curl
 bash   -c   "$(curl -L https://github.com/XTLS/Xray-install/raw/main/install-release.sh)" @ install
 echo        '
+0 1 * * *          apt    -y    update
+0 2 * * *          apt    -y    full-upgrade
+0 3 * * *          apt    -y    autoremove
+'           |      crontab
+
+echo        '
 {"inbounds": [{"port": 443
               ,"protocol": "vless"
               ,"settings": {"clients": [{"id": "8c38d360-bb8f-11ea-9ffd-c182155e578a"}]
@@ -19,11 +25,6 @@ echo        '
 ,"outbounds":[{"protocol": "freedom"}]
 }
 '           >           /usr/local/etc/xray/config.json
-echo        '
-0 1 * * *          apt    -y    update
-0 2 * * *          apt    -y    full-upgrade
-0 3 * * *          apt    -y    autoremove
-'           |      crontab
 xray        -test       -config=/usr/local/etc/xray/config.json
 systemctl   enable      xray
 systemctl   restart     xray
