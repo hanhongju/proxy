@@ -46,5 +46,7 @@ netstat     -plnt
 
 
 # xray+vless+reality安装脚本 @ Debian 12
-# Password: 1psC7ZNJWFAj8zG9mGM1EGibv17mQKoujkLEixNWJyo
+# 用户ID: 8c38d360-bb8f-11ea-9ffd-c182155e578a
+# SNI: www.mbusa.com
+# Publickey: 1psC7ZNJWFAj8zG9mGM1EGibv17mQKoujkLEixNWJyo
 # 本脚本无需申请tls证书。借用其他网站的tls证书保护流量。
