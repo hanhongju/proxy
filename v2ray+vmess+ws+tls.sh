@@ -36,8 +36,8 @@ echo        '
 '            >             /etc/v2ray/config.json
 echo         '
 server{
+resolver 8.8.8.8;
 set $proxy_name pubmed.ncbi.nlm.nih.gov;
-resolver 8.8.8.8 8.8.4.4 valid=300s;
 listen 80 default_server;
 listen [::]:80 default_server;
 listen 443 ssl default_server;
