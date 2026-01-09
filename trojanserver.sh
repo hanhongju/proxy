@@ -6,6 +6,7 @@ echo    "好的，现在要开始安装了。"
 sleep   2s
 apt     -y    update
 apt     -y    install      net-tools certbot trojan
+systemctl     enable       trojan
 certbot       certonly     --noninteractive    --domain       $site    --standalone    --agree-tos    --email     admin@hanhongju.com\
               --pre-hook   "systemctl stop trojan"  --post-hook "chmod 777 -R /etc/letsencrypt/; systemctl restart trojan"
 echo    '
@@ -32,9 +33,8 @@ echo    '
 }
 '           >                                         /etc/trojan/config.json
 sed         -i        "s/www.example.com/$site/g"     /etc/trojan/config.json
-systemctl   enable    trojan
-systemctl   restart   trojan
 trojan      -t
+systemctl   restart   trojan
 netstat     -plnt
 
 
