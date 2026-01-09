@@ -26,9 +26,8 @@ echo        '
 ,"outbounds":[{"protocol": "freedom"}]
 }
 '           >           /usr/local/etc/xray/config.json
-xray        -test       -config=/usr/local/etc/xray/config.json
 systemctl   restart     xray
-sleep       1s
+xray        -test       -config=/usr/local/etc/xray/config.json
 netstat     -plnt
 
 
