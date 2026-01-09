@@ -66,6 +66,7 @@ proxy_set_header Host $host;
 systemctl   restart     v2ray nginx
 v2ray       -test       -config=/etc/v2ray/config.json
 nginx       -t
+crontab     -l
 netstat     -plnt
 
 
