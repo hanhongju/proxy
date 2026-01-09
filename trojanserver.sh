@@ -23,7 +23,7 @@ echo    '
 {"run_type"    : "server"
 ,"local_addr"  : "::"
 ,"local_port"  : 443
-,"remote_addr" : "policy.mofcom.gov.cn"
+,"remote_addr" : "www.naenara.com.kp"
 ,"remote_port" : 80
 ,"password"    : ["fengkuang"]
 ,"ssl"         : {"cert": "/etc/letsencrypt/live/www.example.com/fullchain.pem"
