@@ -33,8 +33,8 @@ echo    '
 }
 '           >                                         /etc/trojan/config.json
 sed         -i        "s/www.example.com/$site/g"     /etc/trojan/config.json
-trojan      -t
 systemctl   restart   trojan
+trojan      -t
 netstat     -plnt
 
 
