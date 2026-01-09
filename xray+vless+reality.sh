@@ -1,6 +1,7 @@
 apt    -y   update
 apt    -y   install     net-tools curl
 bash   -c   "$(curl -L https://github.com/XTLS/Xray-install/raw/main/install-release.sh)" @ install
+systemctl   enable      xray
 echo        '
 0 1 * * *          apt    -y    update
 0 2 * * *          apt    -y    full-upgrade
@@ -26,7 +27,6 @@ echo        '
 }
 '           >           /usr/local/etc/xray/config.json
 xray        -test       -config=/usr/local/etc/xray/config.json
-systemctl   enable      xray
 systemctl   restart     xray
 sleep       1s
 netstat     -plnt
