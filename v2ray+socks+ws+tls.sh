@@ -63,9 +63,9 @@ proxy_set_header Host $host;
 }
 }
 '           >           /etc/nginx/sites-enabled/default
-systemctl   restart     v2ray nginx
-nginx       -t
 v2ray       -test       -config=/etc/v2ray/config.json
+nginx       -t
+systemctl   restart     v2ray nginx
 netstat     -plnt
 
 
