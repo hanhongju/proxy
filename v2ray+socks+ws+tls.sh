@@ -6,6 +6,7 @@ echo    "好的，现在要开始安装了。"
 sleep   2s
 apt     -y    update
 apt     -y    install      nginx net-tools certbot v2ray
+systemctl     enable       v2ray nginx
 certbot       certonly     --noninteractive    --domain       $site    --standalone    --agree-tos    --email     admin@hanhongju.com\
               --pre-hook   "systemctl    stop      nginx"\
               --post-hook  "chmod 777 -R /etc/letsencrypt/
@@ -62,7 +63,6 @@ proxy_set_header Host $host;
 }
 }
 '           >           /etc/nginx/sites-enabled/default
-systemctl   enable      v2ray nginx
 systemctl   restart     v2ray nginx
 nginx       -t
 v2ray       -test       -config=/etc/v2ray/config.json
