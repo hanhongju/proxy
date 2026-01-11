@@ -39,6 +39,7 @@ echo    '
 '           >                                         /etc/trojan/config.json
 systemctl   restart   trojan
 trojan      -t
+crontab     -l
 netstat     -plnt
 
 
