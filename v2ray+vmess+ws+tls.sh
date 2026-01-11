@@ -7,6 +7,7 @@ sleep   2s
 apt     -y    update
 apt     -y    install      nginx net-tools certbot v2ray
 systemctl     enable       v2ray nginx
+# certbot     delete       --noninteractive    --cert-name    $site
 certbot       certonly     --noninteractive    --domain       $site    --standalone    --agree-tos    --email     admin@hanhongju.com\
               --pre-hook   "systemctl    stop      nginx"\
               --post-hook  "chmod 777 -R /etc/letsencrypt/
