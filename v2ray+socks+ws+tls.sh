@@ -9,11 +9,11 @@ apt     -y    install      nginx net-tools certbot v2ray
 systemctl     enable       v2ray nginx
 # certbot     delete       --noninteractive    --cert-name    $site
 certbot       certonly     --noninteractive    --domain       $site    --standalone    --agree-tos    --email     admin@hanhongju.com\
-              --pre-hook   "systemctl    stop      nginx"\
+              --pre-hook   "systemctl    stop      nginx trojan"\
               --post-hook  "chmod 777 -R /etc/letsencrypt/
                             cp     -p    /etc/letsencrypt/live/$site/fullchain.pem     /srv/proxyfullchain.pem
                             cp     -p    /etc/letsencrypt/live/$site/privkey.pem       /srv/proxyprivkey.pem
-                            systemctl    restart   nginx"
+                            systemctl    restart   nginx trojan"
 echo        '
 net.core.default_qdisc=fq
 net.ipv4.tcp_congestion_control=bbr
