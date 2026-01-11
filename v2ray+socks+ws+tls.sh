@@ -11,8 +11,8 @@ systemctl     enable       v2ray nginx
 certbot       certonly     --noninteractive    --domain       $site    --standalone    --agree-tos    --email     admin@hanhongju.com\
               --pre-hook   "systemctl    stop      nginx"\
               --post-hook  "chmod 777 -R /etc/letsencrypt/
-                            cp     -p    /etc/letsencrypt/live/$site/fullchain.pem     /srv/v2rayfullchain.pem
-                            cp     -p    /etc/letsencrypt/live/$site/privkey.pem       /srv/v2rayprivkey.pem
+                            cp     -p    /etc/letsencrypt/live/$site/fullchain.pem     /srv/proxyfullchain.pem
+                            cp     -p    /etc/letsencrypt/live/$site/privkey.pem       /srv/proxyprivkey.pem
                             systemctl    restart   nginx"
 echo        '
 net.core.default_qdisc=fq
@@ -44,8 +44,8 @@ resolver 8.8.8.8;
 set $proxy_name pubmed.ncbi.nlm.nih.gov;
 listen 80;
 listen 443 ssl;
-ssl_certificate           /srv/v2rayfullchain.pem;
-ssl_certificate_key       /srv/v2rayprivkey.pem;
+ssl_certificate           /srv/proxyfullchain.pem
+ssl_certificate_key       /srv/proxyprivkey.pem
 location /          {
 proxy_pass https://$proxy_name;
 proxy_set_header Host $proxy_name;
