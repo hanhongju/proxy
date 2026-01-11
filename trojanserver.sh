@@ -9,11 +9,11 @@ apt     -y    install      net-tools certbot trojan
 systemctl     enable       trojan
 # certbot     delete       --noninteractive    --cert-name    $site
 certbot       certonly     --noninteractive    --domain       $site    --standalone    --agree-tos    --email     admin@hanhongju.com\
-              --pre-hook   "systemctl    stop      trojan"\
+              --pre-hook   "systemctl    stop      nginx trojan"\
               --post-hook  "chmod 777 -R /etc/letsencrypt/
                             cp     -p    /etc/letsencrypt/live/$site/fullchain.pem     /srv/proxyfullchain.pem
                             cp     -p    /etc/letsencrypt/live/$site/privkey.pem       /srv/proxyprivkey.pem
-                            systemctl    restart   trojan"
+                            systemctl    restart   nginx trojan"
 echo    '
 net.core.default_qdisc=fq
 net.ipv4.tcp_congestion_control=bbr
