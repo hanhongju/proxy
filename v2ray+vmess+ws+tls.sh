@@ -39,21 +39,16 @@ echo         '
 server{
 resolver 8.8.8.8;
 set $proxy_name pubmed.ncbi.nlm.nih.gov;
-listen 80 default_server;
-listen [::]:80 default_server;
-listen 443 ssl default_server;
-listen [::]:443 ssl default_server;
-if  ( $scheme = http )    {return 301 https://$server_name$request_uri;}
+listen 80;
+listen 443 ssl;
 ssl_certificate           /srv/v2rayfullchain.pem;
 ssl_certificate_key       /srv/v2rayprivkey.pem;
 location /          {
-sub_filter   $proxy_name   $host;
-sub_filter_once off;
+proxy_pass https://$proxy_name;
+proxy_set_header Host $proxy_name;
 proxy_set_header X-Real-IP $remote_addr;
 proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-proxy_set_header Referer https://$proxy_name;
-proxy_set_header Host $proxy_name;
-proxy_pass https://$proxy_name;
+proxy_set_header Referer $scheme://$proxy_name;
 proxy_set_header Accept-Encoding "";
 }
 location /world     {
