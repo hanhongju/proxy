@@ -11,8 +11,8 @@ systemctl     enable       trojan
 certbot       certonly     --noninteractive    --domain       $site    --standalone    --agree-tos    --email     admin@hanhongju.com\
               --pre-hook   "systemctl    stop      trojan"\
               --post-hook  "chmod 777 -R /etc/letsencrypt/
-                            cp     -p    /etc/letsencrypt/live/$site/fullchain.pem     /srv/trojanfullchain.pem
-                            cp     -p    /etc/letsencrypt/live/$site/privkey.pem       /srv/trojanprivkey.pem
+                            cp     -p    /etc/letsencrypt/live/$site/fullchain.pem     /srv/proxyfullchain.pem
+                            cp     -p    /etc/letsencrypt/live/$site/privkey.pem       /srv/proxyprivkey.pem
                             systemctl    restart   trojan"
 echo    '
 net.core.default_qdisc=fq
@@ -31,8 +31,8 @@ echo    '
 ,"remote_addr" : "www.naenara.com.kp"
 ,"remote_port" : 80
 ,"password"    : ["fengkuang"]
-,"ssl"         : {"cert": "/srv/trojanfullchain.pem"
-                 ,"key" : "/srv/trojanprivkey.pem"
+,"ssl"         : {"cert": "/srv/proxyfullchain.pem"
+                 ,"key" : "/srv/proxyprivkey.pem"
                  ,"alpn": ["http/1.1"]
                  }
 }
