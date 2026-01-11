@@ -37,7 +37,7 @@ echo    '
                  ,"alpn": ["http/1.1"]
                  }
 }
-'           >                                         /etc/trojan/config.json
+'           >         /etc/trojan/config.json
 systemctl   restart   trojan
 trojan      -t
 crontab     -l
