@@ -41,8 +41,8 @@ resolver 8.8.8.8;
 set $proxy_name pubmed.ncbi.nlm.nih.gov;
 listen 80;
 listen 443 ssl;
-ssl_certificate           /srv/proxyfullchain.pem
-ssl_certificate_key       /srv/proxyprivkey.pem
+ssl_certificate           /srv/proxyfullchain.pem;
+ssl_certificate_key       /srv/proxyprivkey.pem;
 location /          {
 proxy_pass https://$proxy_name;
 proxy_set_header Host $proxy_name;
