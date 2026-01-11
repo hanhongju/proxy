@@ -9,7 +9,11 @@ apt     -y    install      net-tools certbot trojan
 systemctl     enable       trojan
 # certbot     delete       --noninteractive    --cert-name    $site
 certbot       certonly     --noninteractive    --domain       $site    --standalone    --agree-tos    --email     admin@hanhongju.com\
-              --pre-hook   "systemctl stop trojan"  --post-hook "chmod 777 -R /etc/letsencrypt/; systemctl restart trojan"
+              --pre-hook   "systemctl    stop      trojan"\
+              --post-hook  "chmod 777 -R /etc/letsencrypt/
+                            cp     -p    /etc/letsencrypt/live/$site/fullchain.pem     /srv/trojanfullchain.pem
+                            cp     -p    /etc/letsencrypt/live/$site/privkey.pem       /srv/trojanprivkey.pem
+                            systemctl    restart   trojan"
 echo    '
 net.core.default_qdisc=fq
 net.ipv4.tcp_congestion_control=bbr
@@ -27,13 +31,12 @@ echo    '
 ,"remote_addr" : "www.naenara.com.kp"
 ,"remote_port" : 80
 ,"password"    : ["fengkuang"]
-,"ssl"         : {"cert": "/etc/letsencrypt/live/www.example.com/fullchain.pem"
-                 ,"key" : "/etc/letsencrypt/live/www.example.com/privkey.pem"
+,"ssl"         : {"cert": "/srv/trojanfullchain.pem"
+                 ,"key" : "/srv/trojanprivkey.pem"
                  ,"alpn": ["http/1.1"]
                  }
 }
 '           >                                         /etc/trojan/config.json
-sed         -i        "s/www.example.com/$site/g"     /etc/trojan/config.json
 systemctl   restart   trojan
 trojan      -t
 netstat     -plnt
