@@ -14,6 +14,7 @@ certbot       certonly     --noninteractive    --domain       $site    --standal
                             cp     -p    /etc/letsencrypt/live/$site/fullchain.pem     /srv/proxyfullchain.pem
                             cp     -p    /etc/letsencrypt/live/$site/privkey.pem       /srv/proxyprivkey.pem
                             systemctl    restart   nginx trojan"
+certbot       renew         --dry-run
 echo        '
 net.core.default_qdisc=fq
 net.ipv4.tcp_congestion_control=bbr
