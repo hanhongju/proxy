@@ -14,8 +14,8 @@ echo        '
               ,"settings": {"clients": [{"id": "8c38d360-bb8f-11ea-9ffd-c182155e578a"}]
                            ,"decryption": "none"
                            }
-              ,"streamSettings": {"network": "raw"
-                                 ,"security": "reality"
+              ,"streamSettings": {"network"  : "raw"
+                                 ,"security" : "reality"
                                  ,"realitySettings": {"target": "www.mbusa.com:443"
                                                      ,"serverNames": ["www.mbusa.com"]
                                                      ,"privateKey": "SP2bynVtlwks1cmoF6f9kp-0MnoYq_NizAumOkjx5H4"
